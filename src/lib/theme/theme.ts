@@ -17,7 +17,7 @@ export const theme = createTheme({
       },
       styleOverrides: {
         root: {
-          padding: "6px 20px", //* button padding set
+          padding: "8px 24px", //* button padding set
         },
       },
     },
@@ -31,8 +31,11 @@ export const theme = createTheme({
   //* for using text color
   typography: {
     body1: {
-      color: "#0B1134CC",
-    //   #1F345D
+      color: "##1F345D",
+    //   #0B1134CC
+    },
+    body2: {
+      color: "#1F345D"
     },
   },
 });

@@ -10,7 +10,7 @@ const AuthButton = () => {
   const handleLogOut = () => {};
   return (
     <>
-      {true ? (
+      {false ? (
         <Button onClick={handleLogOut}>Logout</Button>
       ) : (
         <Button component={Link} href="/login">
