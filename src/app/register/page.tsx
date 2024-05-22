@@ -1,3 +1,7 @@
+"use client";
+
+import PetFrom from "@/components/Forms/PetForm";
+import PetInput from "@/components/Forms/PetInput";
 import {
   Box,
   Button,
@@ -8,20 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-
-type Inputs = {
-  example: string
-  exampleRequired: string
-}
-
+import { FieldValues } from "react-hook-form";
 const RegisterPage = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const handleRegister = async (values: FieldValues) => {
+    console.log(values);
+  };
 
   return (
     <Container>
@@ -72,56 +67,60 @@ const RegisterPage = () => {
             </Box>
           )}
           {/* here start form */}
-          <form >
-          <Box>
-            <Grid container spacing={2} my={2}>
-              <Grid item sm={12}>
-                <TextField
-                  id="outlined-basic"
-                  label="Username"
-                  variant="outlined"
-                  size="small"
-                  fullWidth={true}
-                />
+          <PetFrom
+            onSubmit={handleRegister}
+            defaultValues={{
+              name: "",
+              email: "",
+              password: "",
+            }}
+          >
+            <Box>
+              <Grid container spacing={2} my={2}>
+                <Grid item sm={12}>
+                  <PetInput
+                    name="name"
+                    label="Username"
+                    type="text"
+                    fullWidth={true}
+                  />
+                </Grid>
+                <Grid item sm={12}>
+                  <PetInput
+                    name="email"
+                    label="Email"
+                    type="email"
+                    fullWidth={true}
+                  />
+                </Grid>
+                <Grid item sm={12}>
+                  <PetInput
+                    name="password"
+                    label="Password"
+                    type="password"
+                    fullWidth={true}
+                  />
+                </Grid>
               </Grid>
-              <Grid item sm={12}>
-                <TextField
-                  id="outlined-basic"
-                  label="Email Address"
-                  variant="outlined"
-                  size="small"
-                  fullWidth={true}
-                />
-              </Grid>
-              <Grid item sm={12}>
-                <TextField
-                  id="outlined-basic"
-                  label="Password"
-                  variant="outlined"
-                  size="small"
-                  fullWidth={true}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              fullWidth={true}
-              sx={{
-                margin: "10px 0",
-              }}
-              type="submit"
-            >
-              Sign up
-            </Button>
-            <Typography variant="body2" component="p" fontWeight={300}>
-              Do you already have an account?{" "}
-              <Link href="/login">
-                <Box component="span" textTransform="uppercase">
-                  Login
-                </Box>
-              </Link>
-            </Typography>
-          </Box>
-          </form>
+              <Button
+                fullWidth={true}
+                sx={{
+                  margin: "10px 0",
+                }}
+                type="submit"
+              >
+                Sign up
+              </Button>
+              <Typography variant="body2" component="p" fontWeight={300}>
+                Do you already have an account?{" "}
+                <Link href="/login">
+                  <Box component="span" textTransform="uppercase">
+                    Login
+                  </Box>
+                </Link>
+              </Typography>
+            </Box>
+          </PetFrom>
         </Box>
       </Stack>
     </Container>

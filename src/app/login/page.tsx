@@ -1,3 +1,5 @@
+"use client";
+
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import {
@@ -66,7 +68,7 @@ const LoginPage = () => {
           )}
 
           <Box>
-            {/* <PetFrom
+            <PetFrom
               onSubmit={handleLogin}
               defaultValues={{
                 email: "",
@@ -74,7 +76,7 @@ const LoginPage = () => {
               }}
             >
               <Grid container spacing={2} my={1}>
-                <Grid item md={6}>
+                <Grid item sm={12}>
                   <PetInput
                     name="email"
                     label="Email"
@@ -82,7 +84,7 @@ const LoginPage = () => {
                     fullWidth={true}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item sm={12}>
                   <PetInput
                     name="password"
                     label="Password"
@@ -92,64 +94,30 @@ const LoginPage = () => {
                 </Grid>
               </Grid>
 
-              <Typography mb={1} textAlign="end" component="p" fontWeight={300}>
-                Forgot Password?
-              </Typography>
-
               <Button
-                sx={{
-                  margin: "10px 0px",
-                }}
                 fullWidth={true}
+                sx={{
+                  margin: "10px 0",
+                }}
                 type="submit"
               >
                 Login
               </Button>
-              <Typography component="p" fontWeight={300}>
-                Don&apos;t have an account?{" "}
-                <Link href="/register">Create an account</Link>
+              {/* <Typography variant="body2">Forgot password?</Typography> */}
+              <Typography variant="body2" sx={{ my: 1.2 }}>
+                {" "}
+                ---------- or log in with ---------{" "}
               </Typography>
-            </PetFrom> */}
-            <Grid container spacing={2} my={2}>
-              <Grid item sm={12}>
-                <TextField
-                  id="outlined-basic"
-                  label="Email Address"
-                  variant="outlined"
-                  size="small"
-                  fullWidth={true}
-                />
-              </Grid>
-              <Grid item sm={12}>
-                <TextField
-                  id="outlined-basic"
-                  label="Password"
-                  variant="outlined"
-                  size="small"
-                  fullWidth={true}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              fullWidth={true}
-              sx={{
-                margin: "10px 0",
-              }}
-              type="submit"
-            >
-              Login
-            </Button>
-            {/* <Typography variant="body2">Forgot password?</Typography> */}
-            <Typography variant="body2" sx={{my: 1.2}}> ---------- or log in with --------- </Typography>
 
-            <Typography variant="body2" component="p" fontWeight={300}>
-            Need an account?{" "}
-              <Link href="/register">
-                <Box component="span" textTransform="uppercase">
-                  sign up
-                </Box>
-              </Link>
-            </Typography>
+              <Typography variant="body2" component="p" fontWeight={300}>
+                Need an account?{" "}
+                <Link href="/register">
+                  <Box component="span" textTransform="uppercase">
+                    sign up
+                  </Box>
+                </Link>
+              </Typography>
+            </PetFrom>
           </Box>
         </Box>
       </Stack>
