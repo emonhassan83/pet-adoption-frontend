@@ -2,7 +2,9 @@
 
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
+import { userLogin } from "@/services/actions/loginUsers";
 import { registerUsers } from "@/services/actions/registeUsers";
+import { storeUserInfo } from "@/services/auth.services";
 import { IRegisterUser } from "@/types";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
@@ -14,7 +16,8 @@ const RegisterPage = () => {
   const router = useRouter();
 
   const handleRegister = async (values: FieldValues) => {
-    const { password, confirmPass, name, email, contactNumber, address } = values;
+    const { password, confirmPass, name, email, contactNumber, address } =
+      values;
 
     const userData: IRegisterUser = {
       name,
@@ -35,9 +38,16 @@ const RegisterPage = () => {
         // console.log(res);
         if (res?.data?.id) {
           toast.success(res?.message);
-          router.push("/login");
+
+          const result = await userLogin({
+            email,
+            password,
+          });
+          if (result?.data?.token) {
+            storeUserInfo({ accessToken: result?.data?.token });
+            router.push("/dashboard");
+          }
         }
-        
       } catch (error: any) {
         toast.error(error.message);
         console.error(error.message);
