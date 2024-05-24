@@ -2,21 +2,33 @@
 
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { userLogin } from "@/services/actions/loginUsers";
+import { storeUserInfo } from "@/services/auth.services";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 
 const LoginPage = () => {
+  const router = useRouter();
+
   const handleLogin = async (values: FieldValues) => {
-    console.log(values);
+    // console.log(values);
+    try {
+      const res = await userLogin(values);
+      // console.log(res);
+      if (res?.data?.token) {
+        toast.success(res?.message);
+        storeUserInfo({ accessToken: res?.data?.token });
+        router.push("/dashboard");
+      } else {
+        toast.error(res?.message);
+      }
+    } catch (err: any) {
+      toast.error(err.message);
+      console.error(err.message);
+    }
   };
   return (
     <Container>
@@ -103,12 +115,6 @@ const LoginPage = () => {
               >
                 Login
               </Button>
-              {/* <Typography variant="body2">Forgot password?</Typography> */}
-              <Typography variant="body2" sx={{ my: 1.2 }}>
-                {" "}
-                ---------- or log in with ---------{" "}
-              </Typography>
-
               <Typography variant="body2" component="p" fontWeight={300}>
                 Need an account?{" "}
                 <Link href="/register">

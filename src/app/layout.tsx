@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Providers from "@/lib/providers/Provider";
+import { Toaster } from "sonner";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -20,7 +21,12 @@ export default function RootLayout({
     <Providers>
       <html lang="en">
         <body className={nunito.className}>
-          <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+          <AppRouterCacheProvider>
+            <>
+              <Toaster position="top-center" />
+              {children}
+            </>
+          </AppRouterCacheProvider>
         </body>
       </html>
     </Providers>

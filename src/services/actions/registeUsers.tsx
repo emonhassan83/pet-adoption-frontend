@@ -1,11 +1,16 @@
 "use server";
 
-export const registerPatient = async (formData: FormData) => {
+import { IRegisterUser } from "@/types";
+
+export const registerUsers = async (userData: IRegisterUser) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/register`,
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/user/register`,
     {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userData),
       cache: "no-store",
     }
   );

@@ -2,20 +2,47 @@
 
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { registerUsers } from "@/services/actions/registeUsers";
+import { IRegisterUser } from "@/types";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
+
 const RegisterPage = () => {
+  const router = useRouter();
+
   const handleRegister = async (values: FieldValues) => {
-    console.log(values);
+    const { password, confirmPass, name, email, contactNumber, address } = values;
+
+    const userData: IRegisterUser = {
+      name,
+      email,
+      password,
+      contactNumber,
+      address,
+    };
+
+    if (password !== confirmPass) {
+      toast.error("Password and Confirm Passwords do not match!");
+      return;
+    }
+
+    if (password === confirmPass) {
+      try {
+        const res = await registerUsers(userData);
+        // console.log(res);
+        if (res?.data?.id) {
+          toast.success(res?.message);
+          router.push("/login");
+        }
+        
+      } catch (error: any) {
+        toast.error(error.message);
+        console.error(error.message);
+      }
+    }
   };
 
   return (
@@ -85,7 +112,7 @@ const RegisterPage = () => {
                     fullWidth={true}
                   />
                 </Grid>
-                <Grid item sm={12}>
+                <Grid item sm={6}>
                   <PetInput
                     name="email"
                     label="Email"
@@ -93,11 +120,35 @@ const RegisterPage = () => {
                     fullWidth={true}
                   />
                 </Grid>
-                <Grid item sm={12}>
+                <Grid item sm={6}>
+                  <PetInput
+                    name="contactNumber"
+                    label="Contract No"
+                    type="tel"
+                    fullWidth={true}
+                  />
+                </Grid>
+                <Grid item sm={6}>
                   <PetInput
                     name="password"
                     label="Password"
                     type="password"
+                    fullWidth={true}
+                  />
+                </Grid>
+                <Grid item sm={6}>
+                  <PetInput
+                    name="confirmPass"
+                    label="Confirm Password"
+                    type="password"
+                    fullWidth={true}
+                  />
+                </Grid>
+                <Grid item sm={12}>
+                  <PetInput
+                    name="address"
+                    label="Address"
+                    type="text"
                     fullWidth={true}
                   />
                 </Grid>
