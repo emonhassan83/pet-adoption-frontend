@@ -4,11 +4,18 @@ import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import { userLogin } from "@/services/actions/loginUsers";
 import { storeUserInfo } from "@/services/auth.services";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+export const validationSchema = z.object({
+  email: z.string().email("Please enter a valid email address!"),
+  password: z.string().min(6, "Must be at least 6 characters"),
+});
 
 const LoginPage = () => {
   const router = useRouter();
@@ -82,6 +89,7 @@ const LoginPage = () => {
           <Box>
             <PetFrom
               onSubmit={handleLogin}
+              resolver={zodResolver(validationSchema)}
               defaultValues={{
                 email: "",
                 password: "",

@@ -6,11 +6,33 @@ import { userLogin } from "@/services/actions/loginUsers";
 import { registerUsers } from "@/services/actions/registeUsers";
 import { storeUserInfo } from "@/services/auth.services";
 import { IRegisterUser } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+export const userValidationSchema = z.object({
+  name: z.string().min(1, "Please enter your name!"),
+  email: z.string().email("Please enter a valid email address!"),
+  password: z.string().min(6, "Must be at least 6 characters"),
+  confirmPass: z.string().min(6, "Must be at least 6 characters"),
+  contactNumber: z
+    .string()
+    .regex(/^\d{11}$/, "Please provide a valid phone number!"),
+  address: z.string().min(1, "Please enter your address!"),
+});
+
+export const defaultValues = {
+  name: "",
+  email: "",
+  password: "",
+  confirmPass: "",
+  contactNumber: "",
+  address: "",
+};
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -106,11 +128,8 @@ const RegisterPage = () => {
           {/* here start form */}
           <PetFrom
             onSubmit={handleRegister}
-            defaultValues={{
-              name: "",
-              email: "",
-              password: "",
-            }}
+            resolver={zodResolver(userValidationSchema)}
+            defaultValues={defaultValues}
           >
             <Box>
               <Grid container spacing={2} my={2}>
