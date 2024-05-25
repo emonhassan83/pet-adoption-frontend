@@ -11,8 +11,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Avatar, Badge, Stack } from "@mui/material";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import Sidebar from "../Sidebar/Sidebar";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 export default function DashboardDrawer({
   children,
@@ -72,16 +73,16 @@ export default function DashboardDrawer({
           >
             <Box>
               <Typography variant="body2" component="div" color="gray">
-                Hi emon
+                Hi, emon
                 {/* Hi, {isLoading ? "Loading..." : data?.name}, */}
               </Typography>
               <Typography
-                variant="h6"
+                variant="body2"
                 noWrap
                 component="div"
                 sx={{ color: "primary.main" }}
               >
-                Welcome to PH Health Care!
+                Welcome to pet finder!
               </Typography>
             </Box>
             <Stack direction="row" gap={3}>
@@ -118,7 +119,7 @@ export default function DashboardDrawer({
             },
           }}
         >
-          {/* <Sidebar /> */}
+          <Sidebar />
         </Drawer>
         {/* For mobile device */}
         <Drawer
@@ -132,7 +133,7 @@ export default function DashboardDrawer({
           }}
           open
         >
-          {/* <Sidebar /> */}
+          <Sidebar />
         </Drawer>
       </Box>
       <Box

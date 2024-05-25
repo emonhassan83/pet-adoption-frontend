@@ -8,6 +8,7 @@ import { UserRole } from "@/types";
 // import SidebarItem from "./SidebarItem";
 import { getUserInfo } from "@/services/auth.services";
 import { useEffect, useState } from "react";
+import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
 
 const Sidebar = () => {
   const [userRole, setUserRole] = useState("");
@@ -17,7 +18,7 @@ const Sidebar = () => {
     setUserRole(role);
   }, []);
 
-  // console.log(userInfo);
+//   console.log(userInfo);
 
   return (
     <Box>
@@ -33,9 +34,14 @@ const Sidebar = () => {
         component={Link}
         href="/"
       >
-        {/* <Image src={assets.svgs.logo} width={40} height={40} alt="logo" /> */}
-        <Typography variant="h6" component="h1">
-          PH Health Care
+        <PetsOutlinedIcon sx={{ color: "primary.main" }} />
+        <Typography
+          variant="h6"
+          component="h6"
+          fontWeight={600}
+          sx={{ color: "primary.main" }}
+        >
+          Pet Finder
         </Typography>
       </Stack>
       {/* Drawer Item */}
