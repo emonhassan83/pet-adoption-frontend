@@ -1,14 +1,12 @@
 import List from "@mui/material/List";
 import { Box, Stack, Typography } from "@mui/material";
-import Image from "next/image";
-import assets from "@/assets";
 import Link from "next/link";
-// import { drawerItems } from "@/utils/drawerItems";
 import { UserRole } from "@/types";
-// import SidebarItem from "./SidebarItem";
 import { getUserInfo } from "@/services/auth.services";
 import { useEffect, useState } from "react";
 import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
+import { drawerItems } from "@/utils/drawerItems";
+import SidebarItem from "./SidebarItems";
 
 const Sidebar = () => {
   const [userRole, setUserRole] = useState("");
@@ -17,8 +15,6 @@ const Sidebar = () => {
     const { role } = getUserInfo() as any;
     setUserRole(role);
   }, []);
-
-//   console.log(userInfo);
 
   return (
     <Box>
@@ -46,9 +42,9 @@ const Sidebar = () => {
       </Stack>
       {/* Drawer Item */}
       <List>
-        {/* {drawerItems(userRole as UserRole).map((item, index) => (
+        {drawerItems(userRole as UserRole).map((item, index) => (
           <SidebarItem key={index} item={item} />
-        ))} */}
+        ))}
       </List>
     </Box>
   );

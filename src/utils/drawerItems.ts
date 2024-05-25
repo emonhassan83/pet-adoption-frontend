@@ -17,7 +17,7 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
   const defaultMenus = [
     {
       title: "Profile",
-      path: `${role}/profile`,
+      path: `profile`,
       icon: AccountCircleIcon,
     },
     {
@@ -36,29 +36,24 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           icon: DashboardIcon,
         },
         {
-          title: "Specialties",
-          path: `${role}/specialties`,
+          title: "Manage Users",
+          path: `${role}/manage-users`,
           icon: TryIcon,
         },
         {
-          title: "Doctors",
-          path: `${role}/doctors`,
+          title: "Add Pet",
+          path: `${role}/add-pet`,
           icon: MedicalInformationIcon,
         },
         {
-          title: "Schedules",
-          path: `${role}/schedules`,
+          title: "Manage Pets",
+          path: `${role}/manage-pet`,
           icon: CalendarMonthIcon,
         },
         {
-          title: "Appointments",
-          path: `${role}/appointments`,
+          title: "Adoption Requests",
+          path: `${role}/manage-adoption`,
           icon: CalendarMonthIcon,
-        },
-        {
-          title: "Reviews",
-          path: `${role}/reviews`,
-          icon: ReviewsIcon,
         }
       );
       break;
@@ -66,18 +61,13 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
     case USER_ROLE.USER:
       roleMenus.push(
         {
-          title: "Appointments",
-          path: `${role}/appointments`,
+          title: "Add Adoption",
+          path: `${role}/add-adoption`,
           icon: DashboardIcon,
         },
         {
-          title: "Prescriptions",
-          path: `${role}/prescriptions`,
-          icon: DashboardIcon,
-        },
-        {
-          title: "Payment History",
-          path: `${role}/payment-history`,
+          title: "Manage Adoption",
+          path: `${role}/manage-adoption`,
           icon: DashboardIcon,
         }
       );
