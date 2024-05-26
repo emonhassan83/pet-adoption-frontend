@@ -9,13 +9,12 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Avatar, Badge, Stack } from "@mui/material";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { Stack } from "@mui/material";
 import Sidebar from "../Sidebar/Sidebar";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import AccountMenu from "../AccountMenu/AccountMenu";
 
-const drawerWidth = 220;
+const drawerWidth = 240;
 
 export default function DashboardDrawer({
   children,
