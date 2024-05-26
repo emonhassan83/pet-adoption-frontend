@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import { Avatar, Badge, Stack } from "@mui/material";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import Sidebar from "../Sidebar/Sidebar";
+import { useGetMyProfileQuery } from "@/redux/api/userApi";
+import AccountMenu from "../AccountMenu/AccountMenu";
 
 const drawerWidth = 220;
 
@@ -22,7 +24,7 @@ export default function DashboardDrawer({
 }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
-//   const { data, isLoading } = useGetSingleUserQuery({});
+  const { data, isLoading } = useGetMyProfileQuery({});
   // console.log(data);
 
   const handleDrawerClose = () => {
@@ -73,8 +75,8 @@ export default function DashboardDrawer({
           >
             <Box>
               <Typography variant="body2" component="div" color="gray">
-                Hi, emon
-                {/* Hi, {isLoading ? "Loading..." : data?.name}, */}
+              
+                Hi, {isLoading ? "Loading..." : data?.name},
               </Typography>
               <Typography
                 variant="body2"
@@ -86,13 +88,8 @@ export default function DashboardDrawer({
               </Typography>
             </Box>
             <Stack direction="row" gap={3}>
-              <Badge badgeContent={1} color="primary">
-                <IconButton sx={{ background: "#ffffff" }}>
-                  <NotificationsNoneIcon color="action" />
-                </IconButton>
-              </Badge>
               {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
-              {/* <AccountMenu /> */}
+              <AccountMenu  data={data}/>
             </Stack>
           </Box>
         </Toolbar>

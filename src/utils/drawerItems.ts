@@ -2,24 +2,18 @@ import { DrawerItem, UserRole } from "@/types";
 
 //* icons
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import GroupIcon from "@mui/icons-material/Group";
-import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ReviewsIcon from "@mui/icons-material/Reviews";
-import TryIcon from "@mui/icons-material/Try";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import KeyIcon from "@mui/icons-material/Key";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { USER_ROLE } from "@/constant/role";
 
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
 
   const defaultMenus = [
-    {
-      title: "Profile",
-      path: `profile`,
-      icon: AccountCircleIcon,
-    },
     {
       title: "Change Password",
       path: `change-password`,
@@ -38,22 +32,22 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
         {
           title: "Manage Users",
           path: `${role}/manage-users`,
-          icon: TryIcon,
+          icon: GroupAddIcon,
         },
         {
           title: "Add Pet",
           path: `${role}/add-pet`,
-          icon: MedicalInformationIcon,
+          icon: AddCircleOutlineIcon,
         },
         {
           title: "Manage Pets",
           path: `${role}/manage-pet`,
-          icon: CalendarMonthIcon,
+          icon: AcUnitIcon,
         },
         {
           title: "Adoption Requests",
           path: `${role}/manage-adoption`,
-          icon: CalendarMonthIcon,
+          icon: ManageHistoryIcon,
         }
       );
       break;
@@ -63,12 +57,12 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
         {
           title: "Add Adoption",
           path: `${role}/add-adoption`,
-          icon: DashboardIcon,
+          icon: AddTaskIcon,
         },
         {
           title: "Manage Adoption",
           path: `${role}/manage-adoption`,
-          icon: DashboardIcon,
+          icon: ManageHistoryIcon,
         }
       );
       break;
