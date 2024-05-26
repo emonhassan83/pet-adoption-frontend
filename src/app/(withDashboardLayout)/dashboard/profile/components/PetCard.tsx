@@ -6,28 +6,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function PetCard({adopt}: any) {
-    console.log(adopt);
+export default function PetCard({adoptionRequest}: any) {
+   const {pet} = adoptionRequest;
+    // console.log(adoptionRequest);
     
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 200 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
+        image={pet?.image}
+        title="Pet Image"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {pet?.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Adoption Date: 
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Pet Details</Button>
+       
       </CardActions>
     </Card>
   );

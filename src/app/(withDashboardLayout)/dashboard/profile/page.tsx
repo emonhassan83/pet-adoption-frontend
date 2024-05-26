@@ -12,7 +12,7 @@ import PetAdoptSection from "./components/PetAdoptSection";
 
 const ProfilePage = () => {
   const { data, isLoading } = useGetMyProfileQuery({});
-  console.log(data);
+  // console.log(data);
 
   const fileUploadHandler = () => {};
 
