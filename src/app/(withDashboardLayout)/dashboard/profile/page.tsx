@@ -71,7 +71,7 @@ const ProfilePage = () => {
         </Grid>
       </Grid>
 
-      <PetAdoptSection data={data} />
+      <PetAdoptSection/>
     </Container>
   );
 };

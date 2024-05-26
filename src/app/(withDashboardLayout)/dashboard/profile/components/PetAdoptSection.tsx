@@ -1,12 +1,48 @@
-import { Box, Typography } from "@mui/material";
-import PetCard from "./PetCard";
+import { Box, Button, Typography } from "@mui/material";
 import { useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import Image from "next/image";
 
-const PetAdoptSection = ({ data }: any) => {
+const PetAdoptSection = () => {
   const { data: adoptionRequests, isLoading } = useGetMyAdoptionRequestsQuery(
     []
   );
-  // console.log(adoptionRequests);
+//   console.log(adoptionRequests);
+
+  const columns: GridColDef[] = [
+    { field: "id", headerName: "ID", flex: 1 },
+    {
+      field: "pet.name",
+      headerName: "Pet Name",
+      flex: 1,
+      renderCell: ({ row }) => {
+        return <Box>{row.pet ? row.pet.name : "Unknown"}</Box>;
+      },
+    },
+    {
+      field: "pet.image",
+      headerName: "Pet Image",
+      flex: 1,
+      renderCell: ({ row }) => {
+        return (
+          <Box>
+            <Image src={row.pet.image} width={40} height={40} alt="Icon" />
+          </Box>
+        );
+      },
+    },
+    { field: "createdAt", headerName: "Adoption Date", flex: 1 },
+    {
+      field: "action",
+      headerName: "Action",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => {
+        return <Button variant="text">View Details</Button>;
+      },
+    },
+  ];
 
   return (
     <Box
@@ -23,9 +59,22 @@ const PetAdoptSection = ({ data }: any) => {
       >
         My Adopted Pets
       </Typography>
-      {adoptionRequests.map((adoptionRequest: any) => (
-        <PetCard key={data.id} adoptionRequest={adoptionRequest} />
-      ))}
+      {!isLoading ? (
+        <Box my={2}>
+          <DataGrid
+            rows={adoptionRequests}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+          />
+        </Box>
+      ) : (
+        <h1>Loading</h1>
+      )}
     </Box>
   );
 };
