@@ -3,9 +3,13 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { FieldValues } from "react-hook-form";
 
 const AddAdoptionPage = () => {
-  const handleSubmit = () => {};
+  const handleSubmit = (values: FieldValues) => {
+    console.log(values);
+    
+  };
 
   return (
     <Box sx={{textAlign: "center"}}>
