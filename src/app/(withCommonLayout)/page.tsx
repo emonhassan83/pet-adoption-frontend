@@ -1,11 +1,15 @@
 import HeroSection from "@/components/UI/HomePage/HeroSection/HeroSection";
-import { Box } from "@mui/material";
+import OurSolutionSection from "@/components/UI/HomePage/OurSolutionSection/OurSolutionSection";
+import PetAdoptSection from "@/components/UI/HomePage/PetAdoptSection/PetAdoptSection";
+
 
 const HomePage = () => {
   return (
-    <Box>
+    <>
       <HeroSection/>
-    </Box>
+      <PetAdoptSection/>
+      <OurSolutionSection/>
+    </>
   );
 };
 
