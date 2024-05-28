@@ -19,11 +19,6 @@ const ChangePasswordSection = () => {
          <Box>
             <PetFrom
               onSubmit={handleChangePassword}
-            //   resolver={zodResolver(validationSchema)}
-            //   defaultValues={{
-            //     email: "",
-            //     password: "",
-            //   }}
             >
               <Grid container spacing={2} mt={0.5} mb={1}>
                 <Grid item sm={6}>
