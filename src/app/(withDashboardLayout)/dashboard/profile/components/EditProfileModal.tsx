@@ -17,11 +17,11 @@ const ProfileUpdateModal = ({ open, setOpen, data }: TProps) => {
   const handleFormSubmit = async (values: FieldValues) => {};
 
   const defaultValues = {
-    email: "",
-    name: "",
-    contactNumber: "",
-    address: "",
-    gender: "",
+    email: data?.email,
+    name: data?.name,
+    contactNumber: data?.contactNumber,
+    address: data?.address,
+    gender: data?.gender,
   };
 
   return (

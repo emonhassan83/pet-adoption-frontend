@@ -5,8 +5,13 @@ import { Box, Button, IconButton } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import EditIcon from "@mui/icons-material/Edit";
+import { useState } from "react";
+import UpdateUserRoleModal from "./components/UpdateRoleModal";
+import UpdateUserStatusModal from "./components/UpdateStatusModal";
 
 const ManageUsersPage = () => {
+  const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
+  const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
   const { data, isLoading } = useGetAllUsersQuery({});
   //   console.log(data);
 
@@ -25,10 +30,10 @@ const ManageUsersPage = () => {
       renderCell: ({ row }) => {
         return (
           <Box display="flex" gap={1}>
-            <IconButton color="primary" aria-label="delete">
+            <IconButton onClick={() => setIsRoleModalOpen(true)} color="primary" aria-label="delete">
               <ManageAccountsIcon />
             </IconButton>
-            <IconButton color="primary" aria-label="delete">
+            <IconButton onClick={() => setIsStatusModalOpen(true)} color="primary" aria-label="delete">
               <EditIcon />
             </IconButton>
           </Box>
@@ -38,6 +43,17 @@ const ManageUsersPage = () => {
   ];
 
   return (
+   <>
+   <UpdateUserRoleModal
+        open={isRoleModalOpen}
+        setOpen={setIsRoleModalOpen}
+        data={data}
+      />
+   <UpdateUserStatusModal
+        open={isStatusModalOpen}
+        setOpen={setIsStatusModalOpen}
+        data={data}
+      />
     <Box>
       {!isLoading ? (
         <Box my={2}>
@@ -56,6 +72,7 @@ const ManageUsersPage = () => {
         <h1>Loading.....</h1>
       )}
     </Box>
+   </>
   );
 };
 

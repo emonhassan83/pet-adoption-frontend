@@ -21,6 +21,7 @@ type TModalProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title: string;
+  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
   children: React.ReactNode;
   sx?: SxProps;
 };
@@ -30,6 +31,7 @@ export default function PetModal({
   setOpen,
   title = "",
   children,
+  maxWidth,
   sx,
 }: TModalProps) {
   const handleClose = () => {
@@ -42,9 +44,11 @@ export default function PetModal({
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        maxWidth={maxWidth}
+        fullWidth={true} 
         sx={{ ...sx }}
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle sx={{ m: 0, p: 2, fontSize: "16px", textTransform: "uppercase", color: "primary.main" }} id="customized-dialog-title">
           {title}
         </DialogTitle>
         <IconButton
