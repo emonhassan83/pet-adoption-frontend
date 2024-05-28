@@ -1,4 +1,4 @@
-import { Box,Typography } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import Image from "next/image";
 
 type IAboutServices = {
@@ -10,108 +10,77 @@ type IAboutServices = {
 
 const AboutServices = ({ data }: { data: IAboutServices[] }) => {
   return (
-    <Box sx={{
-        my: 10
-    }}>
-      <Box textAlign="center">
-        <Typography>Results that get tails wagging</Typography>
-        <Typography>Our lifesaving impact is nationwide</Typography>
+    <Container sx={{ my: 10 }}>
+      <Box textAlign="center" mb={4}>
+        <Typography variant="h4" component="h2" fontWeight={700}>
+          Results that get tails wagging
+        </Typography>
+        <Typography variant="subtitle1" component="p" color="textSecondary">
+          Our lifesaving impact is nationwide
+        </Typography>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: "15px",
-          backgroundColor: "rgba(245, 245, 245,1)",
-          padding: "15px",
-          alignItems: "center",
-        }}
-      >
+      
+      {data.map((item, index) => (
         <Box
+          key={index}
           sx={{
-            width: "50%",
-          }}
-        >
-          <Typography
-            //   gutterBottom
-            variant="body2"
-            component="p"
-          >
-            {data[0].sub_title}
-          </Typography>
-          <Typography
-            //   gutterBottom
-            variant="h5"
-            component="h1"
-            fontWeight={600}
-          >
-            {data[0].title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {data[0].description}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: index % 2 === 0 ? "row" : "row-reverse" },
+            gap: 10,
+            backgroundColor: "#faf5ff",
+            padding: "15px",
+            alignItems: "center",
             borderRadius: "10px",
-            width: "50%",
           }}
         >
-          <Image
-            src={data[0].image}
-            width={500}
-            height={500}
-            alt="Blog Image"
-          />
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: "15px",
-          backgroundColor: "rgba(245, 245, 245,1)",
-          padding: "15px",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            borderRadius: "10px",
-            width: "50%",
-          }}
-        >
-          <Image
-            src={data[1].image}
-            width={500}
-            height={500}
-            alt="Blog Image"
-          />
-        </Box>
-        <Box
-          sx={{
-            width: "50%",
-          }}
-        >
-          <Typography
-            //   gutterBottom
-            variant="body2"
-            component="p"
+          <Box
+            sx={{
+              overflow: "hidden",
+              position: "relative",
+              width: { xs: "100%", md: "50%" },
+              // width: "100%",
+              '&:hover img': {
+                transform: "scale(1.1)",
+              },
+              cursor: "pointer"
+            }}
           >
-            {data[1].sub_title}
-          </Typography>
-          <Typography
-            //   gutterBottom
-            variant="h5"
-            component="h1"
-            fontWeight={600}
+            <Image
+             src={item.image}
+             layout="responsive"
+             width={400}
+             height={400}
+             alt={item.title}
+             style={{
+              transition: "transform 0.5s ease",
+              maxWidth: "100%",
+              height: "auto"
+            }}
+            />
+          </Box>
+          <Box
+            sx={{
+              width: { xs: "100%", md: "50%" },
+              textAlign: { xs: "center", md: "left" },
+            }}
           >
-            {data[1].title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {data[1].description}
-          </Typography>
+            <Typography sx={{
+              textTransform: "uppercase",
+            }} variant="body2" component="p" gutterBottom>
+              {item.sub_title}
+            </Typography>
+            <Typography  sx={{
+              textTransform: "uppercase",
+            }} variant="h5" component="h3" fontWeight={600} gutterBottom>
+              {item.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {item.description}
+            </Typography>
+          </Box>
         </Box>
-      </Box>
-    </Box>
+      ))}
+    </Container>
   );
 };
 

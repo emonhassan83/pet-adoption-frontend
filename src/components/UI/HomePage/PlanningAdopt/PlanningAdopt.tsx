@@ -24,41 +24,38 @@ const planAdoptData = [
 
 const PlanningAdopt = () => {
   return (
-    <Box sx={{
-        backgroundColor:"#EFEEF1"
-    }}>
+    <Box sx={{ backgroundColor: "#f5f0ff", padding: 8 }}>
       <Container>
-      <Box sx={{ textAlign: "center" }}>
-        <Typography variant="h4" component="h1" fontWeight={700}>
-          PLANNING TO ADOPT
-        </Typography>
-        <Typography component="p" fontSize={18} fontWeight={400} sx={{ mt: 2 }}>
-          All pets deserve Love. We help them find it.
-        </Typography>
-      </Box>
+        <Box sx={{ textAlign: "center", mb: 4 }}>
+          <Typography variant="h4" component="h1" fontWeight={400}>
+            PLANNING TO ADOPT A PET?
+          </Typography>
+        </Box>
 
-      <Box sx={{ margin: "30px auto" }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           {planAdoptData?.map((data: any, index: number) => (
-            <Grid item key={index} md={4}>
-              <Box>
+            <Grid item key={index} xs={12} md={4} sx={{ textAlign: "center" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center"
+                }}
+              >
                 <Image src={data?.image} alt="Icon" width={150} height={100} />
-              </Box>
-
-              <Box sx={{
-                width: "500px"
-              }}>
-              <Typography gutterBottom variant="h5" component="div">
-                {data?.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {data.description}
-              </Typography>
+                <Box sx={{ width: "100%", maxWidth: "400px", mt: 2 }}>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {data?.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {data.description}
+                  </Typography>
+                </Box>
               </Box>
             </Grid>
           ))}
         </Grid>
-      </Box>
       </Container>
     </Box>
   );

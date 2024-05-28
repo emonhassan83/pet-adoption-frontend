@@ -10,6 +10,7 @@ const assets = {
       about_author1: require("./images/petfinder_member1.webp"),
       about_author2: require("./images/petfinder_member3.webp"),
       about_author3: require("./images/petfinder_member2.webp"),
+      about_author4: require("./images/petfinder_patnar4.webp"),
     },
     logo: {
       facebook: require("./icons/facebook.png"),

@@ -28,41 +28,57 @@ const cardData = [
 
 const OurSolutionSection = () => {
   return (
-    <Container sx={{
-        my: 16
-    }}>
-      <Box textAlign="center" >
-        <Typography variant="h4" component="h1" fontWeight={700}>Our Solution</Typography>
+    <Container sx={{ my: 16 }}>
+      <Box textAlign="center" mb={8}>
+        <Typography variant="h4" component="h1" fontWeight={700}>
+          Our Solution
+        </Typography>
         <Typography component="p" fontSize={18} fontWeight={400}>
-        Unleashing the power of Love, together.
+          Unleashing the power of Love, together.
         </Typography>
       </Box>
 
-      <Box sx={{ margin: "30px auto" }}>
-        <Grid container spacing={2}>
-          {cardData?.map((data: any, index: number) => (
-            <Grid item key={index} md={4}>
-              <Box>
-                <Image src={data?.image} alt="data" width={500} height={100} />
-              </Box>
+      <Grid container spacing={4}>
+        {cardData.map((data, index) => (
+          <Grid item key={index} xs={12} md={4}>
+            <Box
+              sx={{
+                overflow: "hidden",
+                position: "relative",
+                width: "100%",
+                '&:hover img': {
+                  transform: "scale(1.1)",
+                },
+                cursor: "pointer"
+              }}
+            >
+              <Image
+                src={data.image}
+                alt={data.title}
+                width={500}
+                height={300}
+                style={{
+                  transition: "transform 0.5s ease",
+                  width: "100%",
+                  height: "auto"
+                }}
+              />
+            </Box>
 
-              <Box sx={{
-                width: "500px"
-              }}>
+            <Box sx={{ mt: 2, px: 2 }}>
               <Typography variant="body2" color="text.secondary">
                 {data.sub_title}
               </Typography>
-              <Typography gutterBottom variant="h5" component="div">
-                {data?.title}
+              <Typography gutterBottom variant="h5" component="div" fontWeight={600}>
+                {data.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {data.description}
               </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

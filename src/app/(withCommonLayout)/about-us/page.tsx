@@ -36,6 +36,11 @@ const leadershipData = [
       image: assets.images.about_author3,
       name: "Daymond John",
       designation: "Vice Chair"
+    },
+    {
+      image: assets.images.about_author4,
+      name: "Dana Puglish",
+      designation: "Head of Marketing"
     }
   ];
   
