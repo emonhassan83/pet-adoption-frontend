@@ -16,6 +16,9 @@ const assets = {
       instagram: require("./icons/instagram.png"),
       linkedin: require("./icons/linkedin.png"),
       twitter: require("./icons/twitter.png"),
+      organization: require("./icons/petfinder_organization.svg"),
+      health: require("./icons/petfinder_health.svg"),
+      pet: require("./icons/petfinder_dog_portrait.svg"),
     },
   };
   
