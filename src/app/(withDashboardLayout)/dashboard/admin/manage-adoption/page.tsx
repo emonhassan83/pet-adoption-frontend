@@ -5,36 +5,37 @@ import { Box, IconButton } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const ManageAdoptionPage = () => {
   const { data, isLoading } = useGetAllAdoptionRequestsQuery({});
-  console.log(data);
+  // console.log(data);
 
   const columns: GridColDef[] = [
     {
-        field: "user.name",
-        headerName: "Req. User",
-        flex: 1,
-        renderCell: ({ row }) => {
-          return <Box>{row.user ? row.user.name : "Unknown"}</Box>;
-        },
+      field: "user.name",
+      headerName: "Req. User",
+      flex: 1,
+      renderCell: ({ row }) => {
+        return <Box>{row.user ? row.user.name : "Unknown"}</Box>;
       },
+    },
     {
-        field: "user.email",
-        headerName: "User Email",
-        flex: 1,
-        renderCell: ({ row }) => {
-          return <Box>{row.user ? row.user.email : "Unknown"}</Box>;
-        },
+      field: "user.email",
+      headerName: "User Email",
+      flex: 1,
+      renderCell: ({ row }) => {
+        return <Box>{row.user ? row.user.email : "Unknown"}</Box>;
       },
+    },
     {
-        field: "pet.name",
-        headerName: "Pet Name",
-        flex: 1,
-        renderCell: ({ row }) => {
-          return <Box>{row.pet ? row.pet.name : "Unknown"}</Box>;
-        },
+      field: "pet.name",
+      headerName: "Pet Name",
+      flex: 1,
+      renderCell: ({ row }) => {
+        return <Box>{row.pet ? row.pet.name : "Unknown"}</Box>;
       },
+    },
     {
       field: "image",
       headerName: "Pet Image",
@@ -57,9 +58,14 @@ const ManageAdoptionPage = () => {
       align: "center",
       renderCell: ({ row }) => {
         return (
-          <IconButton color="primary" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
+          <Box display="flex" gap={1}>
+            <IconButton color="primary" aria-label="delete">
+              <EditIcon />
+            </IconButton>
+            <IconButton color="primary" aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+          </Box>
         );
       },
     },

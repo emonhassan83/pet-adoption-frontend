@@ -10,6 +10,8 @@ type TInputProps = {
   sx?: SxProps;
   placeholder?: string;
   required?: boolean;
+  multiline?: boolean;
+  rows?: number;
 };
 
 const PetInput = ({
@@ -20,6 +22,8 @@ const PetInput = ({
   fullWidth,
   sx,
   required,
+  multiline,
+  rows
 }: TInputProps) => {
   const { control } = useFormContext();
 
@@ -38,6 +42,8 @@ const PetInput = ({
           fullWidth={fullWidth}
           placeholder={label}
           required={required}
+          multiline={multiline}
+          rows={rows}
           error={!!error?.message}
           helperText={error?.message}
         />

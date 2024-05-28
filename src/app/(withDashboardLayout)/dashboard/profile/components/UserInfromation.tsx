@@ -70,7 +70,7 @@ const UserInformation = ({ data }: any) => {
                </Typography>
                <Typography>
                   {data
-                     ? new Date(data.createdAt).toLocaleDateString('en-US', {
+                     ? new Date(data?.createdAt).toLocaleDateString('en-US', {
                           month: '2-digit',
                           day: '2-digit',
                           year: '2-digit',

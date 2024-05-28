@@ -1,14 +1,15 @@
 "use client";
 
 import { useGetAllPetsQuery } from "@/redux/api/petApi";
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
 import Image from "next/image";
 
 const ManagePet = () => {
   const { data, isLoading } = useGetAllPetsQuery({});
-  console.log(data);
+  // console.log(data);
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Pet Name", flex: 1 },
@@ -36,9 +37,14 @@ const ManagePet = () => {
       align: "center",
       renderCell: ({ row }) => {
         return (
-          <IconButton color="primary" aria-label="delete">
+          <Box display="flex" gap={1}>
+            <IconButton color="primary" aria-label="delete">
+            <EditIcon />
+          </IconButton>
+            <IconButton color="primary" aria-label="delete">
             <DeleteIcon />
           </IconButton>
+            </Box>
         );
       },
     },

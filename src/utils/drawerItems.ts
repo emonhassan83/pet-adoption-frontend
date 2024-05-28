@@ -16,7 +16,7 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
   const defaultMenus = [
     {
       title: "Change Password",
-      path: `change-password`,
+      path: `profile`,
       icon: KeyIcon,
     },
   ];

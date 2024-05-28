@@ -2,12 +2,13 @@ import { Box, Button, Typography } from "@mui/material";
 import { useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
+import Link from "next/link";
 
 const PetAdoptSection = () => {
   const { data: adoptionRequests, isLoading } = useGetMyAdoptionRequestsQuery(
     []
   );
-//   console.log(adoptionRequests);
+  // console.log(adoptionRequests);
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", flex: 1 },
@@ -39,7 +40,7 @@ const PetAdoptSection = () => {
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
-        return <Button variant="text">View Details</Button>;
+        return <Button variant="text" size="small" LinkComponent={Link} href={`/pets/${row.petId}`}>View Details</Button>;
       },
     },
   ];

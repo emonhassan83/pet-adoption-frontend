@@ -2,18 +2,33 @@
 
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import PetSelectField from "@/components/Forms/PetSelectField";
+import { useGetMyProfileQuery } from "@/redux/api/userApi";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 
+const booleanOptions = ["true", "false"];
+const AnimalSleepOptions = ["Outdoor", "Indoor", "Room", "Garage", "Crate"];
+
 const AddAdoptionPage = () => {
+  const{data: profile, isLoading} = useGetMyProfileQuery({});
+  // console.log(profile);
+
+  const defaultValues = {
+    name: profile?.name,
+    email: profile?.email,
+    address: profile?.address,
+    contractNo: profile?.contactNumber
+  }
+  
   const handleSubmit = (values: FieldValues) => {
     console.log(values);
     
   };
 
   return (
-    <Box sx={{textAlign: "center"}}>
-      <Typography variant="h6" color="primary" mt={3}>
+    <Container sx={{textAlign: "center"}}>
+      <Typography variant="h6" textTransform="uppercase" fontWeight={500} color="primary" my={2}>
         Apply to Adopt
       </Typography>
       <Box>
@@ -24,17 +39,13 @@ const AddAdoptionPage = () => {
       </Box>
       <PetFrom
         onSubmit={handleSubmit}
-        //   resolver={zodResolver(validationSchema)}
-        // defaultValues={{
-        //   email: "",
-        //   password: "",
-        // }}
+        defaultValues={defaultValues}
       >
         <Grid container spacing={2} my={1}>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={6}>
             <PetInput name="name" label="Name" type="text" fullWidth={true} />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={6}>
             <PetInput
               name="email"
               label="Email"
@@ -42,7 +53,7 @@ const AddAdoptionPage = () => {
               fullWidth={true}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={6}>
             <PetInput
               name="address"
               label="Address"
@@ -50,7 +61,7 @@ const AddAdoptionPage = () => {
               fullWidth={true}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={6}>
             <PetInput
               name="contractNo"
               label="Contract No"
@@ -58,51 +69,51 @@ const AddAdoptionPage = () => {
               fullWidth={true}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <PetInput
+          <Grid item sm={12} md={6}>
+            <PetSelectField
               name="petsNeutered"
               label="Are other pets neutered?"
-              type="text"
-              fullWidth={true}
+              items={booleanOptions}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <PetInput
+          <Grid item sm={12} md={6}>
+            <PetSelectField
               name="secureOutdoorArea"
               label="Do you have a secure outdoor area?"
-              type="text"
-              fullWidth={true}
+              items={booleanOptions}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <PetInput
+          <Grid item sm={12} md={6}>
+            <PetSelectField
               name="animalSleep"
               label="Where will the animal sleep at night?"
-              type="text"
-              fullWidth={true}
+              items={AnimalSleepOptions}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <PetInput
+          <Grid item sm={12} md={6}>
+            <PetSelectField
               name="animalAlonePeriodsTime"
               label="Will the animal be left alone for long periods of time?"
-              type="text"
-              fullWidth={true}
+              items={booleanOptions}
             />
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <PetInput
               name="petOwnershipExperience"
               label="Do you have any pet ownership experience?"
               type="text"
+              multiline
+              rows={3}
               fullWidth={true}
             />
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <PetInput
               name="detailsSupport"
               label="Any other details to support your application?"
               type="text"
+              multiline
+              rows={3}
               fullWidth={true}
             />
           </Grid>
@@ -118,7 +129,7 @@ const AddAdoptionPage = () => {
           Adoption Request
         </Button>
       </PetFrom>
-    </Box>
+    </Container>
   );
 };
 

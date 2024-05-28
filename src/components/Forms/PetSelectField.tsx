@@ -13,7 +13,7 @@ interface ITextField {
   items: string[];
 }
 
-const PHSelectField = ({
+const PetSelectField = ({
   items,
   name,
   label,
@@ -40,6 +40,9 @@ const PHSelectField = ({
           label={label}
           required={required}
           fullWidth={fullWidth}
+          style={{
+            textAlign: "start",
+          }}
           error={isError}
           helperText={
             isError ? (formState.errors[name]?.message as string) : ""
@@ -56,4 +59,4 @@ const PHSelectField = ({
   );
 };
 
-export default PHSelectField;
+export default PetSelectField;

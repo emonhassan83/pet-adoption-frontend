@@ -3,17 +3,18 @@
 import { useGetAllUsersQuery } from "@/redux/api/userApi";
 import { Box, Button, IconButton } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import DeleteIcon from '@mui/icons-material/Delete';
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import EditIcon from "@mui/icons-material/Edit";
 
 const ManageUsersPage = () => {
   const { data, isLoading } = useGetAllUsersQuery({});
-//   console.log(data);
+  //   console.log(data);
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "User Name", flex: 1 },
     { field: "email", headerName: "Email", flex: 1 },
     { field: "role", headerName: "Role", flex: 1 },
-    { field: "isDeleted", headerName: "User Status", flex: 1 },
+    { field: "isDeleted", headerName: "User Deleting Status", flex: 1 },
     { field: "status", headerName: "User Status", flex: 1 },
     {
       field: "action",
@@ -23,9 +24,14 @@ const ManageUsersPage = () => {
       align: "center",
       renderCell: ({ row }) => {
         return (
+          <Box display="flex" gap={1}>
             <IconButton color="primary" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
+              <ManageAccountsIcon />
+            </IconButton>
+            <IconButton color="primary" aria-label="delete">
+              <EditIcon />
+            </IconButton>
+          </Box>
         );
       },
     },
