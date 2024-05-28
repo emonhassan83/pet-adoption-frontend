@@ -1,61 +1,48 @@
-"use client";
-
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import PetModal from "@/components/Shared/PetModal/PetModal";
+import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
+import {
+  colorOptions,
+  genderOptions,
+  healthOptions,
+  sizeOptions,
+} from "../../add-pet/page";
 
-export const genderOptions = ["Male", "Female", "Unknown"];
-export const sizeOptions = ["Large", "Medium", "Small"];
-export const healthOptions = [
-  "Healthy",
-  "Unhealthy",
-  "Underweight",
-  "Overweight",
-  "Injured",
-  "Under Treatment",
-  "Recovered",
-  "Pregnant",
-];
+type TProps = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  data: any;
+};
 
-export const colorOptions = [
-  "Black",
-  "White",
-  "Brown",
-  "Gray",
-  "Golden",
-  "Cream",
-  "Blue",
-  "Orange",
-  "Yellow",
-  "Silver",
-  "Other",
-];
+const UpdatePetModal = ({ open, setOpen, data }: TProps) => {
+  const handleFormSubmit = async (values: FieldValues) => {};
 
-const AddPetPage = () => {
-  const handleSubmit = (values: FieldValues) => {
-    console.log(values);
+  const defaultValues = {
+    name: data?.name,
+    status: data?.status,
+    image: data?.image,
+    species: data?.species,
+    breed: data?.breed,
+    color: data?.color,
+    age: data?.age,
+    gender: data?.gender,
+    size: data?.size,
+    location: data?.location,
+    temperament: data?.temperament,
+    healthStatus: data?.healthStatus,
+    description: data?.description,
+    medicalHistory: data?.medicalHistory,
+    adoptionRequirements: data?.adoptionRequirements,
   };
+  // console.log(data);
+
   return (
-    <Container sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        color="primary"
-        textTransform="uppercase"
-        mt={2}
-        mb={1}
-      >
-        Add Pet
-      </Typography>
-      <Box>
-        <Typography variant="body2" color="secondary">
-          Please note you will not be able to submit your application until all
-          fields marked as REQUIRED have been entered.
-        </Typography>
-      </Box>
-      <PetFrom onSubmit={handleSubmit}>
-        <Grid container spacing={2} my={1}>
+    <PetModal maxWidth="lg" open={open} setOpen={setOpen} title="Update A Pet">
+      <PetFrom onSubmit={handleFormSubmit} defaultValues={defaultValues} >
+        <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <PetInput
               name="name"
@@ -86,7 +73,7 @@ const AddPetPage = () => {
           <Grid item xs={12} md={4}>
             <PetSelectField
               name="color"
-              label="color"
+              label="Color"
               items={colorOptions}
               fullWidth={true}
             />
@@ -173,11 +160,11 @@ const AddPetPage = () => {
           }}
           type="submit"
         >
-          Add Pet
+          Update A Pet
         </Button>
       </PetFrom>
-    </Container>
+    </PetModal>
   );
 };
 
-export default AddPetPage;
+export default UpdatePetModal;

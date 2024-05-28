@@ -6,10 +6,19 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
 import Image from "next/image";
+import { useState } from "react";
+import UpdatePetModal from "./components/UpdatePetModal";
 
 const ManagePet = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
   const { data, isLoading } = useGetAllPetsQuery({});
   // console.log(data);
+
+  const handleEditClick = (pet: any) => {
+    setSelectedPet(pet);
+    setIsModalOpen(true);
+  };
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Pet Name", flex: 1 },
@@ -38,7 +47,7 @@ const ManagePet = () => {
       renderCell: ({ row }) => {
         return (
           <Box display="flex" gap={1}>
-            <IconButton color="primary" aria-label="delete">
+            <IconButton onClick={() => handleEditClick(row)} color="primary" aria-label="delete">
             <EditIcon />
           </IconButton>
             <IconButton color="primary" aria-label="delete">
@@ -51,6 +60,12 @@ const ManagePet = () => {
   ];
 
   return (
+    <>
+    <UpdatePetModal
+        open={isModalOpen}
+        setOpen={setIsModalOpen}
+        data={selectedPet}
+      />
     <Box>
       {!isLoading ? (
         <Box my={2}>
@@ -69,6 +84,7 @@ const ManagePet = () => {
         <h1>Loading.....</h1>
       )}
     </Box>
+    </>
   );
 };
 

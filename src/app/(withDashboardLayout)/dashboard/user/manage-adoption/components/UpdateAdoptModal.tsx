@@ -1,44 +1,40 @@
-"use client";
-
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
-import { useGetMyProfileQuery } from "@/redux/api/userApi";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import PetModal from "@/components/Shared/PetModal/PetModal";
+import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
+import { AnimalSleepOptions, booleanOptions } from "../../add-adoption/page";
 
-export const booleanOptions = ["true", "false"];
-export const AnimalSleepOptions = ["Outdoor", "Indoor", "Room", "Garage", "Crate"];
+type TProps = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  data: any;
+};
 
-const AddAdoptionPage = () => {
-  const{data: profile, isLoading} = useGetMyProfileQuery({});
-  // console.log(profile);
+const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
+  const handleFormSubmit = async (values: FieldValues) => {};
 
   const defaultValues = {
-    name: profile?.name,
-    email: profile?.email,
-    address: profile?.address,
-    contractNo: profile?.contactNumber
-  }
-  
-  const handleSubmit = (values: FieldValues) => {
-    console.log(values);
-    
+    name: data?.user?.name,
+    email: data?.user?.email,
+    address: data?.user?.address,
+    contactNumber: data?.user?.contactNumber,
+    status: data?.status,
+    petsNeutered: data?.petsNeutered,
+    secureOutdoorArea: data?.secureOutdoorArea,
+    animalSleep: data?.animalSleep,
+    animalAlonePeriodsTime: data?.animalAlonePeriodsTime,
+    petOwnershipExperience: data?.petOwnershipExperience,
+    detailsSupport: data?.detailsSupport
   };
 
+//   console.log(data);
+  
   return (
-    <Container sx={{textAlign: "center"}}>
-      <Typography variant="h6" textTransform="uppercase" fontWeight={500} color="primary" my={2}>
-        Apply to Adopt
-      </Typography>
-      <Box>
-        <Typography variant="body2" color="secondary">
-          Please note you will not be able to submit your application until all
-          fields marked as REQUIRED have been entered.
-        </Typography>
-      </Box>
+    <PetModal maxWidth="lg" open={open} setOpen={setOpen} title="Update Pet Adopt status">
       <PetFrom
-        onSubmit={handleSubmit}
+        onSubmit={handleFormSubmit}
         defaultValues={defaultValues}
       >
         <Grid container spacing={2} my={1}>
@@ -126,11 +122,11 @@ const AddAdoptionPage = () => {
           }}
           type="submit"
         >
-          Adoption Request
+          Update Adoption Request
         </Button>
       </PetFrom>
-    </Container>
+    </PetModal>
   );
 };
 
-export default AddAdoptionPage;
+export default UpdateAdoptRequestModal;
