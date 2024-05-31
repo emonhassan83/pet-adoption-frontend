@@ -20,19 +20,21 @@ export const userApi = baseApi.injectEndpoints({
     }),
 
     changeUserRole: build.mutation({
-      query: (data) => ({
-        url: `/user/${data?.id}/change-role`,
-        method: "PATCH",
-        data: data.body,
-      }),
-      invalidatesTags: [],
+      query: (userData) => {
+        return {
+          url: `/user/${userData?.id}/change-role`,
+          method: "PATCH",
+          data: { role: userData?.role },
+        };
+      },
+      invalidatesTags: [tagTypes.user],
     }),
 
     changeProfileStatus: build.mutation({
-      query: (data) => ({
-        url: `/user/${data?.id}/status`,
+      query: (userData) => ({
+        url: `/user/${userData?.id}/status`,
         method: "PATCH",
-        data: data.body,
+        data: { status: userData?.status },
       }),
       invalidatesTags: [tagTypes.user],
     }),
@@ -40,7 +42,7 @@ export const userApi = baseApi.injectEndpoints({
     updateMyProfile: build.mutation({
       query: (data) => {
         // console.log(data);
-        
+
         return {
           url: "/user/profile",
           method: "PUT",

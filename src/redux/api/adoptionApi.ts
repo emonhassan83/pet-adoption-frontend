@@ -5,7 +5,7 @@ export const adoptionRequestApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createAdoptionRequest: build.mutation({
       query: (data) => {
-        console.log(data);
+        // console.log(data);
         
         return {
           url: "/adoption-requests",

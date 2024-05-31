@@ -2,9 +2,10 @@ import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
+import { useUpdateAdoptionRequestMutation } from "@/redux/api/adoptionApi";
 import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
-
+import { toast } from "sonner";
 
 type TProps = {
   open: boolean;
@@ -13,18 +14,29 @@ type TProps = {
 };
 
 const opinionOptions = ["YES", "NO"];
-const AnimalSleepOptions = [
-  "Outdoor",
-  "Indoor",
-  "Room",
-  "Garage",
-  "Crate",
-];
+const AnimalSleepOptions = ["Outdoor", "Indoor", "Room", "Garage", "Crate"];
 
 const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
+  const [updateAdoptionRequest, { isLoading }] =
+    useUpdateAdoptionRequestMutation();
+
   const handleFormSubmit = async (values: FieldValues) => {
-    console.log(values);
-    
+    const { name, email, address, contactNumber, ...others } = values;
+    const updatedData = {
+      id: data.id,
+      data: { ...others },
+    };
+
+    try {
+      const res = await updateAdoptionRequest(updatedData);
+      if (res.data.id) {
+        toast.success("Adoption request updated successfully!");
+        setOpen(false);
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
   };
 
   const defaultValues = {
@@ -39,17 +51,19 @@ const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
     animalAlonePeriodsTime: data?.animalAlonePeriodsTime,
     petsHousehold: data?.petsHousehold,
     petOwnershipExperience: data?.petOwnershipExperience,
-    detailsSupport: data?.detailsSupport
+    detailsSupport: data?.detailsSupport,
   };
 
-//   console.log(data);
-  
+  //   console.log(data);
+
   return (
-    <PetModal maxWidth="lg" open={open} setOpen={setOpen} title="Update Pet Adopt status">
-      <PetFrom
-        onSubmit={handleFormSubmit}
-        defaultValues={defaultValues}
-      >
+    <PetModal
+      maxWidth="lg"
+      open={open}
+      setOpen={setOpen}
+      title="Update Pet Adopt status"
+    >
+      <PetFrom onSubmit={handleFormSubmit} defaultValues={defaultValues}>
         <Grid container spacing={2} my={1}>
           <Grid item sm={12} md={6}>
             <PetInput name="name" label="Name" type="text" fullWidth={true} />
@@ -107,15 +121,15 @@ const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
             />
           </Grid>
           <Grid item xs={12}>
-              <PetInput
-                name="petsHousehold"
-                label="Details of other pets in household"
-                type="text"
-                multiline
-                rows={3}
-                fullWidth={true}
-              />
-            </Grid>
+            <PetInput
+              name="petsHousehold"
+              label="Details of other pets in household"
+              type="text"
+              multiline
+              rows={3}
+              fullWidth={true}
+            />
+          </Grid>
           <Grid item xs={12}>
             <PetInput
               name="petOwnershipExperience"

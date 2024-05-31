@@ -3,8 +3,11 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
+import { useCreatePetMutation } from "@/redux/api/petApi";
+import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 
 export const genderOptions = ["Male", "Female", "Unknown"];
 export const sizeOptions = ["Large", "Medium", "Small"];
@@ -34,8 +37,27 @@ export const colorOptions = [
 ];
 
 const AddPetPage = () => {
-  const handleSubmit = (values: FieldValues) => {
-    console.log(values);
+  const { data } = useGetMyProfileQuery(undefined);
+  const [createPet, { isLoading }] = useCreatePetMutation();
+
+  const handleSubmit = async (values: FieldValues) => {
+    // console.log(values);
+    try {
+      const petData = {
+        userId: data.id,
+        ...values,
+        age: Number(values.age),
+      };
+
+      const res = await createPet(petData);
+      // console.log(res);
+      if (res.data.id) {
+        toast.success("Pet created successfully!");
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
   };
   return (
     <Container sx={{ textAlign: "center" }}>

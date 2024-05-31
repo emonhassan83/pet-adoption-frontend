@@ -4,10 +4,10 @@ import { baseApi } from "./baseApi";
 export const petApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createPet: build.mutation({
-      query: (newPet) => ({
+      query: (data) => ({
         url: "/pets",
         method: "POST",
-        body: newPet,
+        data,
       }),
       invalidatesTags: [tagTypes.pet],
     }),
@@ -37,10 +37,10 @@ export const petApi = baseApi.injectEndpoints({
     }),
 
     updatePet: build.mutation({
-      query: ({ petId, updateData }) => ({
-        url: `/pets/${petId}`,
+      query: (data) => ({
+        url: `/pets/${data?.id}`,
         method: "PUT",
-        body: updateData,
+        body: data.body,
       }),
       invalidatesTags: (result, error, arg) => [
         { type: tagTypes.pet, id: arg.petId },

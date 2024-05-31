@@ -10,6 +10,7 @@ import {
   healthOptions,
   sizeOptions,
 } from "../../add-pet/page";
+import { useUpdatePetMutation } from "@/redux/api/petApi";
 
 type TProps = {
   open: boolean;
@@ -18,7 +19,19 @@ type TProps = {
 };
 
 const UpdatePetModal = ({ open, setOpen, data }: TProps) => {
-  const handleFormSubmit = async (values: FieldValues) => {};
+  const [updatePet] = useUpdatePetMutation();
+
+  const handleFormSubmit = async (values: FieldValues) => {
+    // console.log(values);
+    try {
+      const res = updatePet(values);
+      console.log(res);
+      
+    } catch (error) {
+      
+    }
+    
+  };
 
   const defaultValues = {
     name: data?.name,

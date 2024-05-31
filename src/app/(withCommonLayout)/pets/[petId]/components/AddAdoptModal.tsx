@@ -26,6 +26,7 @@ type TProps = {
 const AddAdoptModal = ({ open, setOpen, petId, data }: TProps) => {
   const [createAdoptionRequest, { isLoading }] =
     useCreateAdoptionRequestMutation();
+    
   const handleFormSubmit = async (values: FieldValues) => {
     try {
       const { name, email, address, contactNumber, ...others } = values;
@@ -33,10 +34,9 @@ const AddAdoptModal = ({ open, setOpen, petId, data }: TProps) => {
         petId,
         ...others,
       };
-      // console.log(data);
+
       const res = await createAdoptionRequest(data);
       // console.log(res);
-
       if (res.data.id) {
         toast.success("Adoption request submitted successfully!");
         setOpen(false);

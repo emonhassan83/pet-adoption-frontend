@@ -2,8 +2,10 @@ import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
+import { useChangeProfileStatusMutation } from "@/redux/api/userApi";
 import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 
 const statusOptions = ["ACTIVE", "BLOCKED", "DELETED"];
 
@@ -14,7 +16,29 @@ type TProps = {
 };
 
 const UpdateUserStatusModal = ({ open, setOpen, data }: TProps) => {
-  const handleFormSubmit = async (values: FieldValues) => {};
+  const [changeProfileStatus] = useChangeProfileStatusMutation();
+
+  const handleFormSubmit = async (values: FieldValues) => {
+    const { status } = values;
+
+    try {
+      const userData = {
+        id: data.id,
+        status,
+      };
+
+      const res = await changeProfileStatus(userData);
+      // console.log(res);
+      if (res?.data?.id) {
+        toast.success("User status updated successfully!");
+        setOpen(false);
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
+    
+  };
 
   const defaultValues = {
     status: data?.status,

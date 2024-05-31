@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
+import { useDeleteAdoptionRequestMutation, useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
 import { Box, IconButton } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
@@ -8,17 +8,33 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import UpdateAdoptRequestModal from "./components/UpdateAdoptModal";
+import { toast } from "sonner";
 
 const ManageAdoptionPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPet, setSelectedPet] = useState(null);
   const { data, isLoading } = useGetMyAdoptionRequestsQuery({});
+  const [deleteAdoptionRequest] = useDeleteAdoptionRequestMutation();
   // console.log(data);
 
   const handleEditClick = (pet: any) => {
     setSelectedPet(pet);
     setIsModalOpen(true);
   };
+
+  const handleAdoptDelete = async(id: any) =>{
+    try {
+      const res = await deleteAdoptionRequest(id);
+      // console.log(res);
+      if (res?.data?.id) {
+        toast.success("Adoption deleted successfully!");
+      }
+      
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
+  }
 
   const columns: GridColDef[] = [
     {
@@ -71,7 +87,7 @@ const ManageAdoptionPage = () => {
             <IconButton onClick={() => handleEditClick(row)} color="primary" aria-label="delete">
               <EditIcon />
             </IconButton>
-            <IconButton color="primary" aria-label="delete">
+            <IconButton onClick={() => handleAdoptDelete(row?.id)}  color="primary" aria-label="delete">
               <DeleteIcon />
             </IconButton>
           </Box>

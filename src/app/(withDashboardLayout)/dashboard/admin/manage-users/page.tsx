@@ -12,8 +12,19 @@ import UpdateUserStatusModal from "./components/UpdateStatusModal";
 const ManageUsersPage = () => {
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
   const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
   const { data, isLoading } = useGetAllUsersQuery({});
   //   console.log(data);
+
+  const handleRoleEdit = (user: any) => {
+    setSelectedUser(user);
+    setIsRoleModalOpen(true);
+  };
+
+  const handleStatusEdit = (user: any) => {
+    setSelectedUser(user);
+    setIsStatusModalOpen(true);
+  };
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "User Name", flex: 1 },
@@ -30,10 +41,10 @@ const ManageUsersPage = () => {
       renderCell: ({ row }) => {
         return (
           <Box display="flex" gap={1}>
-            <IconButton onClick={() => setIsRoleModalOpen(true)} color="primary" aria-label="delete">
+            <IconButton onClick={() => handleRoleEdit(row)} color="primary" aria-label="delete">
               <ManageAccountsIcon />
             </IconButton>
-            <IconButton onClick={() => setIsStatusModalOpen(true)} color="primary" aria-label="delete">
+            <IconButton onClick={() => handleStatusEdit(row)} color="primary" aria-label="delete">
               <EditIcon />
             </IconButton>
           </Box>
@@ -47,12 +58,12 @@ const ManageUsersPage = () => {
    <UpdateUserRoleModal
         open={isRoleModalOpen}
         setOpen={setIsRoleModalOpen}
-        data={data}
+        data={selectedUser}
       />
    <UpdateUserStatusModal
         open={isStatusModalOpen}
         setOpen={setIsStatusModalOpen}
-        data={data}
+        data={selectedUser}
       />
     <Box>
       {!isLoading ? (
