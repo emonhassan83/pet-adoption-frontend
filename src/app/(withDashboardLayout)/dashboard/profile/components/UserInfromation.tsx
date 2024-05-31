@@ -8,7 +8,7 @@ const StyledInformationBox = styled(Box)(({ theme }) => ({
 }));
 
 const UserInformation = ({ data }: any) => {
-    console.log(data);
+   //  console.log(data);
     
    return (
       <Box>
