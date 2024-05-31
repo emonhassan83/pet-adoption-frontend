@@ -4,7 +4,7 @@ import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
 import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
-import { AnimalSleepOptions, booleanOptions } from "../../add-adoption/page";
+
 
 type TProps = {
   open: boolean;
@@ -12,8 +12,20 @@ type TProps = {
   data: any;
 };
 
+const opinionOptions = ["YES", "NO"];
+const AnimalSleepOptions = [
+  "Outdoor",
+  "Indoor",
+  "Room",
+  "Garage",
+  "Crate",
+];
+
 const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
-  const handleFormSubmit = async (values: FieldValues) => {};
+  const handleFormSubmit = async (values: FieldValues) => {
+    console.log(values);
+    
+  };
 
   const defaultValues = {
     name: data?.user?.name,
@@ -25,6 +37,7 @@ const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
     secureOutdoorArea: data?.secureOutdoorArea,
     animalSleep: data?.animalSleep,
     animalAlonePeriodsTime: data?.animalAlonePeriodsTime,
+    petsHousehold: data?.petsHousehold,
     petOwnershipExperience: data?.petOwnershipExperience,
     detailsSupport: data?.detailsSupport
   };
@@ -59,7 +72,7 @@ const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
           </Grid>
           <Grid item sm={12} md={6}>
             <PetInput
-              name="contractNo"
+              name="contactNumber"
               label="Contract No"
               type="tel"
               fullWidth={true}
@@ -69,14 +82,14 @@ const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
             <PetSelectField
               name="petsNeutered"
               label="Are other pets neutered?"
-              items={booleanOptions}
+              items={opinionOptions}
             />
           </Grid>
           <Grid item sm={12} md={6}>
             <PetSelectField
               name="secureOutdoorArea"
               label="Do you have a secure outdoor area?"
-              items={booleanOptions}
+              items={opinionOptions}
             />
           </Grid>
           <Grid item sm={12} md={6}>
@@ -90,9 +103,19 @@ const UpdateAdoptRequestModal = ({ open, setOpen, data }: TProps) => {
             <PetSelectField
               name="animalAlonePeriodsTime"
               label="Will the animal be left alone for long periods of time?"
-              items={booleanOptions}
+              items={opinionOptions}
             />
           </Grid>
+          <Grid item xs={12}>
+              <PetInput
+                name="petsHousehold"
+                label="Details of other pets in household"
+                type="text"
+                multiline
+                rows={3}
+                fullWidth={true}
+              />
+            </Grid>
           <Grid item xs={12}>
             <PetInput
               name="petOwnershipExperience"

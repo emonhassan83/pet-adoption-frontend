@@ -54,11 +54,11 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
 
     case USER_ROLE.USER:
       roleMenus.push(
-        {
-          title: "Add Adoption",
-          path: `${role}/add-adoption`,
-          icon: AddTaskIcon,
-        },
+        // {
+        //   title: "Add Adoption",
+        //   path: `${role}/add-adoption`,
+        //   icon: AddTaskIcon,
+        // },
         {
           title: "Manage Adoption",
           path: `${role}/manage-adoption`,

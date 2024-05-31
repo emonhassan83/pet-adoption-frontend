@@ -4,10 +4,23 @@ import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
 import { FieldValues } from 'react-hook-form';
 import LockResetIcon from '@mui/icons-material/LockReset';
+import { useChangePasswordMutation } from '@/redux/api/authApi';
+import { toast } from 'sonner';
 
 const ChangePasswordSection = () => {
-    const handleChangePassword =(value: FieldValues)=>{
-        console.log(value);
+  const [passwordData, {isLoading: uploading}] = useChangePasswordMutation();
+
+    const handleChangePassword =async (value: FieldValues)=>{
+        try {
+          const res = await passwordData(value);
+          // console.log(res);
+          if (res?.data?.message) {
+            toast.success(res?.data?.message);
+          }
+        } catch (error: any) {
+          toast.error(error.message);
+          console.error(error.message);
+        }
         
     }
     return (

@@ -2,8 +2,10 @@ import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
+import { useUpdateMyProfileMutation } from "@/redux/api/userApi";
 import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 
 const genderOptions = ["Male", "Female", "Unknown"];
 
@@ -14,7 +16,23 @@ type TProps = {
 };
 
 const ProfileUpdateModal = ({ open, setOpen, data }: TProps) => {
-  const handleFormSubmit = async (values: FieldValues) => {};
+  const [updateMyProfile, { isLoading }] =
+  useUpdateMyProfileMutation();
+
+  const handleFormSubmit = async (values: FieldValues) => {
+    // console.log(values);
+    try {
+       const res = await updateMyProfile(values);
+       if (res?.data?.id) {
+        toast.success("Profile updated successfully!");
+       }
+       setOpen(false);
+       
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
+  };
 
   const defaultValues = {
     email: data?.email,

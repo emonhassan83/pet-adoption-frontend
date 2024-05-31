@@ -4,11 +4,15 @@ import { baseApi } from "./baseApi";
 export const adoptionRequestApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createAdoptionRequest: build.mutation({
-      query: (newRequest) => ({
-        url: "/adoption-requests",
-        method: "POST",
-        body: newRequest,
-      }),
+      query: (data) => {
+        console.log(data);
+        
+        return {
+          url: "/adoption-requests",
+          method: "POST",
+          data,
+        };
+      },
       invalidatesTags: [tagTypes.adoptionRequest],
     }),
 
@@ -29,26 +33,26 @@ export const adoptionRequestApi = baseApi.injectEndpoints({
     }),
 
     updateAdoptionRequest: build.mutation({
-      query: ({ requestId, updateData }) => ({
-        url: `/adoption-requests/${requestId}`,
+      query: (data) => ({
+        url: `/adoption-requests/${data?.id}`,
         method: "PUT",
-        body: updateData,
+        data: data?.body,
       }),
       invalidatesTags: [tagTypes.adoptionRequest],
     }),
 
     updateAdoptionRequestStatus: build.mutation({
-      query: ({ requestId, statusData }) => ({
-        url: `/adoption-requests/${requestId}/status`,
+      query: (data) => ({
+        url: `/adoption-requests/${data?.id}/status`,
         method: "PATCH",
-        body: statusData,
+        data: data?.body,
       }),
       invalidatesTags: [tagTypes.adoptionRequest],
     }),
 
     deleteAdoptionRequest: build.mutation({
-      query: (requestId) => ({
-        url: `/adoption-requests/${requestId}`,
+      query: (id) => ({
+        url: `/adoption-requests/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: [tagTypes.adoptionRequest],
