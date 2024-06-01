@@ -45,7 +45,7 @@ export const adoptionRequestApi = baseApi.injectEndpoints({
       query: (data) => ({
         url: `/adoption-requests/${data?.id}/status`,
         method: "PATCH",
-        data: data?.body,
+        data: { status: data?.status },
       }),
       invalidatesTags: [tagTypes.adoptionRequest],
     }),

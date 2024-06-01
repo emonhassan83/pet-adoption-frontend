@@ -1,8 +1,10 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
+import { useUpdateAdoptionRequestStatusMutation } from "@/redux/api/adoptionApi";
 import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 
 const statusOptions = ["PENDING", "APPROVED", "REJECTED"];
 
@@ -13,7 +15,28 @@ type TProps = {
 };
 
 const UpdateAdoptStatusModal = ({ open, setOpen, data }: TProps) => {
-  const handleFormSubmit = async (values: FieldValues) => {};
+  const [updateAdoptionRequestStatus, {isLoading}] = useUpdateAdoptionRequestStatusMutation();
+
+  const handleFormSubmit = async (values: FieldValues) => {
+    const { status } = values;
+
+    try {
+      const statusData = {
+        id: data.id,
+        status,
+      };
+
+      const res = await updateAdoptionRequestStatus(statusData);
+      // console.log(res);
+      if (res?.data?.id) {
+        toast.success("User status updated successfully!");
+        setOpen(false);
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
+  };
 
   const defaultValues = {
     status: data?.status,

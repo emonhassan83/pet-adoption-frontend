@@ -11,6 +11,7 @@ import {
   sizeOptions,
 } from "../../add-pet/page";
 import { useUpdatePetMutation } from "@/redux/api/petApi";
+import { toast } from "sonner";
 
 type TProps = {
   open: boolean;
@@ -22,13 +23,22 @@ const UpdatePetModal = ({ open, setOpen, data }: TProps) => {
   const [updatePet] = useUpdatePetMutation();
 
   const handleFormSubmit = async (values: FieldValues) => {
-    // console.log(values);
     try {
-      const res = updatePet(values);
-      console.log(res);
+      const petData = {
+        id: data.id,
+        ...values,
+        age: Number(values.age),
+      };
+      const res = await updatePet(petData);
+      // console.log(res);
+      if (res.data.id) {
+        toast.success("Pet updated successfully!");
+        setOpen(false);
+      }
       
-    } catch (error) {
-      
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
     }
     
   };

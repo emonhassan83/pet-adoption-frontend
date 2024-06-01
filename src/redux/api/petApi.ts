@@ -48,8 +48,8 @@ export const petApi = baseApi.injectEndpoints({
     }),
 
     deletePet: build.mutation({
-      query: (petId) => ({
-        url: `/pets/${petId}`,
+      query: (id) => ({
+        url: `/pets/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: (result, error, arg) => [
