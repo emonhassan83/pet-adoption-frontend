@@ -19,6 +19,7 @@ const AddAdoptButton = ({petId}: {petId: string}) => {
       />
         <Button
         fullWidth
+        disabled={!data}
         onClick={() => setIsModalOpen(true)}
         sx={{ mt: 4 }}
       >
