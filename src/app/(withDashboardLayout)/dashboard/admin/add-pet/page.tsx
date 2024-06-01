@@ -9,9 +9,9 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
-export const genderOptions = ["Male", "Female", "Unknown"];
-export const sizeOptions = ["Large", "Medium", "Small"];
-export const healthOptions = [
+export const genderOptions: string[] = ["Male", "Female", "Unknown"];
+export const sizeOptions: string[] = ["Large", "Medium", "Small"];
+export const healthOptions: string[] = [
   "Healthy",
   "Unhealthy",
   "Underweight",
@@ -19,10 +19,10 @@ export const healthOptions = [
   "Injured",
   "Under Treatment",
   "Recovered",
-  "Pregnant",
+  "Pregnant"
 ];
 
-export const colorOptions = [
+export const colorOptions: string[] = [
   "Black",
   "White",
   "Brown",
@@ -33,7 +33,7 @@ export const colorOptions = [
   "Orange",
   "Yellow",
   "Silver",
-  "Other",
+  "Other"
 ];
 
 const AddPetPage = () => {
@@ -120,7 +120,7 @@ const AddPetPage = () => {
             <PetSelectField
               name="gender"
               label="Gender"
-              items={genderOptions}
+              items={["Male", "Female", "Unknown"]}
               fullWidth={true}
             />
           </Grid>
