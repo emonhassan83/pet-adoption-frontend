@@ -3,60 +3,34 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
+import { colorOptions, genderOptions, healthOptions, sizeOptions } from "@/components/Shared/SelectOptions/SelectOptions";
 import { useCreatePetMutation } from "@/redux/api/petApi";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
-export const genderOptions = ["Male", "Female", "Unknown"];
-export const sizeOptions = ["Large", "Medium", "Small"];
-export const healthOptions = [
-  "Healthy",
-  "Unhealthy",
-  "Underweight",
-  "Overweight",
-  "Injured",
-  "Under Treatment",
-  "Recovered",
-  "Pregnant"
-];
-
-export const colorOptions = [
-  "Black",
-  "White",
-  "Brown",
-  "Gray",
-  "Golden",
-  "Cream",
-  "Blue",
-  "Orange",
-  "Yellow",
-  "Silver",
-  "Other"
-];
-
-// export const petValidationSchema = z.object({
+// const petValidationSchema = z.object({
 //   name: z.string().min(1, "Please enter the pet's name!"),
 //   image: z.string().url("Please enter a valid image URL!"),
 //   species: z.string().min(1, "Please enter the species!"),
 //   breed: z.string().min(1, "Please enter the breed!"),
-//   color: z.enum(colorOptions, { errorMap: () => ({ message: "Please select a valid color!" }) }),
-//   age: z.number().int().positive("Age must be a positive number!").refine(value => value < 100, {
-//     message: "Age must be less than 100 years!"
-//   }),
-//   gender: z.enum(genderOptions, { errorMap: () => ({ message: "Please select a valid gender!" }) }),
-//   size: z.enum(sizeOptions, { errorMap: () => ({ message: "Please select a valid size!" }) }),
+//   color: z.string().min(3, "Please select a valid color!"),
+//   age: z.string(),
+//   gender: z.string().min(1, "Please select a valid gender!"),
+//   size: z.string().min(3, "Please select a valid size!"),
 //   location: z.string().min(1, "Please enter the location!"),
 //   temperament: z.string().min(1, "Please enter the temperament!"),
-//   healthStatus: z.enum(healthOptions, { errorMap: () => ({ message: "Please select a valid health status!" }) }),
+//   healthStatus: z.string().min(1, "Please select a valid health status!"),
 //   description: z.string().min(1, "Please enter a description!"),
 //   medicalHistory: z.string().min(1, "Please enter the medical history!"),
-//   adoptionRequirements: z.string().min(1, "Please enter the adoption requirements!"),
+//   adoptionRequirements: z
+//     .string()
+//     .min(1, "Please enter the adoption requirements!"),
 // });
 
 const AddPetPage = () => {
-  const { data } = useGetMyProfileQuery(undefined);
+  const { data } = useGetMyProfileQuery({});
   const [createPet, { isLoading }] = useCreatePetMutation();
 
   const handleSubmit = async (values: FieldValues) => {
@@ -95,7 +69,10 @@ const AddPetPage = () => {
           fields marked as REQUIRED have been entered.
         </Typography>
       </Box>
-      <PetFrom onSubmit={handleSubmit}>
+      <PetFrom
+        onSubmit={handleSubmit}
+        // resolver={zodResolver(petValidationSchema)}
+      >
         <Grid container spacing={2} my={1}>
           <Grid item xs={12} md={6}>
             <PetInput

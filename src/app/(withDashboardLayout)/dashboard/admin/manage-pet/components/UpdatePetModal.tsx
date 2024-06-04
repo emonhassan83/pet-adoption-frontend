@@ -4,14 +4,10 @@ import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
 import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
-import {
-  colorOptions,
-  genderOptions,
-  healthOptions,
-  sizeOptions,
-} from "../../add-pet/page";
 import { useUpdatePetMutation } from "@/redux/api/petApi";
 import { toast } from "sonner";
+import { colorOptions, genderOptions, healthOptions, sizeOptions } from "@/components/Shared/SelectOptions/SelectOptions";
+
 
 type TProps = {
   open: boolean;
