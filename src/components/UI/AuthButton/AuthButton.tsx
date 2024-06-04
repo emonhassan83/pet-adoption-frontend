@@ -3,7 +3,7 @@
 import AccountMenu from "@/components/Dashboard/AccountMenu/AccountMenu";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import { logoutUser } from "@/services/actions/logoutUser";
-import { getUserInfo } from "@/services/auth.services";
+import { isLoggedIn } from "@/services/auth.services";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const AuthButton = () => {
   const { data, isLoading } = useGetMyProfileQuery({});
   const router = useRouter();
-  const userInfo = getUserInfo();
+  const loginUser = isLoggedIn();
 
   // const handleLogOut = () => {
   //   logoutUser(router);
@@ -19,7 +19,7 @@ const AuthButton = () => {
 
   return (
     <>
-      {data && !isLoading && userInfo?.email ? (
+      {loginUser ? (
         <AccountMenu data={data} />
       ) : (
         <Button component={Link} href="/login">

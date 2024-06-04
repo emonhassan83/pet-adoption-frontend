@@ -1,20 +1,20 @@
 "use client";
 
 import AuthButton from "@/components/UI/AuthButton/AuthButton";
-import { useGetMyProfileQuery } from "@/redux/api/userApi";
+import { isLoggedIn } from "@/services/auth.services";
 import { Container, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const Navbar = () => {
-  const { data } = useGetMyProfileQuery({});
+  const loginUser = isLoggedIn();
+  // console.log(loginUser);
 
   const AuthButton = dynamic(
     () => import("@/components/UI/AuthButton/AuthButton"),
     { ssr: false }
   );
-
-  // console.log(data);
+  
   return (
     <Container>
       <Stack
@@ -40,7 +40,7 @@ const Navbar = () => {
           <Typography component={Link} href="/about-us">
             About Us
           </Typography>
-          {data && data.id && (
+          {loginUser && (
             <Typography component={Link} href="/dashboard">
               Dashboard
             </Typography>

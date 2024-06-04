@@ -24,6 +24,7 @@ const PetDetail = ({ label, value }: { label: string; value: string }) => (
 );
 
 const Section = ({ title, children }: { title: string; children: any }) => (
+  
   <Box sx={{ mt: 4 }}>
     <Typography textTransform="uppercase" variant="body1" mb={1}>
       {title}

@@ -9,9 +9,9 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
-export const genderOptions: string[] = ["Male", "Female", "Unknown"];
-export const sizeOptions: string[] = ["Large", "Medium", "Small"];
-export const healthOptions: string[] = [
+export const genderOptions = ["Male", "Female", "Unknown"];
+export const sizeOptions = ["Large", "Medium", "Small"];
+export const healthOptions = [
   "Healthy",
   "Unhealthy",
   "Underweight",
@@ -22,7 +22,7 @@ export const healthOptions: string[] = [
   "Pregnant"
 ];
 
-export const colorOptions: string[] = [
+export const colorOptions = [
   "Black",
   "White",
   "Brown",
@@ -35,6 +35,25 @@ export const colorOptions: string[] = [
   "Silver",
   "Other"
 ];
+
+// export const petValidationSchema = z.object({
+//   name: z.string().min(1, "Please enter the pet's name!"),
+//   image: z.string().url("Please enter a valid image URL!"),
+//   species: z.string().min(1, "Please enter the species!"),
+//   breed: z.string().min(1, "Please enter the breed!"),
+//   color: z.enum(colorOptions, { errorMap: () => ({ message: "Please select a valid color!" }) }),
+//   age: z.number().int().positive("Age must be a positive number!").refine(value => value < 100, {
+//     message: "Age must be less than 100 years!"
+//   }),
+//   gender: z.enum(genderOptions, { errorMap: () => ({ message: "Please select a valid gender!" }) }),
+//   size: z.enum(sizeOptions, { errorMap: () => ({ message: "Please select a valid size!" }) }),
+//   location: z.string().min(1, "Please enter the location!"),
+//   temperament: z.string().min(1, "Please enter the temperament!"),
+//   healthStatus: z.enum(healthOptions, { errorMap: () => ({ message: "Please select a valid health status!" }) }),
+//   description: z.string().min(1, "Please enter a description!"),
+//   medicalHistory: z.string().min(1, "Please enter the medical history!"),
+//   adoptionRequirements: z.string().min(1, "Please enter the adoption requirements!"),
+// });
 
 const AddPetPage = () => {
   const { data } = useGetMyProfileQuery(undefined);
@@ -120,7 +139,7 @@ const AddPetPage = () => {
             <PetSelectField
               name="gender"
               label="Gender"
-              items={["Male", "Female", "Unknown"]}
+              items={genderOptions}
               fullWidth={true}
             />
           </Grid>
