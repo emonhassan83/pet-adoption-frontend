@@ -34,4 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# pet-adoption-frontend
+
+#### pet-adoption-frontend-deployed-url: https://pet-adoption-frontend-henna.vercel.app/
+#### pet-adoption-backend-deployed-url: https://pet-adoption-project.vercel.app/
+#### pet-adoption-frontend-repo-url: https://github.com/emonhassan83/pet-adoption-frontend
+#### pet-adoption-backend-repo-url: https://github.com/emonhassan83/pet-adoption-backend
+#### pet-adoption-project_overview-url: https://drive.google.com/file/d/1aW1HimDua63aFMcRbdHdWiJL2zqnvdCv/view?usp=sharing
+
+========== admin info ========
+{
+   "name": "Alice Smith",
+   "email": "alice@example.com",
+   "password": "user123",
+   "contactNumber": "234-567-8901",
+   "address": "456 Elm St, Toronto, ON M4B 1B3, Canada"
+}
+
+=========== users info ===========
+{
+   "name": "Mia Wilson",
+   "email": "mia.wilson@example.com",
+   "password": "user123",
+   "contactNumber": "345-678-9012",
+   "address": "789 Maple St, Sydney, NSW 2000, Australia"
+}
