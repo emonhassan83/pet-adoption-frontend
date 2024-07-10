@@ -1,3 +1,42 @@
+### PetFinder App
+
+This is a Pet Adoption Platform project that I am using TypeScript, Express.js and Object Relation Modeling (ORM) Prisma with PostgreSQL.
+
+![HomePage Screenshot](https://i.ibb.co/fNC00MH/pet-app.png)
+
+- [x] Project Setup:
+  - [x] Create a Node.js Express project.
+  - [x] Use TypeScript for development.
+- [x] Database Integration:
+  - [x] Set up Prisma with PostgreSQL.
+- [x] Data Models:
+  - [x] Define Prisma Schema table for User, Pet, buyerManagement, Adoption Request.
+  - [x] Implement data types and validations based on the provided structure.
+  - [x] Implement user authentication, authorization, and user-related information.
+- [x] Validation:
+  - [x] Use Zod for enforcing data validation rules.
+- [x] Error Handling:
+  - [x] Handling Global Error Handler
+  - [x] Handle better way to error for using AppError.
+  - [x] Handling mongoose error and duplicate error.
+
+### Project Features
+
+- [x] Auth/User Management:
+  - [x] User Registration or Create a User
+  - [x] Login a User
+  - [x] Retrieve all users
+
+- [x] User can
+  - [x] Add a Pet
+  - [x] Get Paginated and Filtered all Pets
+  - [x] Update Pet profile
+  - [x] Submit Adoption Request
+  - [x] Get Adoption Requests
+  - [x] Update Adoption Request Status
+  - [x] Get User Information
+  - [x] Update User Information
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -40,21 +79,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 #### pet-adoption-frontend-repo-url: https://github.com/emonhassan83/pet-adoption-frontend
 #### pet-adoption-backend-repo-url: https://github.com/emonhassan83/pet-adoption-backend
 #### pet-adoption-project_overview-url: https://drive.google.com/file/d/1aW1HimDua63aFMcRbdHdWiJL2zqnvdCv/view?usp=sharing
-
-========== admin info ========
-{
-   "name": "Alice Smith",
-   "email": "alice@example.com",
-   "password": "user123",
-   "contactNumber": "234-567-8901",
-   "address": "456 Elm St, Toronto, ON M4B 1B3, Canada"
-}
-
-=========== users info ===========
-{
-   "name": "Mia Wilson",
-   "email": "mia.wilson@example.com",
-   "password": "user123",
-   "contactNumber": "345-678-9012",
-   "address": "789 Maple St, Sydney, NSW 2000, Australia"
-}
