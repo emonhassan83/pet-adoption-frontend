@@ -4,7 +4,31 @@ This is a Pet Adoption Platform project that I am using TypeScript, Express.js a
 
 ![HomePage Screenshot](https://i.ibb.co/fNC00MH/pet-app.png)
 
-- [x] Project Setup:
+### Project Features
+
+#### Admin
+- **User Management:**
+  - [x] Retrieve all users
+  - Change user roles
+  - Delete users
+- **Pet Management:**
+  - [x] Add a Pet
+  - [x] Update Pet profile
+  - [x] Update Adoption Request Status
+
+#### User
+- **Pet Maintenance:**
+  - [x] Get Paginated and Filtered all Pets
+  - [x] Submit Adoption Request
+  - [x] Get Adoption Requests
+
+- **User common features:**
+  -[x] User Registration or Create a User
+  - [x] Login a User
+  - [x] Get User Information
+  - [x] Update User Information
+
+- **Project Setup:**
   - [x] Create a Node.js Express project.
   - [x] Use TypeScript for development.
 - [x] Database Integration:
@@ -19,23 +43,6 @@ This is a Pet Adoption Platform project that I am using TypeScript, Express.js a
   - [x] Handling Global Error Handler
   - [x] Handle better way to error for using AppError.
   - [x] Handling mongoose error and duplicate error.
-
-### Project Features
-
-- [x] Auth/User Management:
-  - [x] User Registration or Create a User
-  - [x] Login a User
-  - [x] Retrieve all users
-
-- [x] User can
-  - [x] Add a Pet
-  - [x] Get Paginated and Filtered all Pets
-  - [x] Update Pet profile
-  - [x] Submit Adoption Request
-  - [x] Get Adoption Requests
-  - [x] Update Adoption Request Status
-  - [x] Get User Information
-  - [x] Update User Information
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -74,8 +81,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-#### pet-adoption-frontend-deployed-url: https://pet-adoption-frontend-henna.vercel.app/
-#### pet-adoption-backend-deployed-url: https://pet-adoption-project.vercel.app/
-#### pet-adoption-frontend-repo-url: https://github.com/emonhassan83/pet-adoption-frontend
-#### pet-adoption-backend-repo-url: https://github.com/emonhassan83/pet-adoption-backend
-#### pet-adoption-project_overview-url: https://drive.google.com/file/d/1aW1HimDua63aFMcRbdHdWiJL2zqnvdCv/view?usp=sharing
+#### frontend-deployed-url: https://pet-adoption-frontend-henna.vercel.app/
+#### project_overview-url: https://drive.google.com/file/d/1aW1HimDua63aFMcRbdHdWiJL2zqnvdCv/view?usp=sharing
