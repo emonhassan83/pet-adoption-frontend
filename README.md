@@ -23,7 +23,7 @@ This is a Pet Adoption Platform project that I am using TypeScript, Express.js a
   - [x] Get Adoption Requests
 
 - **User common features:**
-  -[x] User Registration or Create a User
+  - [x] User Registration or Create a User
   - [x] Login a User
   - [x] Get User Information
   - [x] Update User Information
