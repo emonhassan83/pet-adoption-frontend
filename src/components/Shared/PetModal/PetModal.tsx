@@ -48,7 +48,7 @@ export default function PetModal({
         fullWidth={true} 
         sx={{ ...sx }}
       >
-        <DialogTitle sx={{ m: 0, p: 2, fontSize: "16px", textTransform: "uppercase", color: "primary.main" }} id="customized-dialog-title">
+        <DialogTitle sx={{ m: 0, p: 2, fontSize: "16px", color: "primary.main", fontWeight:"600" }} id="customized-dialog-title">
           {title}
         </DialogTitle>
         <IconButton

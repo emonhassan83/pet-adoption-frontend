@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import ShowCredentialButton from "./components/ShowCredentialsButton";
 
 const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address!"),
@@ -117,7 +118,7 @@ const LoginPage = () => {
               <Button
                 fullWidth={true}
                 sx={{
-                  margin: "10px 0",
+                  margin: "15px 0",
                 }}
                 type="submit"
               >
@@ -126,12 +127,18 @@ const LoginPage = () => {
               <Typography variant="body2" component="p" fontWeight={300}>
                 Need an account?{" "}
                 <Link href="/register">
-                  <Box component="span" textTransform="uppercase">
-                    sign up
+                  <Box
+                    fontWeight="bold"
+                    component="span"
+                    sx={{ textDecoration: "underline" }}
+                  >
+                    SignUp
                   </Box>
                 </Link>
               </Typography>
             </PetFrom>
+
+            <ShowCredentialButton />
           </Box>
         </Box>
       </Stack>

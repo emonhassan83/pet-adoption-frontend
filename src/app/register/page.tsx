@@ -194,7 +194,11 @@ const RegisterPage = () => {
               <Typography variant="body2" component="p" fontWeight={300}>
                 Do you already have an account?{" "}
                 <Link href="/login">
-                  <Box component="span" textTransform="uppercase">
+                <Box
+                    fontWeight="bold"
+                    component="span"
+                    sx={{ textDecoration: "underline" }}
+                  >
                     Login
                   </Box>
                 </Link>
