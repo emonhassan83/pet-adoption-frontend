@@ -1,7 +1,7 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetModal from "@/components/Shared/PetModal/PetModal";
-import { useCreateAdoptionRequestMutation } from "@/redux/api/adoptionApi";
+import { useForgotPasswordMutation } from "@/redux/api/authApi";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -12,9 +12,15 @@ type TProps = {
 };
 
 const ForgetPasswordModal = ({ open, setOpen}: TProps) => {
+  const [forgotPassword] = useForgotPasswordMutation();
+
   const handleFormSubmit = async (values: FieldValues) => {
     try {
-      console.log(values);
+      const res = await forgotPassword(values);
+      if (res) {
+        toast.success("Password reset link sent to your email!");
+        setOpen(false);
+      }
     } catch (error: any) {
       toast.error(error.message);
       console.error(error.message);
