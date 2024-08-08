@@ -16,8 +16,8 @@ const ShowCredentialButton = () => {
         onClick={() => setIsModalOpen(true)}
         sx={{
           margin: "15px 0 10px 0",
-          fontSize: "12px",
-          fontWeight: "medium",
+          fontSize: "14px",
+          fontWeight: "semibold",
         }}
         variant="outlined"
         startIcon={<StorageIcon />}

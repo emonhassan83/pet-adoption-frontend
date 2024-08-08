@@ -48,7 +48,6 @@ const ShowCredentialsModal = ({ open, setOpen}: TProps) => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   borderRadius: 2,
-                  backgroundColor: 'primary.light',
                   transition: 'transform 0.3s, box-shadow 0.3s',
                   '&:hover': {
                     transform: 'scale(1.05)',

@@ -2,6 +2,7 @@
 
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
+import PetInputWithToggle from "@/components/Forms/PetInputWithToggle";
 import { userLogin } from "@/services/actions/loginUsers";
 import { registerUsers } from "@/services/actions/registeUsers";
 import { storeUserInfo } from "@/services/auth.services";
@@ -158,10 +159,9 @@ const RegisterPage = () => {
                   />
                 </Grid>
                 <Grid item sm={6}>
-                  <PetInput
+                <PetInputWithToggle
                     name="password"
                     label="Password"
-                    type="password"
                     fullWidth={true}
                   />
                 </Grid>

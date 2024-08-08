@@ -5,13 +5,23 @@ import PetInput from "@/components/Forms/PetInput";
 import { userLogin } from "@/services/actions/loginUsers";
 import { storeUserInfo } from "@/services/auth.services";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import ShowCredentialButton from "./components/ShowCredentialsButton";
+import LoginIcon from "@mui/icons-material/Login";
+import PetInputWithToggle from "@/components/Forms/PetInputWithToggle";
 
 const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address!"),
@@ -106,10 +116,9 @@ const LoginPage = () => {
                   />
                 </Grid>
                 <Grid item sm={12}>
-                  <PetInput
+                  <PetInputWithToggle
                     name="password"
                     label="Password"
-                    type="password"
                     fullWidth={true}
                   />
                 </Grid>
@@ -121,9 +130,12 @@ const LoginPage = () => {
                   margin: "15px 0",
                 }}
                 type="submit"
+                startIcon={<LoginIcon />}
               >
                 Login
               </Button>
+              <Divider>OR</Divider>
+              <ShowCredentialButton />
               <Typography variant="body2" component="p" fontWeight={300}>
                 Need an account?{" "}
                 <Link href="/register">
@@ -137,8 +149,6 @@ const LoginPage = () => {
                 </Link>
               </Typography>
             </PetFrom>
-
-            <ShowCredentialButton />
           </Box>
         </Box>
       </Stack>
