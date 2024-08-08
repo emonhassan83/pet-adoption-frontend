@@ -22,6 +22,8 @@ import { z } from "zod";
 import ShowCredentialButton from "./components/ShowCredentialsButton";
 import LoginIcon from "@mui/icons-material/Login";
 import PetInputWithToggle from "@/components/Forms/PetInputWithToggle";
+import { useState } from "react";
+import ForgetPasswordModal from "./components/ForgetPasswordModal";
 
 const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address!"),
@@ -29,6 +31,7 @@ const validationSchema = z.object({
 });
 
 const LoginPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (values: FieldValues) => {
@@ -49,6 +52,8 @@ const LoginPage = () => {
     }
   };
   return (
+    <>
+    <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
     <Container>
       <Stack
         sx={{
@@ -116,6 +121,21 @@ const LoginPage = () => {
                   />
                 </Grid>
                 <Grid item sm={12}>
+                  <Typography
+                    onClick={() => setIsModalOpen(true)}
+                    sx={{
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                      textAlign: "end",
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      marginTop: "-10px",
+                    }}
+                    variant="body2"
+                    // startIcon={<StorageIcon />}
+                  >
+                    Forgot Password?
+                  </Typography>
                   <PetInputWithToggle
                     name="password"
                     label="Password"
@@ -135,6 +155,7 @@ const LoginPage = () => {
                 Login
               </Button>
               <Divider>OR</Divider>
+
               <ShowCredentialButton />
               <Typography variant="body2" component="p" fontWeight={300}>
                 Need an account?{" "}
@@ -153,6 +174,7 @@ const LoginPage = () => {
         </Box>
       </Stack>
     </Container>
+    </>
   );
 };
 
