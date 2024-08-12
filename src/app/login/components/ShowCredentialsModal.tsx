@@ -7,15 +7,15 @@ type TProps = {
 };
 
 const demoCredentials = [
-    {
-      role: 'Super Admin',
-      email: 'john@example.com',
-      password: 'superadmin123'
-    },
+    // {
+    //   role: 'Super Admin',
+    //   email: 'john@example.com',
+    //   password: 'user123'
+    // },
     {
       role: 'Admin',
       email: 'alice@example.com',
-      password: 'admin123'
+      password: 'user123'
     },
     {
       role: 'User',

@@ -35,7 +35,7 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleLogin = async (values: FieldValues) => {
-    // console.log(values);
+    console.log("Form Submitted:", values);
     try {
       const res = await userLogin(values);
       // console.log(res);
@@ -53,127 +53,118 @@ const LoginPage = () => {
   };
   return (
     <>
-    <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
-    <Container>
-      <Stack
-        sx={{
-          height: "100vh",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
+      <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
+      <Container>
+        <Stack
           sx={{
-            maxWidth: 600,
-            width: "100%",
-            boxShadow: 1,
-            borderRadius: 1,
-            p: 4,
-            textAlign: "center",
+            height: "100vh",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Stack
+          <Box
             sx={{
-              justifyContent: "center",
-              alignItems: "center",
+              maxWidth: 600,
+              width: "100%",
+              boxShadow: 1,
+              borderRadius: 1,
+              p: 4,
+              textAlign: "center",
             }}
           >
-            <Box>Welcome</Box>
-            <Box>
-              <Typography variant="h6" fontWeight={600}>
-                Login to your account
-              </Typography>
-            </Box>
-          </Stack>
-          {/* show error massage */}
-          {false && (
-            <Box>
-              <Typography
-                sx={{
-                  padding: "1px",
-                  borderRadius: "3px",
-                  color: "#A94064",
-                  marginTop: "5px",
-                  fontWeight: "700",
-                }}
-              >
-                {"error"}!
-              </Typography>
-            </Box>
-          )}
-
-          <Box>
-            <PetFrom
-              onSubmit={handleLogin}
-              resolver={zodResolver(validationSchema)}
-              defaultValues={{
-                email: "",
-                password: "",
+            <Stack
+              sx={{
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              <Grid container spacing={2} my={1}>
-                <Grid item sm={12}>
-                  <PetInput
-                    name="email"
-                    label="Email"
-                    type="email"
-                    fullWidth={true}
-                  />
-                </Grid>
-                <Grid item sm={12}>
-                  <Typography
-                    onClick={() => setIsModalOpen(true)}
-                    sx={{
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      textAlign: "end",
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                      marginTop: "-10px",
-                    }}
-                    variant="body2"
-                    // startIcon={<StorageIcon />}
-                  >
-                    Forgot Password?
-                  </Typography>
-                  <PetInputWithToggle
-                    name="password"
-                    label="Password"
-                    fullWidth={true}
-                  />
-                </Grid>
-              </Grid>
-
-              <Button
-                fullWidth={true}
+              <Typography
+                component="p"
                 sx={{
-                  margin: "15px 0",
+                  fontSize: "14px",
+                  color: "gray",
                 }}
-                type="submit"
-                startIcon={<LoginIcon />}
               >
-                Login
-              </Button>
-              <Divider>OR</Divider>
-
-              <ShowCredentialButton />
-              <Typography variant="body2" component="p" fontWeight={300}>
-                Need an account?{" "}
-                <Link href="/register">
-                  <Box
-                    fontWeight="bold"
-                    component="span"
-                    sx={{ textDecoration: "underline" }}
-                  >
-                    SignUp
-                  </Box>
-                </Link>
+                Welcome To Petfinder
               </Typography>
-            </PetFrom>
+              <Box>
+                <Typography variant="h6" fontWeight={600}>
+                  Login to your account
+                </Typography>
+              </Box>
+            </Stack>
+            <>
+              <PetFrom
+                onSubmit={handleLogin}
+                resolver={zodResolver(validationSchema)}
+                defaultValues={{
+                  email: "",
+                  password: "",
+                }}
+              >
+                <Grid container spacing={2} my={1}>
+                  <Grid item sm={12}>
+                    <PetInput
+                      name="email"
+                      label="Email"
+                      type="email"
+                      fullWidth={true}
+                    />
+                  </Grid>
+                  <Grid item sm={12}>
+                    <Typography
+                      onClick={() => setIsModalOpen(true)}
+                      sx={{
+                        fontSize: "12px",
+                        fontWeight: "bold",
+                        textAlign: "end",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        marginTop: "-10px",
+                      }}
+                      variant="body2"
+                      // startIcon={<StorageIcon />}
+                    >
+                      Forgot Password?
+                    </Typography>
+                    <PetInputWithToggle
+                      name="password"
+                      label="Password"
+                      fullWidth={true}
+                    />
+                  </Grid>
+                </Grid>
+
+                <Button
+                  fullWidth={true}
+                  sx={{
+                    margin: "15px 0",
+                  }}
+                  type="submit"
+                  startIcon={<LoginIcon />}
+                >
+                  Login
+                </Button>
+                <Divider>OR</Divider>
+
+                <ShowCredentialButton />
+                <Typography variant="body2" component="p" fontWeight={300}>
+                  Need an account?{" "}
+                  <Link href="/register">
+                    <Box
+                      fontWeight="bold"
+                      component="span"
+                      sx={{ textDecoration: "underline" }}
+                    >
+                      SignUp
+                    </Box>
+                  </Link>
+                </Typography>
+              </PetFrom>
+            </>
           </Box>
-        </Box>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
     </>
   );
 };

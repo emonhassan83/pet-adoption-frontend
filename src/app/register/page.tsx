@@ -103,29 +103,16 @@ const RegisterPage = () => {
               alignItems: "center",
             }}
           >
-            <Typography component="p">Welcome</Typography>
+            <Typography component="p" sx={{
+                fontSize: "14px",
+                color: "gray",
+              }}>Welcome To Petfinder</Typography>
             <Box>
               <Typography variant="h6" fontWeight={600}>
                 Sign up to your account
               </Typography>
             </Box>
           </Stack>
-          {/* show error massage */}
-          {false && (
-            <Box>
-              <Typography
-                sx={{
-                  padding: "1px",
-                  borderRadius: "3px",
-                  color: "#A94064",
-                  marginTop: "5px",
-                  fontWeight: "700",
-                }}
-              >
-                {"error"}!
-              </Typography>
-            </Box>
-          )}
           {/* here start form */}
           <PetFrom
             onSubmit={handleRegister}
@@ -166,10 +153,9 @@ const RegisterPage = () => {
                   />
                 </Grid>
                 <Grid item sm={6}>
-                  <PetInput
+                  <PetInputWithToggle
                     name="confirmPass"
                     label="Confirm Password"
-                    type="password"
                     fullWidth={true}
                   />
                 </Grid>
