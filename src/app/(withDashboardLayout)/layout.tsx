@@ -6,12 +6,13 @@ import { useRouter } from "next/navigation";
 
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  // const loginUser = isLoggedIn();
-  // const router = useRouter();
+  //! TODO comment this portion after using custom middleware
+  const loginUser = isLoggedIn();
+  const router = useRouter();
 
-  // if (!loginUser) {
-  //   return router.push("/login");
-  // }
+  if (!loginUser) {
+    return router.push("/login");
+  }
   return <DashboardDrawer>{children}</DashboardDrawer>;
 };
 

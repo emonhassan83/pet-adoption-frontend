@@ -38,7 +38,7 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets/${params?.petId}`
   );
   const { data: pet } = await res.json();
-  // console.log(pet);
+  console.log(pet);
 
   return (
     <>
@@ -62,7 +62,7 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
               },
             }}
           >
-            <Image src={pet.image} height={600} width={600} alt="Pet Image" />
+            <Image src={pet?.image} height={600} width={600} alt="Pet Image" />
           </Box>
 
           <Box

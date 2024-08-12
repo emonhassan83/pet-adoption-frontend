@@ -106,7 +106,7 @@ const ProfilePage = () => {
           </Grid>
         </Grid>
 
-        <PetAdoptSection />
+        {/* <PetAdoptSection /> */}
       </Container>
     </>
   );

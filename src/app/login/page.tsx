@@ -35,13 +35,13 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleLogin = async (values: FieldValues) => {
-    console.log("Form Submitted:", values);
+    // console.log("Form Submitted:", values);
     try {
       const res = await userLogin(values);
       // console.log(res);
-      if (res?.data?.token) {
+      if (res?.data?.accessToken) {
         toast.success(res?.message);
-        storeUserInfo({ accessToken: res?.data?.token });
+        storeUserInfo({ accessToken: res?.data?.accessToken });
         router.push("/dashboard");
       } else {
         toast.error(res?.message);
@@ -98,8 +98,8 @@ const LoginPage = () => {
                 onSubmit={handleLogin}
                 resolver={zodResolver(validationSchema)}
                 defaultValues={{
-                  email: "",
-                  password: "",
+                  email: "alice@example.com",
+                  password: "user123",
                 }}
               >
                 <Grid container spacing={2} my={1}>

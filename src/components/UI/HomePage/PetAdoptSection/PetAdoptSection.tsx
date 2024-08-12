@@ -65,7 +65,7 @@ const PetAdoptSection = async () => {
                     {pet.breed}
                   </Typography>
                   <Typography variant="body2" color="white">
-                    {pet?.description.length > 70
+                    {pet?.description?.length > 70
                       ? pet?.description.slice(0, 70) + "..."
                       : pet?.description}
                   </Typography>

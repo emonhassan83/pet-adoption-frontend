@@ -1,6 +1,5 @@
 "use client";
 
-import AuthButton from "@/components/UI/AuthButton/AuthButton";
 import { isLoggedIn } from "@/services/auth.services";
 import { Container, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
@@ -40,11 +39,11 @@ const Navbar = () => {
           <Typography component={Link} href="/about-us">
             About Us
           </Typography>
-          {loginUser && (
+          {/* {loginUser && (
             <Typography component={Link} href="/dashboard">
               Dashboard
             </Typography>
-          )}
+          )} */}
         </Stack>
         <AuthButton />
       </Stack>
