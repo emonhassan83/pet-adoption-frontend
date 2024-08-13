@@ -1,4 +1,5 @@
 import { authKey } from "@/constant/authKey";
+import setAccessToken from "@/services/actions/setAccessToken";
 import { getNewAccessToken } from "@/services/auth.services";
 import { IGenericErrorResponse, ResponseSuccessType } from "@/types";
 import { getFromLocalStorage, setToLocalStorage } from "@/utils/localStorege";
@@ -44,12 +45,13 @@ instance.interceptors.response.use(
 
     if (error?.response?.status === 500 && !config.sent) {
       config.sent = true;
-      
+
       const response = await getNewAccessToken();
       const accessToken = response.data.accessToken;
 
       config.headers["Authorization"] = accessToken;
       setToLocalStorage(authKey, accessToken);
+      setAccessToken(accessToken); //* set access token to cookie
       return instance(config);
     } else {
       // Do something with response error

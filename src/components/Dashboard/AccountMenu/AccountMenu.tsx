@@ -13,6 +13,7 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
+import { logoutUser } from "@/services/actions/logoutUser";
 
 export default function AccountMenu({ data }: any) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -33,16 +34,14 @@ export default function AccountMenu({ data }: any) {
 
   const handleLogout = () => {
     setAnchorEl(null);
-    localStorage.removeItem("accessToken");
-    router.push("/login");
+    logoutUser(router);
 
     handleClose();
   };
 
   const handleAddAccount = () => {
     setAnchorEl(null);
-    localStorage.removeItem("accessToken");
-    router.push("/register");
+    logoutUser(router);
 
     handleClose();
   };
