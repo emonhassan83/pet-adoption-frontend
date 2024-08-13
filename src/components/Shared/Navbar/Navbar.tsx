@@ -1,19 +1,16 @@
-"use client";
-
-import { isLoggedIn } from "@/services/auth.services";
 import { Container, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
+import { cookies } from "next/headers";
 import Link from "next/link";
 
 const Navbar = () => {
-  const loginUser = isLoggedIn();
-  // console.log(loginUser);
+  const accessToken = cookies().get("accessToken")?.value;
 
   const AuthButton = dynamic(
     () => import("@/components/UI/AuthButton/AuthButton"),
     { ssr: false }
   );
-  
+
   return (
     <Container>
       <Stack
@@ -39,11 +36,11 @@ const Navbar = () => {
           <Typography component={Link} href="/about-us">
             About Us
           </Typography>
-          {/* {loginUser && (
+          {accessToken && (
             <Typography component={Link} href="/dashboard">
               Dashboard
             </Typography>
-          )} */}
+          )}
         </Stack>
         <AuthButton />
       </Stack>

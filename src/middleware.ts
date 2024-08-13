@@ -10,7 +10,7 @@ const commonPrivateRoutes = ["/dashboard", "/dashboard/profile", "/pets"];
 const roleBasedPrivateRoutes = {
   USER: [/^\/dashboard\/user/],
   ADMIN: [/^\/dashboard\/admin/],
-  // SUPER_ADMIN: [/^\/dashboard\/super-admin/],
+  SUPER_ADMIN: [/^\/dashboard\/super-admin/],
 };
 
 // This function can be marked `async` if using `await` inside
