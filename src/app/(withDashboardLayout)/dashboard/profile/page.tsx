@@ -106,7 +106,7 @@ const ProfilePage = () => {
           </Grid>
         </Grid>
 
-        {/* <PetAdoptSection /> */}
+        {data.role === "USER" && <PetAdoptSection />}
       </Container>
     </>
   );

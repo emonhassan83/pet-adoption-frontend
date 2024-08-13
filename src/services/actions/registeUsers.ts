@@ -15,6 +15,6 @@ export const registerUsers = async (userData: IRegisterUser) => {
     }
   );
 
-  const patientInfo = await res.json();
-  return patientInfo;
+  const userInfo = await res.json();
+  return userInfo;
 };

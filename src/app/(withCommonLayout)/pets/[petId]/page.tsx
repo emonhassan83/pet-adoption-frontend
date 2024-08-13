@@ -2,6 +2,7 @@ import { Box, Button, Container, Typography, Stack } from "@mui/material";
 import Image from "next/image";
 import GradeIcon from "@mui/icons-material/Grade";
 import AddAdoptButton from "./components/AddAdoptButton";
+import { cookies } from "next/headers";
 
 const PetDetail = ({ label, value }: { label: string; value: string }) => (
   <Box
@@ -34,11 +35,32 @@ const Section = ({ title, children }: { title: string; children: any }) => (
 );
 
 const PetDetailsPage = async ({ params }: { params: any }) => {
+  const accessToken = cookies().get("accessToken")?.value;
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets/${params?.petId}`
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets/${params?.petId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${accessToken}`,
+      },
+    }
   );
+
+  if (!res.ok) {
+    console.error("Failed to fetch pet details:", res.statusText);
+    return (
+      <Container maxWidth="lg" sx={{ my: 4 }}>
+        <Typography variant="h6" color="error">
+          Failed to load pet details. Please try again later.
+        </Typography>
+      </Container>
+    );
+  }
+
   const { data: pet } = await res.json();
-  console.log(pet);
+  // console.log(pet);
 
   return (
     <>

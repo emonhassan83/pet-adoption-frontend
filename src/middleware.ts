@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const accessToken = cookies().get("accessToken")?.value;
-
+  
   //* if access token is found then redirect login page
   if (!accessToken) {
     //* access auth-route for unauthorized users
@@ -32,7 +32,7 @@ export function middleware(request: NextRequest) {
   //* if access token is exists then access all routes
   if (
     accessToken &&
-    commonPrivateRoutes.includes(pathname)
+    commonPrivateRoutes.some(route => pathname.startsWith(route))
   ) {
     return NextResponse.next();
   }

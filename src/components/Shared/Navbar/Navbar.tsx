@@ -36,6 +36,9 @@ const Navbar = () => {
           <Typography component={Link} href="/about-us">
             About Us
           </Typography>
+          <Typography component={Link} href="/blogs">
+            Blogs
+          </Typography>
           {accessToken && (
             <Typography component={Link} href="/dashboard">
               Dashboard

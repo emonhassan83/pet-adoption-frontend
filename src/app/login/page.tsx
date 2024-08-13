@@ -15,7 +15,6 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -32,13 +31,12 @@ const validationSchema = z.object({
 
 const LoginPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const router = useRouter();
 
   const handleLogin = async (values: FieldValues) => {
     // console.log("Form Submitted:", values);
     try {
       const res = await userLogin(values);
-      // console.log(res);
+      console.log(res);
       if (res?.data?.accessToken) {
         toast.success(res?.message);
         storeUserInfo({ accessToken: res?.data?.accessToken });
