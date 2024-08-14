@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Link from "next/link";
 
 const DonateButton = () => {
@@ -9,9 +8,17 @@ const DonateButton = () => {
     <Button
       component={Link}
       href="/donate"
-      sx={{ fontSize: "10px", fontWeight: "600", height: "30px" }}
-      variant="outlined"
-      endIcon={<ArrowForwardIcon />}
+      // endIcon={<ArrowForwardIcon />}
+      sx={{
+        mt: 2,
+        py: 1.5,
+        px: 4,
+        borderRadius: "25px",
+        fontWeight: 600,
+        "&:hover": {
+          backgroundColor: "#800ede",
+        },
+      }}
     >
       Donate Now
     </Button>

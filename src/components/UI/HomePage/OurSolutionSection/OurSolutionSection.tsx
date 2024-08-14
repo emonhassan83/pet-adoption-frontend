@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 
 const OurSolutionSection = async() => {
@@ -6,16 +6,14 @@ const OurSolutionSection = async() => {
       `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/blog?limit=3`
     );
     const { data: blogs } = await res.json();
-    // console.log(blogs);
     
-
   return (
     <Container sx={{ my: 16 }}>
       <Box textAlign="center" mb={8}>
-        <Typography variant="h4" component="h1" fontWeight={700}>
+        <Typography variant="h4" component="h1" fontWeight={700} color="primary.main">
           Our Solution
         </Typography>
-        <Typography component="p" fontSize={18} fontWeight={400}>
+        <Typography component="p" fontSize={18} fontWeight={400} sx={{ mt: 2, color: "#555" }}>
           Unleashing the power of Love, together.
         </Typography>
       </Box>
@@ -28,10 +26,20 @@ const OurSolutionSection = async() => {
                 overflow: "hidden",
                 position: "relative",
                 width: "100%",
+                borderRadius: "10px",
                 '&:hover img': {
                   transform: "scale(1.1)",
                 },
-                cursor: "pointer"
+                '&:hover::before': {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "rgba(0, 0, 0, 0.3)",
+                },
+                cursor: "pointer",
               }}
             >
               <Image
@@ -43,21 +51,33 @@ const OurSolutionSection = async() => {
                   transition: "transform 0.5s ease",
                   width: "100%",
                   height: "auto",
-                  borderRadius: "10px"
                 }}
               />
             </Box>
 
-            <Box sx={{ mt: 2, px: 2 }}>
-              <Typography variant="body2" color="text.secondary">
-                {blog.category}
+            <Box sx={{ mt: 3, px: 2 }}>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                <i className="fas fa-bookmark"></i> {blog.category}
               </Typography>
-              <Typography gutterBottom variant="h5" component="div" fontWeight={600}>
+              <Typography gutterBottom variant="h5" component="div" fontWeight={600} sx={{ color: "#333" }}>
                 {blog.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {blog.description}
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                {blog.description.length > 100
+                  ? `${blog.description.slice(0, 100)}...`
+                  : blog.description}
               </Typography>
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  textTransform: "none",
+                  borderRadius: 20,
+                  padding: "6px 12px"
+                }}
+              >
+                Read More
+              </Button>
             </Box>
           </Grid>
         ))}

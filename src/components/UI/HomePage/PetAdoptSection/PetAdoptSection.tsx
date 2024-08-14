@@ -18,14 +18,12 @@ const PetAdoptSection = async () => {
   );
   const { data: pets } = await res.json();
   // console.log(pets);
+  
 
   return (
-    <Container
-      sx={{
-        my: 12,
-      }}
-    >
-      <Box sx={{ textAlign: "center" }}>
+    <Container sx={{ my: 12 }}>
+      {/* Section Heading */}
+      <Box sx={{ textAlign: "center", mb: 6 }}>
         <Typography variant="h4" component="h1" fontWeight={700}>
           Pets Available for Adoption
         </Typography>
@@ -38,84 +36,119 @@ const PetAdoptSection = async () => {
         </Typography>
       </Box>
 
-      <Container sx={{ margin: "30px auto" }}>
-        <Grid container spacing={2}>
-          {pets?.map((pet: any) => (
-            <Grid item key={pet.id} md={3}>
-              <Card sx={{ height: "340px" }}>
-                <Box
+      {/* Pet Cards */}
+      <Grid container spacing={4}>
+        {pets?.map((pet: any) => (
+          <Grid item key={pet.id} md={3} xs={12}>
+            <Card
+              sx={{
+                height: "100%",
+                borderRadius: 3,
+                overflow: "hidden",
+                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s, box-shadow 0.3s",
+                "&:hover": {
+                  transform: "translateY(-10px)",
+                  boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.2)",
+                },
+                backgroundColor: "#f8f9fa",
+              }}
+            >
+              <Box sx={{ height: "250px", overflow: "hidden" }}>
+                <Image
+                  src={pet.image}
+                  alt={pet.name}
+                  width={500}
+                  height={250}
+                  style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                />
+              </Box>
+              <CardContent
+                sx={{
+                  // padding: 3,
+                  textAlign: "left",
+                }}
+              >
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  fontWeight={600}
+                  color="primary"
+                >
+                  {pet.name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  sx={{ fontSize: 14, mb: 1 }}
+                >
+                  Age: {pet?.age} years | Breed: {pet.breed}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  sx={{ fontSize: 14, mb: 1 }}
+                >
+                  {pet?.description?.length > 70
+                    ? pet?.description.slice(0, 70) + "..."
+                    : pet?.description}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  display="flex"
+                  alignItems="center"
+                  sx={{ fontSize: 12 }}
+                >
+                  <LocationOnIcon fontSize="small" sx={{ mr: 0.5 }} />{" "}
+                  {pet.location}
+                </Typography>
+              </CardContent>
+              <CardActions
+                sx={{
+                  justifyContent: "center",
+                  paddingBottom: 2,
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  component={Link}
+                  href={`/pets/${pet?.id}`}
                   sx={{
-                    height: "140px",
+                    textTransform: "none",
+                    borderRadius: 20,
+                    padding: "6px 16px",
+                    mt: -1
                   }}
                 >
-                  <Image src={pet.image} alt="pet" width={500} height={250} />
-                </Box>
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="div"
-                    color="white"
-                  >
-                    {pet.name}
-                  </Typography>
-                  <Typography variant="body2" color="white">
-                    {pet?.age}
-                    {" years"}, {" Breed: "}
-                    {pet.breed}
-                  </Typography>
-                  <Typography variant="body2" color="white">
-                    {pet?.description?.length > 70
-                      ? pet?.description.slice(0, 70) + "..."
-                      : pet?.description}
-                  </Typography>
-                  <Typography variant="body2" color="white" mt={1}>
-                    <LocationOnIcon /> {pet.location}
-                  </Typography>
-                </CardContent>
-                <CardActions
-                  sx={{
-                    justifyContent: "space-between",
-                    px: 2,
-                    paddingBottom: "20px",
-                    mt: -1,
-                  }}
-                >
-                  <Button
-                    sx={{
-                      color: "white",
-                      fontWeight: "medium",
-                      padding: "4px 6px",
-                      mt: -1,
-                    }}
-                    variant="text"
-                    size="small"
-                    component={Link}
-                    href={`/pets/${pet?.id}`}
-                  >
-                    View Details
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                  View Details
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
 
-        <Box
+      {/* View All Button */}
+      <Box sx={{ textAlign: "center", mt: 8 }}>
+        <Button
+          variant="contained"
           sx={{
-            textAlign: "center",
+            textTransform: "none",
+            borderRadius: 20,
+            padding: "10px 20px",
+            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
+            "&:hover": {
+              backgroundColor: "#800ede",
+            },
           }}
         >
-          <Button
-            variant="outlined"
-            sx={{
-              marginTop: "20px",
-            }}
-          >
-            View ALL
-          </Button>
-        </Box>
-      </Container>
+          View All Pets
+        </Button>
+      </Box>
     </Container>
   );
 };

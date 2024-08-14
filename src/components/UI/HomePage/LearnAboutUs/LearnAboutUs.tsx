@@ -1,63 +1,66 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Container, Typography } from "@mui/material";
-import LearnAboutButton from "./components/LearnAboutButton";
-import assets from "@/assets";
+import { Box, Container, Typography, Button } from "@mui/material";
 import Image from "next/image";
+import assets from "@/assets";
+import LearnAboutButton from "./components/LearnAboutButton";
 
 const LearnAboutUs = () => {
   return (
     <Container
       sx={{
-        my: 12,
+        my: { xs: 8, md: 12 },
+        backgroundColor: "#f5f0ff",
+        borderRadius: "8px",
+        padding: { xs: 4, md: 6 },
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)"
       }}
     >
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
+          flexDirection: { xs: "column-reverse", md: "row" },
+          justifyContent: "space-between",
           alignItems: "center",
-          gap: 4,
+          gap: { xs: 4, md: 6 }
         }}
       >
         <Box
           sx={{
-            width: "60%",
+            width: { xs: "100%", md: "50%" },
+            textAlign: { xs: "center", md: "left" }
           }}
         >
-          <Typography variant="h4" component="h4" fontWeight={600}>
-            PetPlace: More Than Just an Adoption Site
+          <Typography variant="h4" component="h4" fontWeight={700}>
+            Discover the Heart of PetPlace
           </Typography>
-          <Typography variant="body2" fontWeight={400} sx={{ mt: 1, mb: 3 }}>
-            At PetPlace, we’re more than just a pet adoption service - we're a
-            team of animal lovers dedicated to creating lasting bonds. With
-            years of experience in pet care and welfare, we understand the
-            unique personalities and needs of each animal in our care.
+          <Typography variant="body1" fontWeight={400} sx={{ mt: 2, mb: 3, color: "text.secondary" }}>
+            At PetPlace, we're more than just a pet adoption platform— we’re a community of passionate animal lovers. Our mission is to create lasting bonds between pets and their owners, ensuring each animal finds a loving and caring home.
           </Typography>
-
+          
           <LearnAboutButton />
         </Box>
 
         <Box
           sx={{
-            width: "40%",
-            height: "300px",
+            width: { xs: "100%", md: "50%" },
+            height: "400px",
             overflow: "hidden",
-            position: "relative",
-            "&:hover img": {
-              transform: "scale(1.1)",
+            borderRadius: "12px",
+            boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.2)",
+            transition: "transform 0.5s ease",
+            "&:hover": {
+              transform: "scale(1.05)",
             },
+            position: "relative",
           }}
         >
           <Image
             src={assets.images.learn_more_banner}
-            width={400}
-            height={300}
+            layout="fill"
+            objectFit="cover"
             alt="learn more banner"
             style={{
-              transition: "transform 0.5s ease",
-              width: "100%",
-              height: "auto",
-              borderRadius: "5px",
+              borderRadius: "12px",
             }}
           />
         </Box>
