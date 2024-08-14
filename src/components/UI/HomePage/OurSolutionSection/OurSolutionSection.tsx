@@ -1,32 +1,14 @@
-import assets from "@/assets";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 
-const cardData = [
-  {
-    image: assets.images.sol_card_img1,
-    title: "Petco Love Adopt",
-    sub_title: "Creating families",
-    description:
-      "Adopt a pet. Grow your family. Fill your home with love. With Petco Love pet adoption, it’s easy to find your match.",
-  },
-  {
-    image: assets.images.sol_card_img2,
-    title: "Petco Love Lost",
-    sub_title: "Reuniting pets",
-    description:
-      "Help reunite lost and found pets with their people by snapping a photo and uploading it on Petco Love Lost, or register your pet in case they ever go missing. It’s free!",
-  },
-  {
-    image: assets.images.sol_card_img3,
-    title: "Petco Love Care",
-    sub_title: "Championing health",
-    description:
-      "Explore accessible veterinary care, free pet vaccines, and pet cancer resources. Because every pet’s health is priceless.",
-  },
-];
+const OurSolutionSection = async() => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/blog?limit=3`
+    );
+    const { data: blogs } = await res.json();
+    // console.log(blogs);
+    
 
-const OurSolutionSection = () => {
   return (
     <Container sx={{ my: 16 }}>
       <Box textAlign="center" mb={8}>
@@ -39,8 +21,8 @@ const OurSolutionSection = () => {
       </Box>
 
       <Grid container spacing={4}>
-        {cardData.map((data, index) => (
-          <Grid item key={index} xs={12} md={4}>
+        {blogs.map((blog: any) => (
+          <Grid item key={blog._id} xs={12} md={4}>
             <Box
               sx={{
                 overflow: "hidden",
@@ -53,27 +35,28 @@ const OurSolutionSection = () => {
               }}
             >
               <Image
-                src={data.image}
-                alt={data.title}
+                src={blog.image}
+                alt={blog.title}
                 width={500}
                 height={300}
                 style={{
                   transition: "transform 0.5s ease",
                   width: "100%",
-                  height: "auto"
+                  height: "auto",
+                  borderRadius: "10px"
                 }}
               />
             </Box>
 
             <Box sx={{ mt: 2, px: 2 }}>
               <Typography variant="body2" color="text.secondary">
-                {data.sub_title}
+                {blog.category}
               </Typography>
               <Typography gutterBottom variant="h5" component="div" fontWeight={600}>
-                {data.title}
+                {blog.title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {data.description}
+                {blog.description}
               </Typography>
             </Box>
           </Grid>
