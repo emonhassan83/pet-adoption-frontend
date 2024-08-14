@@ -14,6 +14,7 @@ const assets = {
       placeholder_img: require("./images/placeholder_img.png"),
       learn_more_banner: require("./images/learn_more_banner.jpg"),
       donate_banner: require("./images/donate_section_banner.jpg"),
+      approach_banner: require("./images/approach_banner.webp"),
     },
     logo: {
       facebook: require("./icons/facebook.png"),
@@ -23,6 +24,9 @@ const assets = {
       organization: require("./icons/petfinder_organization.svg"),
       health: require("./icons/petfinder_health.svg"),
       pet: require("./icons/petfinder_dog_portrait.svg"),
+      approach_icon1: require("./icons/approach_icon_1.webp"),
+      approach_icon2: require("./icons/approach_icon_2.webp"),
+      approach_icon3: require("./icons/approach_icon_3.webp")
     },
   };
   

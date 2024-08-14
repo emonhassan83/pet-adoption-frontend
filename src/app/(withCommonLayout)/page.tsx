@@ -13,8 +13,8 @@ const HomePage = () => {
       <HeroSection/>
       <PetAdoptSection/>
       <PlanningAdopt/>
-      <OurSolutionSection/>
       <OurApproachSection/>
+      <OurSolutionSection/>
       <LearnAboutUs/>
       <DonateSection/>
     </>
