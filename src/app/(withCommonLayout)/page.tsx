@@ -1,3 +1,4 @@
+import DonateSection from "@/components/UI/HomePage/DonateSection/DonateSection";
 import HeroSection from "@/components/UI/HomePage/HeroSection/HeroSection";
 import LearnAboutUs from "@/components/UI/HomePage/LearnAboutUs/LearnAboutUs";
 import OurSolutionSection from "@/components/UI/HomePage/OurSolutionSection/OurSolutionSection";
@@ -12,7 +13,9 @@ const HomePage = () => {
       <PetAdoptSection/>
       <PlanningAdopt/>
       <OurSolutionSection/>
+      
       <LearnAboutUs/>
+      <DonateSection/>
     </>
   );
 };

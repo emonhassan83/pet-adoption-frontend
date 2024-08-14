@@ -13,6 +13,7 @@ const assets = {
       about_author4: require("./images/petfinder_patnar4.webp"),
       placeholder_img: require("./images/placeholder_img.png"),
       learn_more_banner: require("./images/learn_more_banner.jpg"),
+      donate_banner: require("./images/donate_section_banner.jpg"),
     },
     logo: {
       facebook: require("./icons/facebook.png"),
