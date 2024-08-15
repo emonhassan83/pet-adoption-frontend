@@ -33,6 +33,9 @@ const Navbar = () => {
           <Typography component={Link} href="/">
             Home
           </Typography>
+          <Typography component={Link} href="/pets">
+            Pets
+          </Typography>
           <Typography component={Link} href="/about-us">
             About Us
           </Typography>
