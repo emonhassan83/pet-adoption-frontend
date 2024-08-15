@@ -8,12 +8,23 @@ import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import KeyIcon from "@mui/icons-material/Key";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import VideoSettingsIcon from '@mui/icons-material/VideoSettings';
 import { USER_ROLE } from "@/constant/role";
 
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
 
   const defaultMenus = [
+    {
+      title: "Add Blog",
+      path: `${role}/add-blog`,
+      icon: AddTaskIcon,
+    },
+    {
+      title: "Manage Blogs",
+      path: `${role}/manage-blogs`,
+      icon: VideoSettingsIcon,
+    },
     {
       title: "Change Password",
       path: `profile`,
@@ -54,11 +65,6 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
 
     case USER_ROLE.USER:
       roleMenus.push(
-        // {
-        //   title: "Add Adoption",
-        //   path: `${role}/add-adoption`,
-        //   icon: AddTaskIcon,
-        // },
         {
           title: "Manage Adoption",
           path: `${role}/manage-adoption`,
