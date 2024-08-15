@@ -58,11 +58,10 @@ const AboutUsBanner = () => {
           About Us
         </Typography>
         <Typography
-          variant="h6"
-          component="p"
+          variant="body1"
           color="white"
           fontWeight={400}
-          mb={2}
+          mb={1}
         >
           We are dedicated to making a difference in the lives of pets and the
           people who love them.

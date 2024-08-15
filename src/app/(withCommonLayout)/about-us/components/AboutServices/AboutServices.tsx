@@ -29,7 +29,10 @@ const AboutServices = ({ data }: { data: IAboutServices[] }) => {
           key={index}
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", md: index % 2 === 0 ? "row" : "row-reverse" },
+            flexDirection: {
+              xs: "column",
+              md: index % 2 === 0 ? "row" : "row-reverse",
+            },
             gap: 8,
             backgroundColor: "#f0f4f8",
             padding: "15px",
@@ -46,7 +49,7 @@ const AboutServices = ({ data }: { data: IAboutServices[] }) => {
               width: { xs: "100%", md: "45%" },
               maxHeight: "450px",
               "&:hover img": {
-                transform: "scale(1.05)"
+                transform: "scale(1.05)",
               },
               cursor: "pointer",
             }}
@@ -69,26 +72,44 @@ const AboutServices = ({ data }: { data: IAboutServices[] }) => {
               width: { xs: "100%", md: "55%" },
               textAlign: { xs: "center", md: "left" },
               maxHeight: "300px",
-              overflow: "hidden", 
+              overflow: "hidden",
             }}
           >
             <Typography variant="body2" component="p" gutterBottom>
               {item.sub_title}
             </Typography>
-            <Typography variant="h5" component="h3" fontWeight={600} gutterBottom>
+            <Typography
+              variant="h5"
+              component="h3"
+              fontWeight={600}
+              gutterBottom
+            >
               {item.title}
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
               {item.description}
             </Typography>
-            <Typography variant="body1" color="primary" fontWeight={600} gutterBottom>
+            <Typography
+              variant="body1"
+              fontWeight={600}
+              gutterBottom
+            >
               {item.stats}
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
               {item.additional_info}
             </Typography>
             <Link href={item.learn_more_link} passHref>
-              <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  textTransform: "none",
+                  borderRadius: 20,
+                  padding: "8px 16px",
+                  mt: 1
+                }}
+              >
                 Learn More
               </Button>
             </Link>
