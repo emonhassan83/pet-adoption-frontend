@@ -18,7 +18,6 @@ const PetAdoptSection = async () => {
   );
   const { data: pets } = await res.json();
   // console.log(pets);
-  
 
   return (
     <Container sx={{ my: 12 }}>
@@ -121,7 +120,7 @@ const PetAdoptSection = async () => {
                     textTransform: "none",
                     borderRadius: 20,
                     padding: "6px 16px",
-                    mt: -1
+                    mt: -1,
                   }}
                 >
                   View Details
@@ -135,7 +134,8 @@ const PetAdoptSection = async () => {
       {/* View All Button */}
       <Box sx={{ textAlign: "center", mt: 8 }}>
         <Button
-          variant="contained"
+          component={Link}
+          href="/pets"
           sx={{
             textTransform: "none",
             borderRadius: 20,
