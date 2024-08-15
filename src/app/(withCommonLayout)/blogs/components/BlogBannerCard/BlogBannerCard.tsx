@@ -12,7 +12,7 @@ const BlogBannerCard = ({ blog }: any) => {
         overflow: "hidden",
         borderRadius: 2,
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#f8f9fa"
+        backgroundColor: "#f8f9fa",
       }}
     >
       <Box sx={{ flexShrink: 0 }}>
@@ -30,12 +30,25 @@ const BlogBannerCard = ({ blog }: any) => {
 
       <Box sx={{ flex: 1 }}>
         <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: 2 }}>
-          <Typography variant="body2" color="textSecondary" sx={{ display: "flex", alignItems: "center" }}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            sx={{ display: "flex", alignItems: "center" }}
+          >
             ✏️ {blog?.author?.name}
           </Typography>
 
-          <Typography variant="body2" color="textSecondary" sx={{ display: "flex", alignItems: "center" }}>
-            📅 {new Date(blog?.publishedAt).toLocaleDateString()}
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            📅{" "}
+            {new Date(blog?.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </Typography>
         </Box>
 
