@@ -24,3 +24,16 @@ export const colorOptions = [
   "Silver",
   "Other",
 ];
+
+export const blogCategoryOptions = [
+  "Adopting a Pet",
+  "Health & Safety",
+  "Symptoms",
+  "Pet Behavior",
+  "Pet Insurance",
+  "Pet Care",
+  "Pet Health",
+  "others",
+];
+
+export const blogStatusOptions = ["DRAFT", "PUBLISHED"];

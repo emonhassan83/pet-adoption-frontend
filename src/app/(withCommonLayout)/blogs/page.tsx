@@ -6,9 +6,11 @@ const categories = [
   "Adopting a Pet",
   "Health & Safety",
   "Symptoms",
-  "Finding a Lost Pet",
+  "Pet Behavior",
   "Pet Insurance",
-  "others",
+  "Pet Care",
+  "Pet Health",
+  "others"
 ];
 
 const page = async () => {

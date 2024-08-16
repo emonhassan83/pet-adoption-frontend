@@ -11,6 +11,7 @@ import {
   useGetAllBlogsQuery,
 } from "@/redux/api/blogApi";
 import { toast } from "sonner";
+import UpdateBlogModal from "./components/UpdateBlogModal";
 
 const ManageBlogsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -104,11 +105,11 @@ const ManageBlogsPage = () => {
 
   return (
     <>
-    {/* <UpdateBlogModal
+    <UpdateBlogModal
         open={isModalOpen}
         setOpen={setIsModalOpen}
         data={selectedBlog}
-      /> */}
+      />
       <Box>
         {!isLoading ? (
           <Box my={2}>
