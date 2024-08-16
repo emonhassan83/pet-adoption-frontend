@@ -6,35 +6,32 @@ import Image from "next/image";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
-import {
-  useDeleteBlogMutation,
-  useGetAllBlogsQuery,
-} from "@/redux/api/blogApi";
+import { useDeleteBlogMutation, useGetMyBlogsQuery } from "@/redux/api/blogApi";
 import { toast } from "sonner";
 
-const ManageBlogsPage = () => {
+const ManageMyPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedBlog, setSelectedBlog] = useState(null);
-  const { data, isLoading } = useGetAllBlogsQuery([]);
+  const [selectedPet, setSelectedPet] = useState(null);
+  const { data, isLoading } = useGetMyBlogsQuery([]);
   const [deleteBlog] = useDeleteBlogMutation();
 
-  const handleEditClick = (blog: any) => {
-    setSelectedBlog(blog);
+  const handleEditClick = (pet: any) => {
+    setSelectedPet(pet);
     setIsModalOpen(true);
   };
 
-  const handleBlogDelete = async (id: any) => {
+  const handleAdoptDelete = async (id: any) => {
     try {
-      const res = await deleteBlog(id);
-      console.log(res);
-
-      if (res?.data?.id) {
-        toast.success("Blog deleted successfully!");
+        const res = await deleteBlog(id);
+        console.log(res);
+  
+        if (res?.data?.id) {
+          toast.success("Blog deleted successfully!");
+        }
+      } catch (error: any) {
+        toast.error(error.message);
+        console.error(error.message);
       }
-    } catch (error: any) {
-      toast.error(error.message);
-      console.error(error.message);
-    }
   };
 
   const columns: GridColDef[] = [
@@ -90,7 +87,7 @@ const ManageBlogsPage = () => {
               <EditIcon />
             </IconButton>
             <IconButton
-              onClick={() => handleBlogDelete(row?.id)}
+              onClick={() => handleAdoptDelete(row?.id)}
               color="primary"
               aria-label="delete"
             >
@@ -104,11 +101,6 @@ const ManageBlogsPage = () => {
 
   return (
     <>
-    {/* <UpdateBlogModal
-        open={isModalOpen}
-        setOpen={setIsModalOpen}
-        data={selectedBlog}
-      /> */}
       <Box>
         {!isLoading ? (
           <Box my={2}>
@@ -131,4 +123,4 @@ const ManageBlogsPage = () => {
   );
 };
 
-export default ManageBlogsPage;
+export default ManageMyPage;
