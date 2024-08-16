@@ -8,19 +8,20 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import { useDeleteBlogMutation, useGetMyBlogsQuery } from "@/redux/api/blogApi";
 import { toast } from "sonner";
+import UpdateBlogModal from "./components/UpdateBlogModal";
 
-const ManageMyPage = () => {
+const ManageMyBlogs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPet, setSelectedPet] = useState(null);
+  const [selectedBlog, setSelectedBlog] = useState(null);
   const { data, isLoading } = useGetMyBlogsQuery([]);
   const [deleteBlog] = useDeleteBlogMutation();
 
-  const handleEditClick = (pet: any) => {
-    setSelectedPet(pet);
+  const handleEditClick = (blog: any) => {
+    setSelectedBlog(blog);
     setIsModalOpen(true);
   };
 
-  const handleAdoptDelete = async (id: any) => {
+  const handleBlogDelete = async (id: any) => {
     try {
         const res = await deleteBlog(id);
         console.log(res);
@@ -87,7 +88,7 @@ const ManageMyPage = () => {
               <EditIcon />
             </IconButton>
             <IconButton
-              onClick={() => handleAdoptDelete(row?.id)}
+              onClick={() => handleBlogDelete(row?.id)}
               color="primary"
               aria-label="delete"
             >
@@ -101,6 +102,11 @@ const ManageMyPage = () => {
 
   return (
     <>
+    <UpdateBlogModal
+        open={isModalOpen}
+        setOpen={setIsModalOpen}
+        data={selectedBlog}
+      />
       <Box>
         {!isLoading ? (
           <Box my={2}>
@@ -123,4 +129,4 @@ const ManageMyPage = () => {
   );
 };
 
-export default ManageMyPage;
+export default ManageMyBlogs;

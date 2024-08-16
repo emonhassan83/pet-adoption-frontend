@@ -16,16 +16,6 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
 
   const defaultMenus = [
     {
-      title: "Add Blog",
-      path: `${role}/add-blog`,
-      icon: AddTaskIcon,
-    },
-    {
-      title: "Manage Blogs",
-      path: `${role}/manage-blogs`,
-      icon: VideoSettingsIcon,
-    },
-    {
       title: "Change Password",
       path: `profile`,
       icon: KeyIcon,
@@ -59,6 +49,16 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           title: "Adoption Requests",
           path: `${role}/manage-adoption`,
           icon: ManageHistoryIcon,
+        },
+        {
+          title: "Add Blog",
+          path: `${role}/add-blog`,
+          icon: AddTaskIcon,
+        },
+        {
+          title: "Manage Blogs",
+          path: `${role}/manage-blogs`,
+          icon: VideoSettingsIcon,
         }
       );
       break;
@@ -69,7 +69,17 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           title: "Manage Adoption",
           path: `${role}/manage-adoption`,
           icon: ManageHistoryIcon,
-        }
+        },
+        {
+          title: "Add Blog",
+          path: `${role}/add-blog`,
+          icon: AddTaskIcon,
+        },
+        {
+          title: "My Blogs",
+          path: `${role}/my-blogs`,
+          icon: VideoSettingsIcon,
+        },
       );
       break;
 
