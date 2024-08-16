@@ -29,7 +29,7 @@ const AddBlogPage = () => {
       const res = await createBlog(blogData);
       // console.log(res);
       if (res.data.id) {
-        toast.success("Pet created successfully!");
+        toast.success("Blog created successfully!");
         router.push("/dashboard/admin/manage-blogs");
       }
     } catch (error: any) {
