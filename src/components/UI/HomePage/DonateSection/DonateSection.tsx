@@ -67,7 +67,7 @@ const DonateSection = () => {
             borderRadius: "12px",
             boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.15)",
             position: "relative",
-            transition: "transform 0.5s ease",
+            transition: "transform 0.9s ease",
             "&:hover": {
               transform: "scale(1.05)",
             },

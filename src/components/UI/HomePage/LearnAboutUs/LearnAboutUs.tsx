@@ -47,7 +47,7 @@ const LearnAboutUs = () => {
             overflow: "hidden",
             borderRadius: "12px",
             boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.2)",
-            transition: "transform 0.5s ease",
+            transition: "transform 0.9s ease",
             "&:hover": {
               transform: "scale(1.05)",
             },

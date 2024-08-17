@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,16 +12,17 @@ import { Stack } from "@mui/material";
 import Sidebar from "../Sidebar/Sidebar";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import AccountMenu from "../AccountMenu/AccountMenu";
+import { ReactNode, useState } from "react";
 
 const drawerWidth = 240;
 
 export default function DashboardDrawer({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const { data, isLoading } = useGetMyProfileQuery({});
   // console.log(data);
 

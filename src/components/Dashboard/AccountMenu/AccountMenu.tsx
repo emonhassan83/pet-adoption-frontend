@@ -14,6 +14,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
 import { logoutUser } from "@/services/actions/logoutUser";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function AccountMenu({ data }: any) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -67,6 +68,7 @@ export default function AccountMenu({ data }: any) {
             <Avatar sx={{ width: 36, height: 36 }} src={data?.profilePhoto} />
           </IconButton>
         </Tooltip>
+        <KeyboardArrowDownIcon />
       </Box>
       <Menu
         anchorEl={anchorEl}
@@ -104,7 +106,7 @@ export default function AccountMenu({ data }: any) {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleNavigateProfile}>
-          <Avatar  src={data?.profilePhoto} /> Profile
+          <Avatar src={data?.profilePhoto} /> Profile
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleAddAccount}>
