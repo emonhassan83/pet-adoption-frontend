@@ -39,6 +39,12 @@ export default function AccountMenu({ data }: any) {
     handleClose();
   };
 
+  const handleNavigateDashboard = () => {
+    router.push("/dashboard");
+
+    handleClose();
+  };
+
   const handleAddAccount = () => {
     setAnchorEl(null);
     logoutUser(router);
@@ -107,11 +113,11 @@ export default function AccountMenu({ data }: any) {
           </ListItemIcon>
           Add another account
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleNavigateDashboard}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
-          Settings
+          DashBoard
         </MenuItem>
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>

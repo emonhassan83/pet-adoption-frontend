@@ -1,11 +1,12 @@
 import { Container, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
-import { cookies } from "next/headers";
 import Link from "next/link";
 
-const Navbar = () => {
-  const accessToken = cookies().get("accessToken")?.value;
+interface NavbarProps {
+  accessToken?: string;
+}
 
+const Navbar = ({ accessToken }: NavbarProps) => {
   const AuthButton = dynamic(
     () => import("@/components/UI/AuthButton/AuthButton"),
     { ssr: false }
@@ -21,7 +22,7 @@ const Navbar = () => {
       >
         <Typography
           variant="h5"
-          color="primary.main"
+          color=""
           component={Link}
           href="/"
           fontWeight={600}

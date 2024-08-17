@@ -1,5 +1,7 @@
 import Footer from "@/components/Shared/Footer/Footer";
 import Navbar from "@/components/Shared/Navbar/Navbar";
+import NavbarWrapper from "@/components/Shared/Navbar/NavbarWrapper";
+import ScrollNavbar from "@/components/Shared/Navbar/ScrollNavbar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +12,9 @@ export const metadata: Metadata = {
 const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Navbar />
+      <ScrollNavbar>
+        <NavbarWrapper />
+      </ScrollNavbar>
       <div className="min-h-screen">{children}</div>
       <Footer />
     </>

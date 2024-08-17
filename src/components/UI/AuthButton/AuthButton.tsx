@@ -10,12 +10,7 @@ import { useRouter } from "next/navigation";
 
 const AuthButton = () => {
   const { data, isLoading } = useGetMyProfileQuery({});
-  const router = useRouter();
   const loginUser = isLoggedIn();
-
-  // const handleLogOut = () => {
-  //   logoutUser(router);
-  // };
 
   return (
     <>

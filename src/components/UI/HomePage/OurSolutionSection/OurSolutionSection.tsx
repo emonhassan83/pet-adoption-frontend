@@ -1,5 +1,6 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const OurSolutionSection = async() => {
     const res = await fetch(
@@ -82,6 +83,25 @@ const OurSolutionSection = async() => {
           </Grid>
         ))}
       </Grid>
+
+      {/* View all Button */}
+      <Box sx={{ textAlign: "center", mt: 2 }}>
+        <Button
+          component={Link}
+          href="/blogs"
+          sx={{
+            textTransform: "none",
+            borderRadius: 20,
+            padding: "10px 20px",
+            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
+            "&:hover": {
+              backgroundColor: "#800ede",
+            },
+          }}
+        >
+          View all Blogs
+        </Button>
+      </Box>
     </Container>
   );
 };
