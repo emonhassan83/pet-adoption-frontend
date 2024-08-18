@@ -3,6 +3,7 @@ import { useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
 import Link from "next/link";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const PetAdoptSection = () => {
   const { data: adoptionRequests, isLoading } = useGetMyAdoptionRequestsQuery(
@@ -74,7 +75,7 @@ const PetAdoptSection = () => {
           />
         </Box>
       ) : (
-        <h1>Loading</h1>
+        <LoadingPage/>
       )}
     </Box>
   );

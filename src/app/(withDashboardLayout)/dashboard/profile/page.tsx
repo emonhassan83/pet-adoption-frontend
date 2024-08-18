@@ -17,6 +17,7 @@ import { useState } from "react";
 import ProfileUpdateModal from "./components/EditProfileModal";
 import uploadImageToImgbb from "@/utils/imageUploader";
 import { toast } from "sonner";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ProfilePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +27,7 @@ const ProfilePage = () => {
   // console.log(data);
 
   if (isLoading) {
-    return <h1>Loading....</h1>;
+    return <LoadingPage />;
   }
 
   const handleFileUpload = async (file: File) => {

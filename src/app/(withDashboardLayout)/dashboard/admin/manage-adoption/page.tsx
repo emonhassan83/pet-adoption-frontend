@@ -9,6 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import UpdateAdoptStatusModal from "./components/UpdateAdoptModal";
 import { toast } from "sonner";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ManageAdoptionPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -118,7 +119,7 @@ const ManageAdoptionPage = () => {
           />
         </Box>
       ) : (
-        <h1>Loading.....</h1>
+        <LoadingPage />
       )}
     </Box>
     </>

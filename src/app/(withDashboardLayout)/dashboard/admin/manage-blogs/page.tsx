@@ -12,6 +12,7 @@ import {
 } from "@/redux/api/blogApi";
 import { toast } from "sonner";
 import UpdateBlogModal from "./components/UpdateBlogModal";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ManageBlogsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -125,7 +126,7 @@ const ManageBlogsPage = () => {
             />
           </Box>
         ) : (
-          <h1>Loading.....</h1>
+          <LoadingPage/>
         )}
       </Box>
     </>

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useDeleteBlogMutation, useGetMyBlogsQuery } from "@/redux/api/blogApi";
 import { toast } from "sonner";
 import UpdateBlogModal from "./components/UpdateBlogModal";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ManageMyBlogs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,16 +24,16 @@ const ManageMyBlogs = () => {
 
   const handleBlogDelete = async (id: any) => {
     try {
-        const res = await deleteBlog(id);
-        console.log(res);
-  
-        if (res?.data?.id) {
-          toast.success("Blog deleted successfully!");
-        }
-      } catch (error: any) {
-        toast.error(error.message);
-        console.error(error.message);
+      const res = await deleteBlog(id);
+      console.log(res);
+
+      if (res?.data?.id) {
+        toast.success("Blog deleted successfully!");
       }
+    } catch (error: any) {
+      toast.error(error.message);
+      console.error(error.message);
+    }
   };
 
   const columns: GridColDef[] = [
@@ -102,7 +103,7 @@ const ManageMyBlogs = () => {
 
   return (
     <>
-    <UpdateBlogModal
+      <UpdateBlogModal
         open={isModalOpen}
         setOpen={setIsModalOpen}
         data={selectedBlog}
@@ -122,7 +123,7 @@ const ManageMyBlogs = () => {
             />
           </Box>
         ) : (
-          <h1>Loading.....</h1>
+          <LoadingPage />
         )}
       </Box>
     </>

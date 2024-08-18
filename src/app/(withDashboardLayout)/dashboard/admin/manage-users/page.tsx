@@ -8,6 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import UpdateUserRoleModal from "./components/UpdateRoleModal";
 import UpdateUserStatusModal from "./components/UpdateStatusModal";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ManageUsersPage = () => {
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
@@ -80,7 +81,7 @@ const ManageUsersPage = () => {
           />
         </Box>
       ) : (
-        <h1>Loading.....</h1>
+        <LoadingPage/>
       )}
     </Box>
    </>

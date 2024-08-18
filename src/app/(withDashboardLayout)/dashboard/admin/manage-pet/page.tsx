@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useState } from "react";
 import UpdatePetModal from "./components/UpdatePetModal";
 import { toast } from "sonner";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ManagePet = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -97,7 +98,7 @@ const ManagePet = () => {
           />
         </Box>
       ) : (
-        <h1>Loading.....</h1>
+        <LoadingPage/>
       )}
     </Box>
     </>
