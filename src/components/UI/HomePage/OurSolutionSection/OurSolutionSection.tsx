@@ -49,7 +49,7 @@ const OurSolutionSection = async() => {
                 width={500}
                 height={300}
                 style={{
-                  transition: "transform 0.8s ease",
+                  transition: "transform 0.9s ease",
                   width: "100%",
                   height: "auto",
                 }}

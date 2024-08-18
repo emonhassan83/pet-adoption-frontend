@@ -66,7 +66,7 @@ const OurApproachSection = () => {
             height={400}
             alt="Donate Banner"
             style={{
-              transition: "transform 0.8s ease",
+              transition: "transform 0.9s ease",
               width: "100%",
               height: "auto",
               borderRadius: "5px",

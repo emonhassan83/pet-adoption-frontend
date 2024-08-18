@@ -1,7 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, Container, Grid, Pagination, Typography, CircularProgress } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Pagination,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import axios from "axios";
 import FilterSidebar from "./components/FilterSidebar/FilterSidebar";
 import PetCard from "./components/petCard/PetCard";
@@ -13,24 +20,30 @@ const PetsPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [filters, setFilters] = useState({
     species: "",
+    breed: "",
     age: "",
+    size: "",
     location: "",
     color: "",
     gender: "",
   });
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPets = async () => {
-      setLoading(true); // Set loading to true when starting to fetch data
+      setLoading(true);
       try {
+        const cleanedFilters = Object.fromEntries(
+          Object.entries(filters).filter(([_, value]) => value)
+        );
+
         const { data } = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets`,
           {
             params: {
               limit: 9,
               page,
-              // ...filters,
+              ...cleanedFilters,
             },
           }
         );
@@ -39,7 +52,7 @@ const PetsPage = () => {
       } catch (error) {
         console.error("Error fetching pets:", error);
       } finally {
-        setLoading(false); // Set loading to false when data fetching is complete
+        setLoading(false);
       }
     };
 
@@ -54,7 +67,7 @@ const PetsPage = () => {
   };
 
   if (loading) {
-    return <LoadingPage/>
+    return <LoadingPage />;
   }
 
   return (
@@ -63,7 +76,15 @@ const PetsPage = () => {
         <FilterSidebar filters={filters} setFilters={setFilters} />
         <Box sx={{ flex: 1 }}>
           {loading ? (
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "80vh",
+              }}
+            >
               <CircularProgress sx={{ mb: 2 }} />
               <Typography variant="h6" color="text.secondary">
                 Loading pets...
@@ -78,7 +99,7 @@ const PetsPage = () => {
                   </Grid>
                 ))}
               </Grid>
-              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
                 <Pagination
                   count={totalPages}
                   page={page}

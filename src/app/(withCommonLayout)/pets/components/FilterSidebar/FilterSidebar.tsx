@@ -1,17 +1,66 @@
-import { Box, Typography, TextField, MenuItem, Button } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  Box,
+  Container,
+  Grid,
+  Pagination,
+  Typography,
+  CircularProgress,
+  Button,
+  TextField,
+  MenuItem,
+} from "@mui/material";
 
-const FilterSidebar = ({ filters, setFilters }: { filters: any; setFilters: React.Dispatch<React.SetStateAction<any>> }) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFilters({
-      ...filters,
-      [event.target.name]: event.target.value,
+const speciesOptions = ["Dog", "Cat", "Bird", "Rabbit", "Others"];
+const breedOptions = [
+  "Labrador Retriever",
+  "Siamese",
+  "German Shepherd",
+  "Maine Coon",
+  "Canary",
+  "Holland Lop",
+];
+const sizeOptions = ["Large", "Medium", "Small"];
+const colorOptions = [
+  "White",
+  "Cream",
+  "Black",
+  "Gray",
+  "Golden",
+  "Brown Tabby",
+  "Brown and White",
+];
+const genderOptions = ["Male", "Female", "Other"];
+
+const FilterSidebar = ({
+  filters,
+  setFilters,
+}: {
+  filters: any;
+  setFilters: React.Dispatch<React.SetStateAction<any>>;
+}) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+
+    setFilters((prevFilters: any) => {
+      const newFilters = { ...prevFilters };
+      if (value) {
+        newFilters[name] = value;
+      } else {
+        delete newFilters[name];
+      }
+      return newFilters;
     });
   };
 
   const handleReset = () => {
     setFilters({
       species: "",
+      breed: "",
       age: "",
+      size: "",
       location: "",
       color: "",
       gender: "",
@@ -39,39 +88,109 @@ const FilterSidebar = ({ filters, setFilters }: { filters: any; setFilters: Reac
         onChange={handleChange}
         fullWidth
         margin="normal"
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
       >
-        <MenuItem value="">Any</MenuItem>
-        <MenuItem value="dog">Dog</MenuItem>
-        <MenuItem value="cat">Cat</MenuItem>
-        {/* Add more options as needed */}
+        {speciesOptions.map((species, index) => (
+          <MenuItem value={species} key={index}>
+            {species}
+          </MenuItem>
+        ))}
       </TextField>
       <TextField
         select
+        label="Breed"
+        name="breed"
+        value={filters.breed}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
+      >
+        {breedOptions.map((breed, index) => (
+          <MenuItem value={breed} key={index}>
+            {breed}
+          </MenuItem>
+        ))}
+      </TextField>
+      <TextField
         label="Age"
         name="age"
         value={filters.age}
         onChange={handleChange}
         fullWidth
         margin="normal"
-      >
-        <MenuItem value="">Any</MenuItem>
-        <MenuItem value="puppy">Puppy</MenuItem>
-        <MenuItem value="adult">Adult</MenuItem>
-        <MenuItem value="senior">Senior</MenuItem>
-        {/* Add more options as needed */}
-      </TextField>
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
+      />
       <TextField
         select
+        label="Size"
+        name="size"
+        value={filters.size}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
+      >
+        {sizeOptions.map((size, index) => (
+          <MenuItem value={size} key={index}>
+            {size}
+          </MenuItem>
+        ))}
+      </TextField>
+      <TextField
         label="Location"
         name="location"
         value={filters.location}
         onChange={handleChange}
         fullWidth
         margin="normal"
-      >
-        <MenuItem value="">Any</MenuItem>
-        {/* Add location options here */}
-      </TextField>
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
+      />
       <TextField
         select
         label="Color"
@@ -80,9 +199,22 @@ const FilterSidebar = ({ filters, setFilters }: { filters: any; setFilters: Reac
         onChange={handleChange}
         fullWidth
         margin="normal"
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
       >
-        <MenuItem value="">Any</MenuItem>
-        {/* Add color options here */}
+        {colorOptions.map((color, index) => (
+          <MenuItem value={color} key={index}>
+            {color}
+          </MenuItem>
+        ))}
       </TextField>
       <TextField
         select
@@ -92,17 +224,30 @@ const FilterSidebar = ({ filters, setFilters }: { filters: any; setFilters: Reac
         onChange={handleChange}
         fullWidth
         margin="normal"
+        size="small"
+        sx={{
+          backgroundColor: "#fff",
+          borderRadius: "4px",
+          "& .MuiOutlinedInput-root": {
+            "&:hover fieldset": {
+              borderColor: "#3f51b5",
+            },
+          },
+        }}
       >
-        <MenuItem value="">Any</MenuItem>
-        <MenuItem value="male">Male</MenuItem>
-        <MenuItem value="female">Female</MenuItem>
+        {genderOptions.map((gender, index) => (
+          <MenuItem value={gender} key={index}>
+            {gender}
+          </MenuItem>
+        ))}
       </TextField>
       <Button
         variant="outlined"
         color="primary"
         onClick={handleReset}
-        sx={{ mt: 2 }}
+        sx={{ mt: 2, textTransform: "none" }}
         fullWidth
+        size="small"
       >
         Reset Filters
       </Button>
