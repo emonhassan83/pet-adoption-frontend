@@ -15,7 +15,14 @@ const BlogBannerCard = ({ blog }: any) => {
         backgroundColor: "#f8f9fa",
       }}
     >
-      <Box sx={{ flexShrink: 0 }}>
+      <Box
+        sx={{
+          flexShrink: 0,
+          "&:hover img": {
+            transform: "scale(1.05)",
+          },
+        }}
+      >
         <Image
           src={blog.image}
           alt="Blog Image"
@@ -24,6 +31,7 @@ const BlogBannerCard = ({ blog }: any) => {
           style={{
             objectFit: "cover",
             borderRadius: 10,
+            transition: "transform 0.9s ease",
           }}
         />
       </Box>

@@ -30,6 +30,7 @@ const navItems = [
   { label: "Pets", href: "/pets" },
   { label: "About Us", href: "/about-us" },
   { label: "Blogs", href: "/blogs" },
+  { label: "Donate Us", href: "/donate" },
 ];
 
 export default function Navbar({ accessToken, window }: NavbarProps) {

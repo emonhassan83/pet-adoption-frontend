@@ -61,7 +61,7 @@ const AboutServices = ({ data }: { data: IAboutServices[] }) => {
               height={300}
               alt={item.title}
               style={{
-                transition: "transform 0.4s ease",
+                transition: "transform 0.9s ease",
                 maxWidth: "100%",
                 height: "auto",
               }}

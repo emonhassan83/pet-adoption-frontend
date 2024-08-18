@@ -57,7 +57,7 @@ const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
                 width={300}
                 height={300}
                 style={{
-                  transition: "transform 0.5s ease",
+                  transition: "transform 0.9s ease",
                   width: "100%",
                   height: "auto",
                   borderRadius: "8px",

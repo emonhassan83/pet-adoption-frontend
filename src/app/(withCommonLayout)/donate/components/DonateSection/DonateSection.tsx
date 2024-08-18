@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import assets from "@/assets";
 
@@ -19,7 +19,7 @@ const DonateSection = () => {
   return (
     <Box sx={{ mt: 4 }}>
       {SectionInfo.map((info, index) => (
-        <Box sx={{ mb: 4 }} key={index}>
+        <Container sx={{ mb: 4 }} key={index}>
           <Typography
             variant="h4"
             fontWeight={700}
@@ -31,7 +31,7 @@ const DonateSection = () => {
           <Typography variant="body1" color="textSecondary" sx={{ mb: 3 }}>
             {info?.subheading}
           </Typography>
-        </Box>
+        </Container>
       ))}
 
       <Box
@@ -48,7 +48,9 @@ const DonateSection = () => {
           p: 2,
         }}
       >
-        <Box sx={{ flexShrink: 0 }}>
+        <Box sx={{ flexShrink: 0, "&:hover img": {
+            transform: "scale(1.1)",
+          }, }}>
           <Image
             src={assets.images.about_us_blog3}
             alt="Donate Section Image"
@@ -57,6 +59,7 @@ const DonateSection = () => {
             style={{
               objectFit: "cover",
               borderRadius: 10,
+              transition: "transform 0.9s ease",
             }}
           />
         </Box>
@@ -84,7 +87,7 @@ const DonateSection = () => {
         </Box>
       </Box>
 
-      <Box sx={{mt: 4}}>
+      <Container sx={{mt: 4}}>
         <Typography
           variant="h4"
           fontWeight={700}
@@ -107,7 +110,7 @@ const DonateSection = () => {
           mission and share information about our urgent and live-saving mission
           in Ukraine.
         </Typography>
-      </Box>
+      </Container>
     </Box>
   );
 };

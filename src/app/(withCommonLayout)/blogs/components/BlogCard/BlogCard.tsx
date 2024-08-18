@@ -12,16 +12,28 @@ const BlogCard = ({ blog }: any) => {
         borderRadius: 2,
         overflow: "hidden",
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-        cursor: "pointer"
+        cursor: "pointer",
       }}
     >
-      <Box sx={{ position: "relative", width: "100%", height: "300px" }}>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "300px",
+          "&:hover img": {
+            transform: "scale(1.1)",
+          },
+        }}
+      >
         <Image
           src={blog.image}
           alt={blog.title}
           layout="fill"
           objectFit="cover"
-          style={{ borderRadius: "8px 8px 0 0" }}
+          style={{
+            borderRadius: "8px 8px 0 0",
+            transition: "transform 0.9s ease",
+          }}
         />
       </Box>
       <Box sx={{ px: 2, pb: 2 }}>
