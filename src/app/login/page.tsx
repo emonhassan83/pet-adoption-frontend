@@ -95,10 +95,10 @@ const LoginPage = () => {
               <PetFrom
                 onSubmit={handleLogin}
                 resolver={zodResolver(validationSchema)}
-                defaultValues={{
-                  email: "alice@example.com",
-                  password: "user123",
-                }}
+                // defaultValues={{
+                //   email: "emily@example.com",
+                //   password: "user123",
+                // }}
               >
                 <Grid container spacing={2} my={1}>
                   <Grid item sm={12}>
@@ -125,7 +125,7 @@ const LoginPage = () => {
                     >
                       Forgot Password?
                     </Typography>
-                    <PetInputWithToggle
+                    <PetInput
                       name="password"
                       label="Password"
                       fullWidth={true}

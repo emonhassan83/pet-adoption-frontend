@@ -146,14 +146,14 @@ const RegisterPage = () => {
                   />
                 </Grid>
                 <Grid item sm={6}>
-                <PetInputWithToggle
+                <PetInput
                     name="password"
                     label="Password"
                     fullWidth={true}
                   />
                 </Grid>
                 <Grid item sm={6}>
-                  <PetInputWithToggle
+                  <PetInput
                     name="confirmPass"
                     label="Confirm Password"
                     fullWidth={true}
