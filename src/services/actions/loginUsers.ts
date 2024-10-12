@@ -1,5 +1,5 @@
 // "use server";
-
+import { jwtDecode } from "jwt-decode";
 import { FieldValues } from "react-hook-form";
 import setAccessToken from "./setAccessToken";
 
@@ -17,11 +17,18 @@ export const userLogin = async (data: FieldValues) => {
     }
   );
 
+  let decodedData = null;
   const userInfo = await res.json();
 
   if (userInfo.data.accessToken) {
+    decodedData = jwtDecode(userInfo.data.accessToken) as any;
+  }
+
+  const role = (decodedData?.role).toLowerCase();
+
+  if (userInfo.data.accessToken) {
     setAccessToken(userInfo.data.accessToken, {
-      redirect: "/dashboard",
+      redirect: `/dashboard/${role}`,
     });
   }
   return userInfo;
