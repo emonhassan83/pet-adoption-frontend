@@ -15,7 +15,7 @@ const UsersTableSection = () => {
   const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const { data, isLoading } = useGetAllUsersQuery({});
-    console.log(data);
+    // console.log(data);
 
   const handleRoleEdit = (user: any) => {
     setSelectedUser(user);
@@ -49,7 +49,7 @@ const UsersTableSection = () => {
 
   return (
    <>
-    <Box>
+    <Box sx={{ width: { xs: "100%" } }}>
       {!isLoading ? (
         <Box my={2}>
           <DataGrid
