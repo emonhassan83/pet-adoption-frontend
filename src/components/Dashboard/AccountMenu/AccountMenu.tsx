@@ -15,14 +15,19 @@ import Logout from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
 import { logoutUser } from "@/services/actions/logoutUser";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useGetMyProfileQuery } from "@/redux/api/userApi";
 
 export default function AccountMenu({ data }: any) {
+  const { data: userData } = useGetMyProfileQuery({});
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
+  const role = userData && (userData?.role).toLowerCase();
+  
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -41,7 +46,7 @@ export default function AccountMenu({ data }: any) {
   };
 
   const handleNavigateDashboard = () => {
-    router.push("/dashboard");
+    router.push(`/dashboard/${role}`);
 
     handleClose();
   };
