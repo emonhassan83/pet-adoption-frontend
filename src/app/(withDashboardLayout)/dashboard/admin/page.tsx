@@ -8,7 +8,6 @@ import PieChart from "./components/PieChart";
 import BarChart from "./components/BarChart";
 import MetaDataSection from "./components/MetaData";
 import ProfileSection from "./components/ProfileSection";
-import FeatureBlogs from "./components/FeatureBlog";
 import FeaturePets from "./components/PopularPets";
 import LeadProfile from "./components/LeadProfile";
 
@@ -90,17 +89,57 @@ const AdminPage = () => {
       <Box
         sx={{
           display: "flex",
-          width: "100%",
           flexDirection: { xs: "column", md: "row" },
           mt: 4,
           gap: 4,
-          // justifyContent: "center",
+          width: "100%"
         }}
       >
-        {/* Lead Profile */}
-        <LeadProfile />
+        {/* Team Leaders */}
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Team Leaders
+          </Typography>
+          <Box
+            sx={{
+              flex: 1,
+              width: "100%",
+              display: "flex",
+            }}
+          >
+            <LeadProfile />
+          </Box>
+        </Box>
+
         {/* Feature Pets */}
-        <FeaturePets />
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Feature Pets
+          </Typography>
+          <Box
+            sx={{
+              flex: 1,
+              width: "100%",
+              display: "flex",
+            }}
+          >
+            <FeaturePets />
+          </Box>
+        </Box>
       </Box>
     </>
   );

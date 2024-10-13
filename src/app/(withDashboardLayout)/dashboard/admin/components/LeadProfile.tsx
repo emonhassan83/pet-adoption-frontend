@@ -39,7 +39,7 @@ const LeadershipSection = () => {
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        gap: 1,
+        gap: 3,
         justifyContent: "center",
         mt: 3,
       }}
@@ -62,7 +62,7 @@ const LeadershipSection = () => {
             <Image
               src={leader.image}
               alt={leader.name}
-              width={90}
+              width={100}
               height={100}
               style={{
                 transition: "transform 0.9s ease",

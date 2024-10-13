@@ -31,7 +31,7 @@ const FeaturePets = () => {
   ];
 
   return (
-    <Box sx={{ width: "50%" }}>
+    <Box sx={{ width: "100%" }}>
       {!isLoading ? (
         <Box my={2}>
         <DataGrid
