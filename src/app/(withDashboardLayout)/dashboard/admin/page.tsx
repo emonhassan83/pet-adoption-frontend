@@ -10,12 +10,13 @@ import MetaDataSection from "./components/MetaData";
 import ProfileSection from "./components/ProfileSection";
 import FeaturePets from "./components/PopularPets";
 import LeadProfile from "./components/LeadProfile";
+import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const AdminPage = () => {
   const { data, isLoading } = useGetMyProfileQuery({});
   const { data: metaData } = useGetMetaDtaQuery({});
 
-  if (isLoading || !metaData) return <Typography>Loading...</Typography>;
+  if (isLoading || !metaData) return <LoadingPage />;
 
   return (
     <>
@@ -92,7 +93,7 @@ const AdminPage = () => {
           flexDirection: { xs: "column", md: "row" },
           mt: 4,
           gap: 4,
-          width: "100%"
+          width: "100%",
         }}
       >
         {/* Team Leaders */}
@@ -101,7 +102,7 @@ const AdminPage = () => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            minWidth: 0
+            minWidth: 0,
           }}
         >
           <Typography variant="h5" gutterBottom>
@@ -124,7 +125,7 @@ const AdminPage = () => {
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            minWidth: 0
+            minWidth: 0,
           }}
         >
           <Typography variant="h5" gutterBottom>

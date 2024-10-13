@@ -27,9 +27,18 @@ export const userLogin = async (data: FieldValues) => {
   const role = (decodedData?.role).toLowerCase();
 
   if (userInfo.data.accessToken) {
+    let redirectUrl = "/dashboard/profile";
+
+    if (role === "admin") {
+      redirectUrl = "/dashboard/admin";
+    } else if (role === "user") {
+      redirectUrl = "/dashboard/profile";
+    }
+
     setAccessToken(userInfo.data.accessToken, {
-      redirect: `/dashboard/${role}`,
+      redirect: redirectUrl,
     });
   }
+
   return userInfo;
 };
