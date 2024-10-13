@@ -1,10 +1,8 @@
 "use client";
 
 import { useGetAllPetsQuery } from "@/redux/api/petApi";
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from '@mui/icons-material/Edit';
 import Image from "next/image";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
@@ -33,26 +31,22 @@ const FeaturePets = () => {
   ];
 
   return (
-    <>
-    <Box>
+    <Box sx={{ width: "50%" }}>
       {!isLoading ? (
         <Box my={2}>
-          <DataGrid
-            rows={data ?? []}
-            columns={columns}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 5 },
-              },
-            }}
-            pageSizeOptions={[5, 10]}
-          />
-        </Box>
+        <DataGrid
+          rows={data?.slice(0, 5) ?? []}
+          columns={columns}
+          disableColumnMenu
+          hideFooter
+          autoHeight
+          getRowId={(row) => row.id || row.name}
+        />
+      </Box>
       ) : (
-        <LoadingPage/>
+        <LoadingPage />
       )}
     </Box>
-    </>
   );
 };
 

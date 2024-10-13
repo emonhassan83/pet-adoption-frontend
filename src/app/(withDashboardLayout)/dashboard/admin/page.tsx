@@ -10,6 +10,7 @@ import MetaDataSection from "./components/MetaData";
 import ProfileSection from "./components/ProfileSection";
 import FeatureBlogs from "./components/FeatureBlog";
 import FeaturePets from "./components/PopularPets";
+import LeadProfile from "./components/LeadProfile";
 
 const AdminPage = () => {
   const { data, isLoading } = useGetMyProfileQuery({});
@@ -86,10 +87,21 @@ const AdminPage = () => {
         </Paper>
       </Box>
 
-      {/* Feature Blog */}
-      <FeatureBlogs />
-      {/* Feature Pets */}
-       <FeaturePets />   
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          flexDirection: { xs: "column", md: "row" },
+          mt: 4,
+          gap: 4,
+          // justifyContent: "center",
+        }}
+      >
+        {/* Lead Profile */}
+        <LeadProfile />
+        {/* Feature Pets */}
+        <FeaturePets />
+      </Box>
     </>
   );
 };

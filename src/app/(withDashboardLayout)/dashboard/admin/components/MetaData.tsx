@@ -74,7 +74,7 @@ const MetaDataSection = () => {
           {
             icon: <StarIcon fontSize="large" color="primary" />,
             count: popularPetCount,
-            label: "Popular Pets",
+            label: "Adoption Pets",
           },
         ].map((item, index) => (
           <Paper
