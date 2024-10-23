@@ -47,11 +47,15 @@ instance.interceptors.response.use(
       
       //! optimize this rerendered call
       const response = await getNewAccessToken();
-      const accessToken = response.data.accessToken;
+      console.log(response);
+      
+      const accessToken = response?.data?.accessToken;
 
       config.headers["Authorization"] = accessToken;
       setToLocalStorage(authKey, accessToken);
       setAccessToken(accessToken); //* set access token to cookie
+      console.log(config);
+      
       return instance(config);
     } else {
       // Do something with response error

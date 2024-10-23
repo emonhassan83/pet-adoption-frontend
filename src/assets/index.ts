@@ -14,6 +14,7 @@ const assets = {
       donate_banner: require("./images/donate_section_banner.jpg"),
       approach_banner: require("./images/approach_banner.webp"),
       donate_page_banner: require("./images/donate_page_banner.png"),
+      logo: require("./images/pets-logo-removebg-preview.png"),
     },
     logo: {
       facebook: require("./icons/facebook.png"),

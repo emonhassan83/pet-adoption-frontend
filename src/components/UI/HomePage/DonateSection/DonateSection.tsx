@@ -7,29 +7,26 @@ const DonateSection = () => {
   return (
     <Container
       sx={{
-        my: 12,
-        py: { xs: 4, md: 8 },
-        borderRadius: "12px",
-        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.1)",
+        my: { xs: 8, md: 12 },
+        backgroundColor: "#f5f0ff",
+        borderRadius: "8px",
+        padding: { xs: 4, md: 6 },
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)"
       }}
     >
-      <Box textAlign="center" mb={6}>
-        <Typography
-          variant="h4"
-          component="h1"
-          fontWeight={700}
-        >
+      {/* <Box textAlign="center" mb={6}>
+        <Typography variant="h4" component="h1" fontWeight={700}>
           Our Impact
         </Typography>
-        <Typography component="p" fontSize={18} fontWeight={400} >
+        <Typography component="p" fontSize={18} fontWeight={400}>
           Help Us Save Lives: Support Our Mission
         </Typography>
-      </Box>
+      </Box> */}
 
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", md: "row-reverse" },
           justifyContent: "space-between",
           alignItems: "center",
           gap: 4,
@@ -39,13 +36,17 @@ const DonateSection = () => {
         <Box
           sx={{
             width: { xs: "100%", md: "50%" },
-            textAlign: { xs: "center", md: "left" }
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-          <Typography component="p" fontSize={26} fontWeight={600} mb={1}>
-          Join Us in Making a Difference: Support Our Life-Saving Mission
-        </Typography>
-          <Typography variant="body1" fontSize={20} fontWeight={400}>
+          <Typography variant="h4" component="h4" fontWeight={700}>
+             Support Our Life-Saving Mission
+          </Typography>
+          <Typography
+            variant="body1"
+            fontWeight={400}
+            sx={{ mt: 2, mb: 3, color: "text.secondary" }}
+          >
             Since early 2022, UWARF has successfully completed four critical
             missions in Ukraine, providing vital care to over 5,500 animals. As
             we look ahead to 2023 and beyond, we are committed to scaling our
