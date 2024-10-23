@@ -5,7 +5,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
-import KeyIcon from "@mui/icons-material/Key";
+import ProfileOutlined from "@mui/icons-material/PrecisionManufacturingOutlined";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import VideoSettingsIcon from '@mui/icons-material/VideoSettings';
@@ -16,9 +16,9 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
 
   const defaultMenus = [
     {
-      title: "Change Password",
+      title: "My Profile",
       path: `profile`,
-      icon: KeyIcon,
+      icon: ProfileOutlined,
     },
   ];
 

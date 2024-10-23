@@ -23,7 +23,6 @@ const PetsPage = () => {
     breed: "",
     age: "",
     size: "",
-    location: "",
     color: "",
     gender: "",
   });

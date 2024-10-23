@@ -1,11 +1,6 @@
-import { useState, useEffect } from "react";
 import {
   Box,
-  Container,
-  Grid,
-  Pagination,
   Typography,
-  CircularProgress,
   Button,
   TextField,
   MenuItem,
@@ -61,7 +56,6 @@ const FilterSidebar = ({
       breed: "",
       age: "",
       size: "",
-      location: "",
       color: "",
       gender: "",
     });
@@ -173,24 +167,6 @@ const FilterSidebar = ({
           </MenuItem>
         ))}
       </TextField>
-      <TextField
-        label="Location"
-        name="location"
-        value={filters.location}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-        size="small"
-        sx={{
-          backgroundColor: "#fff",
-          borderRadius: "4px",
-          "& .MuiOutlinedInput-root": {
-            "&:hover fieldset": {
-              borderColor: "#3f51b5",
-            },
-          },
-        }}
-      />
       <TextField
         select
         label="Color"

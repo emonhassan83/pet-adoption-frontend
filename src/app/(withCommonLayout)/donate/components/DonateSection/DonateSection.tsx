@@ -48,9 +48,14 @@ const DonateSection = () => {
           p: 2,
         }}
       >
-        <Box sx={{ flexShrink: 0, "&:hover img": {
-            transform: "scale(1.1)",
-          }, }}>
+        <Box
+          sx={{
+            flexShrink: 0,
+            "&:hover img": {
+              transform: "scale(1.1)",
+            },
+          }}
+        >
           <Image
             src={assets.images.about_us_blog3}
             alt="Donate Section Image"
@@ -81,13 +86,22 @@ const DonateSection = () => {
             Donate to our Enrichment Fund
           </Typography>
 
-          <Button variant="outlined" color="primary" sx={{ mt: 3 }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{
+              mt: 3,
+              textTransform: "none",
+              borderRadius: 20,
+              padding: "6px 20px"
+            }}
+          >
             Donate
           </Button>
         </Box>
       </Box>
 
-      <Container sx={{mt: 4}}>
+      <Container sx={{ mt: 4 }}>
         <Typography
           variant="h4"
           fontWeight={700}
