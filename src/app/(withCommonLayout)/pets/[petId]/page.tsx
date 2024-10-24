@@ -44,7 +44,7 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
   const accessToken = cookies().get("accessToken")?.value;
 
   const user: any = accessToken && decodedToken(accessToken);
-  console.log(user);
+  // console.log(user);
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets/${params?.petId}`,
@@ -52,7 +52,7 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${accessToken}`,
+        // Authorization: `${accessToken}`,
       },
     }
   );
@@ -148,7 +148,11 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
             <PetDetail label="Location" value={pet?.location} />
             <PetDetail label="Rehoming Fee" value={"$180"} />
           </Stack>
-          <AddAdoptButton petId={pet?.id} user={user} />
+          {user ? (
+            <AddAdoptButton petId={pet?.id} user={user} />
+          ) : (
+            <AddAdoptButton petId={pet?.id} />
+          )}
         </Box>
       </Box>
 

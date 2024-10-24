@@ -6,7 +6,7 @@ import type { NextRequest } from "next/server";
 type Role = keyof typeof roleBasedPrivateRoutes;
 
 const AuthRoutes = ["/login", "/register"];
-const commonPrivateRoutes = ["/dashboard", "/dashboard/profile", "/pets"];
+const commonPrivateRoutes = ["/dashboard", "/dashboard/profile"];
 const roleBasedPrivateRoutes = {
   USER: [/^\/dashboard\/user/],
   ADMIN: [/^\/dashboard\/admin/],
@@ -58,5 +58,5 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:page*", "/pets/:page*"],
+  matcher: ["/login", "/register", "/dashboard/:page*"],
 };
