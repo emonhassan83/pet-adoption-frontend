@@ -15,7 +15,6 @@ instance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     const accessToken = getFromLocalStorage(authKey);
-
     if (accessToken) {
       config.headers.Authorization = accessToken;
     }
@@ -45,16 +44,12 @@ instance.interceptors.response.use(
     if (error?.response?.status === 500 && !config.sent) {
       config.sent = true;
       
-      //! optimize this rerendered call
       const response = await getNewAccessToken();
-      console.log(response);
-      
       const accessToken = response?.data?.accessToken;
-
+  
       config.headers["Authorization"] = accessToken;
       setToLocalStorage(authKey, accessToken);
       setAccessToken(accessToken); //* set access token to cookie
-      console.log(config);
       
       return instance(config);
     } else {

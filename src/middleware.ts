@@ -19,7 +19,7 @@ export function middleware(request: NextRequest) {
 
   const accessToken = cookies().get("accessToken")?.value;
   
-  //* if access token is found then redirect login page
+  //* if access token is not found then redirect login page
   if (!accessToken) {
     //* access auth-route for unauthorized users
     if (AuthRoutes.includes(pathname)) {
