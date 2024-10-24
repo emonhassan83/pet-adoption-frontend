@@ -73,18 +73,18 @@ export default function DashboardDrawer({
             }}
           >
             <Box>
-              <Typography variant="body2" component="div" color="gray">
+              <Typography sx={{marginLeft: "15px"}} variant="body2" component="p" color="#00000" fontWeight="600">
               
-                Hi, {isLoading ? "Loading..." : data?.name},
+                Hello, {isLoading ? "Loading..." : data?.name}!
               </Typography>
-              <Typography
+              {/* <Typography
                 variant="body2"
                 noWrap
                 component="div"
                 sx={{ color: "primary.main" }}
               >
                 Welcome to pet finder!
-              </Typography>
+              </Typography> */}
             </Box>
             <Stack direction="row" gap={3}>
               {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}

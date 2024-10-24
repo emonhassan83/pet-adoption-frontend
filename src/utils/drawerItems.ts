@@ -5,7 +5,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
-import ProfileOutlined from "@mui/icons-material/PrecisionManufacturingOutlined";
+import ProfileOutlined from "@mui/icons-material/ManageAccounts";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import VideoSettingsIcon from '@mui/icons-material/VideoSettings';

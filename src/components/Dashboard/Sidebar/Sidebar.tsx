@@ -4,9 +4,10 @@ import Link from "next/link";
 import { UserRole } from "@/types";
 import { getUserInfo } from "@/services/auth.services";
 import { useEffect, useState } from "react";
-import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
 import { drawerItems } from "@/utils/drawerItems";
 import SidebarItem from "./SidebarItems";
+import Image from "next/image";
+import assets from "@/assets";
 
 const Sidebar = () => {
   const [userRole, setUserRole] = useState("");
@@ -21,21 +22,27 @@ const Sidebar = () => {
       <Stack
         direction="row"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="start"
         gap={1}
         sx={{
           py: 1,
           mt: 1,
+          ml: 2
         }}
         component={Link}
         href="/"
       >
-        <PetsOutlinedIcon sx={{ color: "primary.main" }} />
+        <Image
+              src={assets.images.logo}
+              alt="PetPlace Logo"
+              width={45}
+              height={45}
+            />
         <Typography
           variant="h6"
           component="h6"
           fontWeight={600}
-          sx={{ color: "primary.main" }}
+          // sx={{ color: "primary.main" }}
         >
           Pet Finder
         </Typography>
