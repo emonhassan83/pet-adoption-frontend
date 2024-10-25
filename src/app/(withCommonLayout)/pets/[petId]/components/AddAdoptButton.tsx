@@ -5,14 +5,15 @@ import AddAdoptModal from "./AddAdoptModal";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
+import { isLoggedIn } from "@/services/auth.services";
 
 const AddAdoptButton = ({ petId, user }: { petId: string; user?: any }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data, isLoading } = useGetMyProfileQuery({});
+  const loginUser = isLoggedIn();
   const router = useRouter();
 
   const handleButtonClick = () => {
-    if (!user) {
+    if (!loginUser) {
       router.push("/login");
     } else {
       setIsModalOpen(true);
@@ -21,20 +22,27 @@ const AddAdoptButton = ({ petId, user }: { petId: string; user?: any }) => {
 
   return (
     <>
-      <AddAdoptModal
-        open={isModalOpen}
-        setOpen={setIsModalOpen}
-        petId={petId}
-        data={data}
-      />
-      <Button
-        fullWidth
-        disabled={ user?.role === "ADMIN"}
-        onClick={handleButtonClick} // Add redirection or modal logic
-        sx={{ mt: 4 }}
-      >
-        Apply to Adopt
-      </Button>
+      {loginUser ? (
+        <>
+          <AddAdoptModal
+            open={isModalOpen}
+            setOpen={setIsModalOpen}
+            petId={petId}
+          />
+          <Button
+            fullWidth
+            disabled={user?.role === "ADMIN"}
+            onClick={handleButtonClick} // Add redirection or modal logic
+            sx={{ mt: 4 }}
+          >
+            Apply to Adopt
+          </Button>
+        </>
+      ) : (
+        <Button fullWidth onClick={() => router.push("/login")} sx={{ mt: 4 }}>
+          Apply to Adopt
+        </Button>
+      )}
     </>
   );
 };

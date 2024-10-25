@@ -88,7 +88,7 @@ export default function DashboardDrawer({
             </Box>
             <Stack direction="row" gap={3}>
               {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
-              <AccountMenu  data={data}/>
+              <AccountMenu/>
             </Stack>
           </Box>
         </Toolbar>

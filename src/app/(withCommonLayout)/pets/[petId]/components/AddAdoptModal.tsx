@@ -3,6 +3,7 @@ import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
 import PetModal from "@/components/Shared/PetModal/PetModal";
 import { useCreateAdoptionRequestMutation } from "@/redux/api/adoptionApi";
+import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -20,10 +21,10 @@ type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   petId: string;
-  data: any;
 };
 
-const AddAdoptModal = ({ open, setOpen, petId, data }: TProps) => {
+const AddAdoptModal = ({ open, setOpen, petId }: TProps) => {
+  const {data} = useGetMyProfileQuery({});
   const [createAdoptionRequest, { isLoading }] =
     useCreateAdoptionRequestMutation();
     

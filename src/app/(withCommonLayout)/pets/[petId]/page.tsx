@@ -1,9 +1,7 @@
-import { Box, Button, Container, Typography, Stack } from "@mui/material";
+import { Box, Container, Typography, Stack } from "@mui/material";
 import Image from "next/image";
 import GradeIcon from "@mui/icons-material/Grade";
-import AddAdoptButton from "./components/AddAdoptButton";
-import { cookies } from "next/headers";
-import { decodedToken } from "@/utils/jwt";
+import AdoptionButtonWrapper from "./components/AddAdoptButtonWrapper";
 
 const PetDetail = ({ label, value }: { label: string; value: string }) => (
   <Box
@@ -41,9 +39,6 @@ const Section = ({ title, children }: { title: string; children: any }) => (
 );
 
 const PetDetailsPage = async ({ params }: { params: any }) => {
-  const accessToken = cookies().get("accessToken")?.value;
-
-  const user: any = accessToken && decodedToken(accessToken);
   // console.log(user);
 
   const res = await fetch(
@@ -52,7 +47,6 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `${accessToken}`,
       },
     }
   );
@@ -148,11 +142,9 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
             <PetDetail label="Location" value={pet?.location} />
             <PetDetail label="Rehoming Fee" value={"$180"} />
           </Stack>
-          {user ? (
-            <AddAdoptButton petId={pet?.id} user={user} />
-          ) : (
-            <AddAdoptButton petId={pet?.id} />
-          )}
+         
+            <AdoptionButtonWrapper petId={pet?.id} />
+        
         </Box>
       </Box>
 
