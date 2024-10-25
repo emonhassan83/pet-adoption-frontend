@@ -1,3 +1,4 @@
+import { IMeta } from "@/types";
 import { tagTypes } from "../tagTypes";
 import { baseApi } from "./baseApi";
 
@@ -13,10 +14,17 @@ export const petApi = baseApi.injectEndpoints({
     }),
 
     getAllPets: build.query({
-      query: () => ({
+      query: (arg: Record<string, any>) => ({
         url: "/pets",
         method: "GET",
+        params: arg
       }),
+      transformResponse: (response: [], meta: IMeta) => {
+        return {
+          getAllPets: response,
+           meta,
+        };
+     },
       providesTags: [tagTypes.pet],
     }),
 

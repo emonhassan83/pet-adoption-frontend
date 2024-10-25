@@ -8,7 +8,6 @@ import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const FeaturePets = () => {
   const { data, isLoading } = useGetAllPetsQuery({});
-//   console.log(data);
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Pet Name", flex: 1 },
@@ -35,7 +34,7 @@ const FeaturePets = () => {
       {!isLoading ? (
         <Box my={2}>
         <DataGrid
-          rows={data?.slice(0, 5) ?? []}
+          rows={data?.getAllPets?.slice(0, 5) ?? []}
           columns={columns}
           disableColumnMenu
           hideFooter

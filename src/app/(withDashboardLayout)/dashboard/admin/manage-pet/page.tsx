@@ -1,7 +1,7 @@
 "use client";
 
 import { useDeletePetMutation, useGetAllPetsQuery } from "@/redux/api/petApi";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Pagination } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
@@ -12,11 +12,30 @@ import { toast } from "sonner";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const ManagePet = () => {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  //* define and set query
+  const query: Record<string, any> = {};
+  query["page"] = page;
+  query["limit"] = limit;
+  const [allPets, setAllPets] = useState<any>([]);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPet, setSelectedPet] = useState(null);
-  const { data, isLoading } = useGetAllPetsQuery({});
+  const { data, isLoading } = useGetAllPetsQuery({ ...query });
   const [deletePet] = useDeletePetMutation();
-  // console.log(data);
+
+  const pets = data?.getAllPets;
+  const meta = data?.meta;
+  let pageCount: number;
+
+  if (meta?.total) {
+    pageCount = Math.ceil(meta.total / limit);
+  }
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   const handleEditClick = (pet: any) => {
     setSelectedPet(pet);
@@ -87,14 +106,35 @@ const ManagePet = () => {
       {!isLoading ? (
         <Box my={2}>
           <DataGrid
-            rows={data ?? []}
+            rows={pets ?? []}
             columns={columns}
             initialState={{
               pagination: {
-                paginationModel: { page: 0, pageSize: 5 },
+                paginationModel: { page: 0, pageSize: 10 },
               },
             }}
             pageSizeOptions={[5, 10]}
+            hideFooterPagination
+            slots={{
+              footer: () => {
+                return (
+                  <Box
+                    sx={{
+                      my: 2,
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Pagination
+                      color="primary"
+                      count={pageCount}
+                      page={page}
+                      onChange={handleChange}
+                    />
+                  </Box>
+                );
+              },
+            }}
           />
         </Box>
       ) : (
