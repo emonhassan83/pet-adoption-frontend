@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetMyProfileQuery } from "@/redux/api/userApi";
+import { useGetAllUsersQuery, useGetMyProfileQuery } from "@/redux/api/userApi";
 import { Typography, Box, Paper } from "@mui/material";
 import UsersTableSection from "./components/UserTableData";
 import { useGetMetaDtaQuery } from "@/redux/api/metaApi";
@@ -13,10 +13,12 @@ import LeadProfile from "./components/LeadProfile";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 
 const AdminPage = () => {
-  const { data, isLoading } = useGetMyProfileQuery({});
-  const { data: metaData } = useGetMetaDtaQuery({});
+  const { data: metaData, isLoading: isMetaLoading } = useGetMetaDtaQuery({});
+  const { data, isLoading: isProfileLoading } = useGetMyProfileQuery({});
+  const { data: users, isLoading: isUsersLoading } = useGetAllUsersQuery({});
 
-  if (isLoading || !metaData) return <LoadingPage />;
+  if (isMetaLoading || isProfileLoading || isUsersLoading)
+    return <LoadingPage />;
 
   return (
     <>
@@ -33,11 +35,11 @@ const AdminPage = () => {
           <ProfileSection data={data} />
 
           {/* User table */}
-          <UsersTableSection />
+          <UsersTableSection data={users} />
         </Box>
 
         {/* Metadata Section */}
-        <MetaDataSection />
+        <MetaDataSection  metaData={metaData}/>
       </Box>
 
       {/* Charts Section */}

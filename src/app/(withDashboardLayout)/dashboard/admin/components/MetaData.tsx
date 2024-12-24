@@ -7,13 +7,8 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import StarIcon from "@mui/icons-material/Star";
 import { Box, Paper, Typography } from "@mui/material";
-import { useGetMetaDtaQuery } from "@/redux/api/metaApi";
 
-const MetaDataSection = () => {
-    const { data: metaData, isLoading } = useGetMetaDtaQuery({});
-
-    if (isLoading) return <Typography>Loading...</Typography>;
-  
+const MetaDataSection = ({metaData}: any) => {
     const {
       userCount,
       adminCount,
