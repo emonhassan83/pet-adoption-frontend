@@ -18,15 +18,19 @@ import ProfileUpdateModal from "./components/EditProfileModal";
 import uploadImageToImgbb from "@/utils/imageUploader";
 import { toast } from "sonner";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import { useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
 
 const ProfilePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data, isLoading } = useGetMyProfileQuery({});
+  const { data, isLoading: isProfileLoading } = useGetMyProfileQuery({});
   const [updateMyProfile, { isLoading: updating }] =
     useUpdateMyProfileMutation();
+    const { data: adoptionRequests, isLoading: isAdoptLoading } = useGetMyAdoptionRequestsQuery(
+      []
+    );
   // console.log(data);
 
-  if (isLoading) {
+  if (isProfileLoading || isAdoptLoading || updating) {
     return <LoadingPage />;
   }
 
@@ -107,7 +111,7 @@ const ProfilePage = () => {
           </Grid>
         </Grid>
 
-        {data.role === "USER" && <PetAdoptSection />}
+        {data.role === "USER" && <PetAdoptSection adoptionRequests={adoptionRequests}/>}
       </Container>
     </>
   );

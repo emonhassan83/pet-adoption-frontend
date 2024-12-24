@@ -24,7 +24,7 @@ const MetaDataSection = ({metaData}: any) => {
         <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "repeat(4, 1fr)", md: "repeat(2, 1fr)" }, // Responsive grid
+          gridTemplateColumns: { xs: "repeat(4, 1fr)", md: "repeat(2, 1fr)" },
           gap: 2,
           mt: 4,
           flex: 1,

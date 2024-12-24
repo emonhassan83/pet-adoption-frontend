@@ -2,15 +2,16 @@
 
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 import { useGetMetaDtaQuery } from "@/redux/api/metaApi";
-import { useGetAllUsersQuery, useGetMyProfileQuery } from "@/redux/api/userApi";
+import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import { Box } from "@mui/material";
 import ProfileSection from "../admin/components/ProfileSection";
-import UsersTableSection from "../admin/components/UserTableData";
+import UserMetaDataSection from "./components/MetaDataSection";
+import { useGetAllPetsQuery } from "@/redux/api/petApi";
 
 const UserDashboard = () => {
   const { data: metaData, isLoading: isMetaLoading } = useGetMetaDtaQuery({});
   const { data, isLoading: isProfileLoading } = useGetMyProfileQuery({});
-  const { data: users, isLoading: isUsersLoading } = useGetAllUsersQuery({});
+  const { data: pets, isLoading: isUsersLoading } = useGetAllPetsQuery({});
 
   if (isMetaLoading || isProfileLoading) return <LoadingPage />;
 
@@ -27,11 +28,8 @@ const UserDashboard = () => {
         <Box sx={{ flex: 1 }}>
           {/* Profile Section */}
           <ProfileSection data={data} />
-
-          {/* User table */}
-          <UsersTableSection data={users} />
         </Box>
-
+        <UserMetaDataSection  metaData={metaData}/>
       </Box>
     </>
   );
