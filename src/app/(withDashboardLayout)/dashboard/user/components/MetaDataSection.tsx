@@ -21,7 +21,7 @@ const UserMetaDataSection = ({ metaData }: any) => {
         {
           icon: <MonetizationOnIcon fontSize="large" color="primary" />,
           count: `$${totalRevenue}`,
-          label: "My Adopt Coast",
+          label: "Adopt Coast",
         },
         {
           icon: <PetsIcon fontSize="large" color="primary" />,
