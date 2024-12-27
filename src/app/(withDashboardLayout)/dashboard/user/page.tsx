@@ -6,14 +6,14 @@ import { useGetMyProfileQuery } from "@/redux/api/userApi";
 import { Box, Paper, Typography } from "@mui/material";
 import ProfileSection from "../admin/components/ProfileSection";
 import UserMetaDataSection from "./components/MetaDataSection";
-import { useGetAllPetsQuery } from "@/redux/api/petApi";
 import BarChart from "../admin/components/BarChart";
 import PieChart from "../admin/components/PieChart";
+import FeaturePets from "../admin/components/PopularPets";
+import LeadershipSection from "../admin/components/LeadProfile";
 
 const UserDashboard = () => {
   const { data: metaData, isLoading: isMetaLoading } = useGetMetaDtaQuery({});
   const { data, isLoading: isProfileLoading } = useGetMyProfileQuery({});
-  const { data: pets, isLoading: isUsersLoading } = useGetAllPetsQuery({});
 
   if (isMetaLoading || isProfileLoading) return <LoadingPage />;
 
@@ -79,6 +79,62 @@ const UserDashboard = () => {
             <PieChart data={metaData?.pieCharData} />
           </Box>
         </Paper>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          mt: 4,
+          gap: 4,
+          width: "100%",
+        }}
+      >
+        {/* Team Leaders */}
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0,
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Petfinder Authority
+          </Typography>
+          <Box
+            sx={{
+              flex: 1,
+              width: "100%",
+              display: "flex",
+            }}
+          >
+            <LeadershipSection />
+          </Box>
+        </Box>
+
+        {/* Feature Pets */}
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0,
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Popular Pets
+          </Typography>
+          <Box
+            sx={{
+              flex: 1,
+              width: "100%",
+              display: "flex",
+            }}
+          >
+            <FeaturePets />
+          </Box>
+        </Box>
       </Box>
     </>
   );

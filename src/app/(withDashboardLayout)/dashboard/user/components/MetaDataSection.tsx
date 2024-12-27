@@ -46,9 +46,14 @@ const UserMetaDataSection = ({ metaData }: any) => {
             p: 2,
             borderRadius: "8px",
             textAlign: "center",
+            paddingTop: {
+              xs: 3,
+              md: 6,
+              lg: 7,
+            },
             transition: "0.3s",
             "&:hover": {
-              boxShadow: 8,
+              boxShadow: 7,
               transform: "scale(1.02)",
             },
           }}
