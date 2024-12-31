@@ -4,6 +4,7 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
+import { useEffect } from "react";
 
 type TFormConfig = {
   resolver?: any;
@@ -33,6 +34,13 @@ const PetForm = ({
 
   const methods = useForm(formConfig);
   const { handleSubmit, reset } = methods;
+
+    // Reset the form when defaultValues change
+    useEffect(() => {
+      if (defaultValues) {
+        reset(defaultValues);
+      }
+    }, [defaultValues, reset]);
 
   const submit: SubmitHandler<FieldValues> = (data) => {
     // console.log(data);

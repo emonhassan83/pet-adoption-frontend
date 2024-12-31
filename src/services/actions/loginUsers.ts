@@ -32,7 +32,7 @@ export const userLogin = async (data: FieldValues) => {
     if (role === "admin") {
       redirectUrl = "/dashboard/admin";
     } else if (role === "user") {
-      redirectUrl = "/dashboard/profile";
+      redirectUrl = "/dashboard/user";
     }
 
     setAccessToken(userInfo.data.accessToken, {

@@ -20,9 +20,21 @@ import { toast } from "sonner";
 import { z } from "zod";
 import ShowCredentialButton from "./components/ShowCredentialsButton";
 import LoginIcon from "@mui/icons-material/Login";
-import PetInputWithToggle from "@/components/Forms/PetInputWithToggle";
 import { useState } from "react";
 import ForgetPasswordModal from "./components/ForgetPasswordModal";
+
+const demoCredentials = [
+  {
+    role: 'Admin',
+    email: 'alice@example.com',
+    password: 'user123'
+  },
+  {
+    role: 'User',
+    email: 'emily@example.com',
+    password: 'user123'
+  }
+];
 
 const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address!"),
@@ -30,6 +42,10 @@ const validationSchema = z.object({
 });
 
 const LoginPage = () => {
+  const [defaultValues, setDefaultValues] = useState({
+    email: "alice@example.com",
+    password: "user123",
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleLogin = async (values: FieldValues) => {
@@ -49,6 +65,11 @@ const LoginPage = () => {
       console.error(err.message);
     }
   };
+
+  const setDemoCredentials = (email: string, password: string) => {
+    setDefaultValues({ email, password });
+  };
+
   return (
     <>
       <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
@@ -64,7 +85,6 @@ const LoginPage = () => {
             sx={{
               maxWidth: 600,
               width: "100%",
-              boxShadow: 1,
               borderRadius: 1,
               p: 4,
               textAlign: "center",
@@ -95,10 +115,7 @@ const LoginPage = () => {
               <PetFrom
                 onSubmit={handleLogin}
                 resolver={zodResolver(validationSchema)}
-                // defaultValues={{
-                //   email: "emily@example.com",
-                //   password: "user123",
-                // }}
+                defaultValues={defaultValues}
               >
                 <Grid container spacing={2} my={1}>
                   <Grid item sm={12}>
@@ -110,21 +127,6 @@ const LoginPage = () => {
                     />
                   </Grid>
                   <Grid item sm={12}>
-                    <Typography
-                      onClick={() => setIsModalOpen(true)}
-                      sx={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                        textAlign: "end",
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                        marginTop: "-10px",
-                      }}
-                      variant="body2"
-                      // startIcon={<StorageIcon />}
-                    >
-                      Forgot Password?
-                    </Typography>
                     <PetInput
                       name="password"
                       label="Password"
@@ -143,9 +145,46 @@ const LoginPage = () => {
                 >
                   Login
                 </Button>
-                <Divider>OR</Divider>
 
-                <ShowCredentialButton />
+                <Typography
+                      onClick={() => setIsModalOpen(true)}
+                      sx={{
+                        fontSize: "12px",
+                        fontWeight: "bold",
+                        textAlign: "end",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        marginTop: "-10px",
+                      }}
+                      variant="body2"
+                    >
+                      Forgot Password?
+                    </Typography>
+
+                {/* <Divider>OR</Divider> */}
+
+                {/* <ShowCredentialButton /> */}
+                {demoCredentials.map(({ role, email, password }) => (
+              <div
+                className="flex justify-between items-center mt-4"
+                key={role}
+              >
+                <div>
+                  <h3 className="text-start text-md text-gray-500">{role}:</h3>
+                  <p className="text-sm text-gray-600">Email - {email}</p>
+                  <p className="text-start text-sm text-gray-600">Pass - {password}</p>
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    className="text-white bg-[#485EC4] rounded px-2 py-1"
+                    onClick={() => setDemoCredentials(email, password)}
+                  >
+                    Login
+                  </button>
+                </div>
+              </div>
+            ))}
                 <Typography variant="body2" component="p" fontWeight={300}>
                   Need an account?{" "}
                   <Link href="/register">
