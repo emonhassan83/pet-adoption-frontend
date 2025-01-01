@@ -5,7 +5,7 @@ import PetInput from "@/components/Forms/PetInput";
 import { userLogin } from "@/services/actions/loginUsers";
 import { storeUserInfo } from "@/services/auth.services";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -64,40 +64,48 @@ const LoginPage = () => {
 
   return (
     <>
-    <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
-    <Container>
-      <Grid container sx={{ height: "100vh" }} alignItems="center">
+      <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
+      <Grid
+        container
+        sx={{ height: "100vh" }}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
         {/* Left Side Image */}
         <Grid
           item
           xs={0}
-          lg={6}
+          sm={6}
           sx={{
-            display: { xs: "none", md: "block" },
+            display: { xs: "none", sm: "block" },
             position: "relative",
             height: "100%",
           }}
         >
           <Box
             sx={{
-              position: "absolute",
+              position: "relative",
               top: 0,
               left: 0,
+              flex: 1,
               width: "100%",
               height: "100%",
             }}
           >
+            {/* Background Image */}
             <Image
-              src="https://imagizer.imageshack.com/img923/2551/LYAyZF.png"
+              src="https://i.ibb.co.com/vxYcdwB/petfinder-auth.png"
               alt="Login Illustration"
               layout="fill"
               objectFit="cover"
+              style={{ borderRadius: "8px" }}
             />
           </Box>
         </Grid>
 
         {/* Right Side Form */}
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} sm={6} sx={{flex: 1}}>
           <Stack
             sx={{
               height: "100%",
@@ -107,31 +115,30 @@ const LoginPage = () => {
           >
             <Box
               sx={{
-                maxWidth: 500,
                 width: "100%",
                 borderRadius: 1,
                 p: 4,
-                textAlign: { xs: "center", md: "start" }
+                textAlign: { xs: "center", md: "start" },
               }}
             >
               <Stack
                 sx={{
                   justifyContent: { xs: "center", md: "start" },
-                  alignItems: { xs: "center", md: "start" }
+                  alignItems: { xs: "center", md: "start" },
                 }}
               >
-                <Typography
-                  variant="h6" fontWeight={500} mb={0.5}
-                >
+                <Typography variant="h6" fontWeight={500} mb={0.5}>
                   Welcome To Back!
                 </Typography>
-                <Typography component="p"
+                <Typography
+                  component="p"
                   sx={{
                     fontSize: "14px",
                     color: "gray",
                     textAlign: { xs: "center", md: "start" },
-                    mb: 1.5
-                  }}>
+                    mb: 0.5,
+                  }}
+                >
                   Sign in to continue to your account
                 </Typography>
               </Stack>
@@ -186,7 +193,7 @@ const LoginPage = () => {
 
                 {demoCredentials.map(({ role, email, password }) => (
                   <div
-                    className="flex justify-between items-center mt-4"
+                    className="flex justify-between items-center mt-2"
                     key={role}
                   >
                     <div>
@@ -211,27 +218,31 @@ const LoginPage = () => {
                 ))}
               </PetFrom>
             </Box>
-            <Typography textAlign="center" mt={3} variant="body2" component="p" fontWeight={300}>
-                  Need an account?{" "}
-                  <Link href="/register">
-                    <Box
-                      fontWeight="bold"
-                      component="span"
-                      sx={{ textDecoration: "underline" }}
-                    >
-                      SignUp
-                    </Box>
-                  </Link>
-                </Typography>
-                <p className="text-sm mt-2 text-center text-gray-600">
-                  © {new Date().getFullYear()} Petfinder. Crafted with ❤️ by
-                  Petfinder Team
-                </p>
+            <Typography
+              textAlign="center"
+              variant="body2"
+              component="p"
+              fontWeight={300}
+            >
+              Need an account?{" "}
+              <Link href="/register">
+                <Box
+                  fontWeight="bold"
+                  component="span"
+                  sx={{ textDecoration: "underline" }}
+                >
+                  SignUp
+                </Box>
+              </Link>
+            </Typography>
+            <p className="text-sm mt-2 text-center text-gray-600">
+              © {new Date().getFullYear()} Petfinder. Crafted with ❤️ by
+              Petfinder Team
+            </p>
           </Stack>
         </Grid>
       </Grid>
-    </Container>
-  </>
+    </>
   );
 };
 
