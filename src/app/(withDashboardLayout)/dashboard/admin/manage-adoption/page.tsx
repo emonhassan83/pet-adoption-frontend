@@ -10,6 +10,7 @@ import { useState } from "react";
 import UpdateAdoptStatusModal from "./components/UpdateAdoptModal";
 import { toast } from "sonner";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const ManageAdoptionPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -99,6 +100,11 @@ const ManageAdoptionPage = () => {
 
   return (
     <>
+    <Meta
+        title="Manager Adoption | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the admin dashboard of Petfinder where admin can manage their manage adoption like delete and update and more."
+      />
+
     <UpdateAdoptStatusModal
         open={isModalOpen}
         setOpen={setIsModalOpen}

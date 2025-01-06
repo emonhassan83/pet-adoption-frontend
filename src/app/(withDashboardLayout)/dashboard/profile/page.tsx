@@ -19,6 +19,7 @@ import uploadImageToImgbb from "@/utils/imageUploader";
 import { toast } from "sonner";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
 import { useGetMyAdoptionRequestsQuery } from "@/redux/api/adoptionApi";
+import Meta from "@/components/Meta/MetaData";
 
 const ProfilePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,6 +54,11 @@ const ProfilePage = () => {
 
   return (
     <>
+    <Meta
+        title="View Profile | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the Profile page of Petfinder where all users can Profile their account and provide access to the service."
+      />
+
       <ProfileUpdateModal
         open={isModalOpen}
         setOpen={setIsModalOpen}

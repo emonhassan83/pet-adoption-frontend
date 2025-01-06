@@ -13,6 +13,7 @@ import {
 import { toast } from "sonner";
 import UpdateBlogModal from "./components/UpdateBlogModal";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const ManageBlogsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -106,6 +107,11 @@ const ManageBlogsPage = () => {
 
   return (
     <>
+    <Meta
+        title="Manager Blogs | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the admin dashboard of Petfinder where admin can manage their manage blogs like delete and update and more."
+      />
+
     <UpdateBlogModal
         open={isModalOpen}
         setOpen={setIsModalOpen}

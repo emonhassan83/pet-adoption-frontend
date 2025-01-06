@@ -11,6 +11,7 @@ import ProfileSection from "./components/ProfileSection";
 import FeaturePets from "./components/PopularPets";
 import LeadProfile from "./components/LeadProfile";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const AdminPage = () => {
   const { data: metaData, isLoading: isMetaLoading } = useGetMetaDtaQuery({});
@@ -22,6 +23,11 @@ const AdminPage = () => {
 
   return (
     <>
+    <Meta
+        title="Dashboard | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the admin dashboard of Petfinder where admin can manage their manage users, manage adoption, create blog, manage blog and more."
+      />
+
       <Box
         sx={{
           display: "flex",

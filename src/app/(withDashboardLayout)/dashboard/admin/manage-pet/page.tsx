@@ -10,6 +10,7 @@ import { useState } from "react";
 import UpdatePetModal from "./components/UpdatePetModal";
 import { toast } from "sonner";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const ManagePet = () => {
   const [page, setPage] = useState(1);
@@ -97,6 +98,11 @@ const ManagePet = () => {
 
   return (
     <>
+    <Meta
+        title="Manager Pet | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the admin dashboard of Petfinder where admin can manage their manage pets like delete and update and more."
+      />
+
     <UpdatePetModal
         open={isModalOpen}
         setOpen={setIsModalOpen}

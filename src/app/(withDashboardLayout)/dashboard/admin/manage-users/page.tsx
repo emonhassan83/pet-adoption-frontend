@@ -9,6 +9,7 @@ import { useState } from "react";
 import UpdateUserRoleModal from "./components/UpdateRoleModal";
 import UpdateUserStatusModal from "./components/UpdateStatusModal";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const ManageUsersPage = () => {
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
@@ -56,6 +57,11 @@ const ManageUsersPage = () => {
 
   return (
    <>
+   <Meta
+        title="Manager  User | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the admin dashboard of Petfinder where admin can manage their manage users like change role and update and more."
+      />
+
    <UpdateUserRoleModal
         open={isRoleModalOpen}
         setOpen={setIsRoleModalOpen}
