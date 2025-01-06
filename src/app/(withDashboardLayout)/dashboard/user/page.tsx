@@ -10,6 +10,7 @@ import BarChart from "../admin/components/BarChart";
 import PieChart from "../admin/components/PieChart";
 import FeaturePets from "../admin/components/PopularPets";
 import LeadershipSection from "../admin/components/LeadProfile";
+import Meta from "@/components/Meta/MetaData";
 
 const UserDashboard = () => {
   const { data: metaData, isLoading: isMetaLoading } = useGetMetaDtaQuery({});
@@ -19,6 +20,10 @@ const UserDashboard = () => {
 
   return (
     <>
+    <Meta
+        title="Dashboard | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the user dashboard of Petfinder where user can manage their manage adoption, create blog, my blog and more."
+      />
       <Box
         sx={{
           display: "flex",

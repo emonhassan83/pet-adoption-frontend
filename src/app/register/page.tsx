@@ -2,6 +2,7 @@
 
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
+import Meta from "@/components/Meta/MetaData";
 import { userLogin } from "@/services/actions/loginUsers";
 import { registerUsers } from "@/services/actions/registeUsers";
 import { storeUserInfo } from "@/services/auth.services";
@@ -78,6 +79,11 @@ const RegisterPage = () => {
   };
 
   return (
+    <>
+    <Meta
+        title="Register | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the Register page of Petfinder where all user can Register their account and provide access to the service."
+      />
     <Stack
       sx={{
         minHeight: "100vh",
@@ -227,6 +233,7 @@ const RegisterPage = () => {
         </Box>
       </Box>
     </Stack>
+    </>
   );
 };
 

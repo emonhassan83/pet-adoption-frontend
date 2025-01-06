@@ -14,6 +14,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useState } from "react";
 import ForgetPasswordModal from "./components/ForgetPasswordModal";
 import Image from "next/image";
+import Meta from "@/components/Meta/MetaData";
 
 const demoCredentials = [
   {
@@ -64,6 +65,11 @@ const LoginPage = () => {
 
   return (
     <>
+    <Meta
+        title="Login | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the login page of Petfinder where all users can login their account and provide access to the service."
+      />
+
       <ForgetPasswordModal open={isModalOpen} setOpen={setIsModalOpen} />
       <Grid
         container

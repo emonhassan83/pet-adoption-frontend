@@ -10,6 +10,7 @@ import { useDeleteBlogMutation, useGetMyBlogsQuery } from "@/redux/api/blogApi";
 import { toast } from "sonner";
 import UpdateBlogModal from "./components/UpdateBlogModal";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const ManageMyBlogs = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -103,6 +104,11 @@ const ManageMyBlogs = () => {
 
   return (
     <>
+    <Meta
+        title="My Blogs | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the user dashboard My Blogs page of Petfinder where user can manage blog like update and delete and more."
+      />
+
       <UpdateBlogModal
         open={isModalOpen}
         setOpen={setIsModalOpen}

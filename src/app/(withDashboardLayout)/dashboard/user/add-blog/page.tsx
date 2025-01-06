@@ -3,6 +3,7 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
+import Meta from "@/components/Meta/MetaData";
 import { blogCategoryOptions } from "@/components/Shared/SelectOptions/SelectOptions";
 import { useCreateBlogMutation } from "@/redux/api/blogApi";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
@@ -38,6 +39,12 @@ const AddBlogPage = () => {
     }
   };
   return (
+    <>
+    <Meta
+        title="Add Blog | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the user dashboard Add Blog page of Petfinder where user can add pet related blog and more."
+      />
+
     <Container sx={{ textAlign: "center" }}>
       <Typography
         variant="h5"
@@ -119,6 +126,7 @@ const AddBlogPage = () => {
         </Button>
       </PetFrom>
     </Container>
+    </>
   );
 };
 
