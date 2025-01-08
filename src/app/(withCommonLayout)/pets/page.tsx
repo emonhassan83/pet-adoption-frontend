@@ -13,6 +13,7 @@ import axios from "axios";
 import FilterSidebar from "./components/FilterSidebar/FilterSidebar";
 import PetCard from "./components/petCard/PetCard";
 import LoadingPage from "@/components/Shared/Loader/LoadingPage";
+import Meta from "@/components/Meta/MetaData";
 
 const PetsPage = () => {
   const [pets, setPets] = useState([]);
@@ -70,6 +71,12 @@ const PetsPage = () => {
   }
 
   return (
+    <>
+    <Meta
+        title="Pet Details | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the Pet Adoption Platform & Management System Pet Details Page where all users can show all info details pet information and more."
+      />
+
     <Container sx={{ my: 4 }}>
       <Box sx={{ display: { md: "flex" }, gap: 4 }}>
         <FilterSidebar filters={filters} setFilters={setFilters} />
@@ -112,6 +119,7 @@ const PetsPage = () => {
         </Box>
       </Box>
     </Container>
+    </>
   );
 };
 

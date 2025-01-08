@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import BlogBannerCard from "./components/BlogBannerCard/BlogBannerCard";
 import BlogCard from "./components/BlogCard/BlogCard";
+import Meta from "@/components/Meta/MetaData";
 
 const categories = [
   "Adopting a Pet",
@@ -19,6 +20,12 @@ const page = async () => {
   //   console.log(blogs);
 
   return (
+    <>
+    <Meta
+        title="Blogs | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the Pet Adoption Platform & Management System blogs Page where all users can show all blogs all information and more."
+      />
+
     <Container sx={{ my: 8 }}>
       <Box sx={{ mb: 2 }}>
         <Typography variant="h4" component="h1" fontWeight={700}>
@@ -75,6 +82,7 @@ const page = async () => {
         </Grid>
       </Box>
     </Container>
+    </>
   );
 };
 

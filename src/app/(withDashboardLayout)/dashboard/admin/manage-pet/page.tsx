@@ -128,7 +128,7 @@ const ManagePet = () => {
                     sx={{
                       my: 2,
                       display: "flex",
-                      justifyContent: "center",
+                      justifyContent: "end",
                     }}
                   >
                     <Pagination

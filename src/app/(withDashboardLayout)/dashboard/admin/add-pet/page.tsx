@@ -3,6 +3,7 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
+import Meta from "@/components/Meta/MetaData";
 import { colorOptions, genderOptions, healthOptions, sizeOptions } from "@/components/Shared/SelectOptions/SelectOptions";
 import { useCreatePetMutation } from "@/redux/api/petApi";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
@@ -53,6 +54,11 @@ const AddPetPage = () => {
     }
   };
   return (
+    <>
+    <Meta
+        title="Add Pet | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the user dashboard Add Pet page of Petfinder where user can add pet and more."
+      />
     <Container sx={{ textAlign: "center" }}>
       <Typography
         variant="h5"
@@ -195,6 +201,7 @@ const AddPetPage = () => {
         </Button>
       </PetFrom>
     </Container>
+    </>
   );
 };
 

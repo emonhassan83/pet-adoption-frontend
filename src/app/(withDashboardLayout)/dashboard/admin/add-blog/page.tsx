@@ -3,6 +3,7 @@
 import PetFrom from "@/components/Forms/PetForm";
 import PetInput from "@/components/Forms/PetInput";
 import PetSelectField from "@/components/Forms/PetSelectField";
+import Meta from "@/components/Meta/MetaData";
 import { blogCategoryOptions } from "@/components/Shared/SelectOptions/SelectOptions";
 import { useCreateBlogMutation } from "@/redux/api/blogApi";
 import { useGetMyProfileQuery } from "@/redux/api/userApi";
@@ -38,87 +39,94 @@ const AddBlogPage = () => {
     }
   };
   return (
-    <Container sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h5"
-        color="primary"
-        textTransform="uppercase"
-        mt={2}
-        mb={1}
-      >
-        Add Blog
-      </Typography>
-      <Box>
-        <Typography sx={{ mb: 6 }} variant="body2" color="secondary">
-          Please note you will not be able to submit your application until all
-          fields marked as REQUIRED have been entered.
-        </Typography>
-      </Box>
-      <PetFrom onSubmit={handleFormSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <PetInput
-              name="title"
-              label="Blog Name"
-              type="text"
-              fullWidth={true}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <PetInput
-              name="image"
-              label="Blog Image Url"
-              type="text"
-              fullWidth={true}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <PetInput
-              name="reference"
-              label="Blog Reference"
-              type="text"
-              fullWidth={true}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <PetInput
-              name="tags"
-              label="Blog Tags"
-              type="text"
-              fullWidth={true}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <PetSelectField
-              name="category"
-              label="Blog Category"
-              items={blogCategoryOptions}
-              fullWidth={true}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <PetInput
-              name="description"
-              label="Blog Description"
-              type="text"
-              multiline
-              rows={3}
-              fullWidth={true}
-            />
-          </Grid>
-        </Grid>
+    <>
+      <Meta
+        title="Add Blog | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the admin dashboard Add Blog page of Petfinder where admin can add pet related blog and more."
+      />
 
-        <Button
-          fullWidth={true}
-          sx={{
-            margin: "10px 0",
-          }}
-          type="submit"
+      <Container sx={{ textAlign: "center" }}>
+        <Typography
+          variant="h5"
+          color="primary"
+          textTransform="uppercase"
+          mt={2}
+          mb={1}
         >
-          Add A Blog
-        </Button>
-      </PetFrom>
-    </Container>
+          Add Blog
+        </Typography>
+        <Box>
+          <Typography sx={{ mb: 6 }} variant="body2" color="secondary">
+            Please note you will not be able to submit your application until
+            all fields marked as REQUIRED have been entered.
+          </Typography>
+        </Box>
+        <PetFrom onSubmit={handleFormSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <PetInput
+                name="title"
+                label="Blog Name"
+                type="text"
+                fullWidth={true}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <PetInput
+                name="image"
+                label="Blog Image Url"
+                type="text"
+                fullWidth={true}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <PetInput
+                name="reference"
+                label="Blog Reference"
+                type="text"
+                fullWidth={true}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <PetInput
+                name="tags"
+                label="Blog Tags"
+                type="text"
+                fullWidth={true}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <PetSelectField
+                name="category"
+                label="Blog Category"
+                items={blogCategoryOptions}
+                fullWidth={true}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <PetInput
+                name="description"
+                label="Blog Description"
+                type="text"
+                multiline
+                rows={3}
+                fullWidth={true}
+              />
+            </Grid>
+          </Grid>
+
+          <Button
+            fullWidth={true}
+            sx={{
+              margin: "10px 0",
+            }}
+            type="submit"
+          >
+            Add A Blog
+          </Button>
+        </PetFrom>
+      </Container>
+    </>
   );
 };
 

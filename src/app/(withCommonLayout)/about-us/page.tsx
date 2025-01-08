@@ -2,6 +2,7 @@ import assets from "@/assets";
 import AboutServices from "./components/AboutServices/AboutServices";
 import AboutMembers from "./components/AboutMembers/AboutMembers";
 import AboutUsBanner from "./components/AboutUsBanner/AboutUsBanner";
+import Meta from "@/components/Meta/MetaData";
 
 const servicesData = [
   {
@@ -105,6 +106,11 @@ const leadershipData = [
 const AboutUsPage = () => {
   return (
     <>
+    <Meta
+        title="About Us | Petfinder - Pet Adoption Platform & Management System"
+        description="This is the Pet Adoption Platform & Management System About Us Page where all users can show all About Us all information and more."
+      />
+
       <AboutUsBanner />
       <AboutServices data={servicesData} />
       <AboutMembers data={leadershipData} />
