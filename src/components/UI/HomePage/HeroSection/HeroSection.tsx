@@ -55,14 +55,18 @@ const HeroSection = () => {
           zIndex: 3,
           color: "white",
           textAlign: "left",
-          maxWidth: { xs: "80%", md: "50%" }
+          maxWidth: { xs: "80%", md: "50%" },
         }}
       >
         <Typography
           variant="h2"
           component="h1"
           fontWeight={700}
-          sx={{ fontSize: { xs: "2rem", md: "3.5rem" }, lineHeight: 1.2 }}
+          sx={{
+            fontSize: { xs: "2rem", md: "3.5rem" },
+            mt: { xs: 5, md: 0 },
+            lineHeight: 1.2,
+          }}
         >
           Adopt a Pet, Save a Life
         </Typography>
@@ -70,9 +74,9 @@ const HeroSection = () => {
           variant="h6"
           component="p"
           sx={{
-            mt: 2,
+            mt: { xs: 2, md: 2 },
             mb: 4,
-            fontSize: { xs: "1rem", md: "1.25rem" },
+            fontSize: {xs: "0.9rem", sm: "1rem", md: "1.25rem" },
             fontWeight: 400,
             lineHeight: 1.6,
           }}

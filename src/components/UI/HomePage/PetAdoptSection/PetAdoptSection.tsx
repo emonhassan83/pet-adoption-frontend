@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Link from "next/link";
+import FillPetButton from "../../PetButton/FillPetButton";
 
 const PetAdoptSection = async () => {
   const res = await fetch(
@@ -20,17 +21,38 @@ const PetAdoptSection = async () => {
   // console.log(pets);
 
   return (
-    <Container sx={{ my: 12 }}>
+    <Container sx={{ my: { xs: 4, sm: 8, md: 12 } }}>
       {/* Section Heading */}
-      <Box sx={{ textAlign: "center", mb: 6 }}>
-        <Typography variant="h4" component="h1" fontWeight={700}>
+      <Box sx={{ textAlign: "center", mb: { xs: 3, sm: 4, md: 6 } }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          fontWeight={800}
+          sx={{
+            fontSize: { xs: "1.2rem", sm: "2rem" },
+          }}
+        >
           Pets Available for Adoption
         </Typography>
-        <Typography component="p" fontSize={18} fontWeight={400} sx={{ mt: 2 }}>
-          The PETFINDER wonderful adoptable dogs and cats are waiting for you
+        <Typography
+          component="p"
+          fontWeight={400}
+          sx={{
+            mt: {xs: 0.5, sm: 1, md: 2},
+            fontSize: { xs: 10, sm: 14, md: 18 },
+          }}
+        >
+          The Petfinder wonderful adoptable dogs and cats are waiting for you
           right now!
         </Typography>
-        <Typography component="p" fontSize={18} fontWeight={400}>
+        <Typography
+          component="p"
+          fontWeight={400}
+          sx={{
+            fontSize: { sm: 14, md: 18 },
+            display: {xs: "none", sm: "block"}
+          }}
+        >
           View adoptable animals below.
         </Typography>
       </Box>
@@ -38,7 +60,7 @@ const PetAdoptSection = async () => {
       {/* Pet Cards */}
       <Grid container spacing={4}>
         {pets?.map((pet: any) => (
-          <Grid item key={pet.id} md={3} xs={12}>
+          <Grid item key={pet.id} sm={6} md={3} xs={12}>
             <Card
               sx={{
                 height: "100%",
@@ -71,6 +93,9 @@ const PetAdoptSection = async () => {
                 <Typography
                   gutterBottom
                   variant="h6"
+                  sx={{
+                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.2rem" },
+                  }}
                   component="div"
                   fontWeight={600}
                   color="primary"
@@ -80,14 +105,14 @@ const PetAdoptSection = async () => {
                 <Typography
                   variant="body2"
                   color="textSecondary"
-                  sx={{ fontSize: 14, mb: 1 }}
+                  sx={{ fontSize: { xs: 12, sm: 14 }, mb: {xs: 0.5, sm: 1} }}
                 >
                   Age: {pet?.age} years | Breed: {pet.breed}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="textSecondary"
-                  sx={{ fontSize: 14, mb: 1 }}
+                  sx={{fontSize: { xs: 12, sm: 14 }, mb: {xs: 0.5, sm: 1} }}
                 >
                   {pet?.description?.length > 70
                     ? pet?.description.slice(0, 70) + "..."
@@ -98,9 +123,9 @@ const PetAdoptSection = async () => {
                   color="textSecondary"
                   display="flex"
                   alignItems="center"
-                  sx={{ fontSize: 12 }}
+                  sx={{ fontSize: { xs: 12, sm: 14 } }}
                 >
-                  <LocationOnIcon fontSize="small" sx={{ mr: 0.5 }} />{" "}
+                  <LocationOnIcon fontSize="small" sx={{fontSize: { xs: 14, sm: 18 }, mr: 0.5 }} />{" "}
                   {pet.location}
                 </Typography>
               </CardContent>
@@ -119,8 +144,13 @@ const PetAdoptSection = async () => {
                   sx={{
                     textTransform: "none",
                     borderRadius: 20,
-                    padding: "6px 16px",
-                    mt: -1,
+                    fontSize: {
+                      xs: "0.675rem",
+                      sm: "0.875rem",
+                      md: "1rem",
+                    },
+                    padding: "6px 12px",
+                    mt: {xs: -2, sm: -1},
                   }}
                 >
                   View Details
@@ -132,22 +162,8 @@ const PetAdoptSection = async () => {
       </Grid>
 
       {/* View All Button */}
-      <Box sx={{ textAlign: "center", mt: 8 }}>
-        <Button
-          component={Link}
-          href="/pets"
-          sx={{
-            textTransform: "none",
-            borderRadius: 20,
-            padding: "10px 20px",
-            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
-            "&:hover": {
-              backgroundColor: "#800ede",
-            },
-          }}
-        >
-          View All Pets
-        </Button>
+      <Box sx={{ textAlign: "center", mt: {xs: 3, sm: 6, md: 8} }}>
+      <FillPetButton href="/pets">View All Pets</FillPetButton>
       </Box>
     </Container>
   );

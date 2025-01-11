@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import {
   AppBar,
   Box,
@@ -26,7 +27,7 @@ interface NavbarProps {
 
 const drawerWidth = 240;
 const navItems = [
-  { label: "Home", href: "/" },
+  // { label: "Home", href: "/" },
   { label: "Pets", href: "/pets" },
   { label: "About Us", href: "/about-us" },
   { label: "Blogs", href: "/blogs" },
@@ -78,7 +79,8 @@ export default function Navbar({ accessToken, window }: NavbarProps) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex", height: "80px" }}>
@@ -86,13 +88,14 @@ export default function Navbar({ accessToken, window }: NavbarProps) {
       <AppBar component="nav" sx={{ boxShadow: "none", height: "80px" }}>
         <Container>
           <Toolbar
-             sx={{
-              maxHeight: "60px", 
+            sx={{
+              maxHeight: "60px",
               height: "60px",
               marginTop: 1,
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
+            {/* Mobile Menu Icon */}
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -102,7 +105,8 @@ export default function Navbar({ accessToken, window }: NavbarProps) {
             >
               <MenuIcon />
             </IconButton>
-            {/* 1st portion */}
+
+            {/* Logo */}
             <Typography
               variant="h6"
               component={Link}
@@ -111,8 +115,9 @@ export default function Navbar({ accessToken, window }: NavbarProps) {
             >
               Petfinder
             </Typography>
-            {/* 2nd portion */}
-            <Box sx={{ display: { xs: "none", sm: "block" }}}>
+
+            {/* Desktop Navigation */}
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
                 <Typography
                   key={item.label}
@@ -133,11 +138,23 @@ export default function Navbar({ accessToken, window }: NavbarProps) {
                 </Typography>
               )}
             </Box>
-              {/* 3rd portion */}
-            <AuthButton />
+
+            {/* Authentication Button */}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "flex-end", sm: "flex-start" },
+                flexGrow: { xs: 1, sm: 0 },
+                marginRight: { xs: -2, sm: 0 },
+              }}
+            >
+              <AuthButton />
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
+
+      {/* Mobile Drawer */}
       <nav>
         <Drawer
           container={container}
@@ -149,12 +166,16 @@ export default function Navbar({ accessToken, window }: NavbarProps) {
           }}
           sx={{
             display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
         </Drawer>
       </nav>
+
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
       </Box>

@@ -25,16 +25,26 @@ const guideInfo = [
 
 const OurApproachSection = () => {
   return (
-    <Container
-      sx={{
-        my: { xs: 8, md: 16 }
-      }}
-    >
-      <Box textAlign="center" mb={8}>
-        <Typography variant="h4" component="h1" fontWeight={700}>
+    <Container sx={{ my: { xs: 4, sm: 8, md: 12 } }}>
+      <Box sx={{ textAlign: "center", mb: { xs: 3, sm: 4, md: 6 } }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          fontWeight={800}
+          sx={{
+            fontSize: { xs: "1.2rem", sm: "2rem" },
+          }}
+        >
           Our Approach
         </Typography>
-        <Typography component="p" fontSize={20} fontWeight={500} mb={2}>
+        <Typography
+          component="p"
+          fontWeight={400}
+          sx={{
+            mt: { xs: 0.5, sm: 1, md: 2 },
+            fontSize: { xs: 10, sm: 14, md: 18 },
+          }}
+        >
           Unlock the Joy of Pet Parenthood
         </Typography>
       </Box>
@@ -45,7 +55,7 @@ const OurApproachSection = () => {
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "center",
           alignItems: "center",
-          gap: { xs: 4, md: 8 }
+          gap: { xs: 4, md: 8 },
         }}
       >
         <Box
@@ -76,10 +86,19 @@ const OurApproachSection = () => {
         <Box
           sx={{
             width: { xs: "100%", md: "50%" },
-            textAlign: { xs: "center", md: "left" }
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-          <Typography component="h4" variant="h4" fontWeight={400} mb={4} >
+          <Typography
+            component="h4"
+            variant="h4"
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "1.6rem", md: "2rem" },
+              mb: {xs: 3, md: 4},
+              mt:{xs: -4, md:0}
+            }}
+            fontWeight={400}
+          >
             Start your journey to pet parenthood with our step-by-step guide:
           </Typography>
 
@@ -89,14 +108,14 @@ const OurApproachSection = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  mb: 3
+                  mb: 3,
                 }}
                 key={index}
               >
                 <Box
                   sx={{
                     minWidth: 50,
-                    mr: 2
+                    mr: {xs: 1, md: 2},
                   }}
                 >
                   <Image
@@ -107,10 +126,32 @@ const OurApproachSection = () => {
                   />
                 </Box>
                 <Box>
-                  <Typography component="p" fontSize={18} fontWeight={600}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      textAlign:"start",
+                      fontSize: {
+                        xs: "0.8rem",
+                        sm: "1rem",
+                        md: "1.2rem",
+                      },
+                    }}
+                    fontWeight={600}
+                  >
                     {info.title}
                   </Typography>
-                  <Typography variant="body2" fontSize={16} fontWeight={400}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      textAlign:"start",
+                      fontSize: {
+                        xs: "0.675rem",
+                        sm: "0.875rem",
+                        md: "1rem",
+                      },
+                    }}
+                    fontWeight={400}
+                  >
                     {info.description}
                   </Typography>
                 </Box>

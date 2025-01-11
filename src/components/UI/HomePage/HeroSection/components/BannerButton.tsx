@@ -1,11 +1,16 @@
 "use client";
 
-import { Button } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const BannerButton = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  
   return (
     <Button
       variant="outlined"
+      size={isSmallScreen ? "small" : "medium"}
       sx={{
         color: "white",
         borderColor: "white",
