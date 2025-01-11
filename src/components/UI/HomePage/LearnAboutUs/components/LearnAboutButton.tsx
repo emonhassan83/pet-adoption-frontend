@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const LearnAboutButton = () => {
   return (

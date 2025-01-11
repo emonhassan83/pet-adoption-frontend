@@ -1,17 +1,17 @@
 import assets from "@/assets";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
-import DonateButton from "./components/DonateButton";
+import FillPetButton from "../../PetButton/FillPetButton";
 
 const DonateSection = () => {
   return (
     <Container
       sx={{
-        my: { xs: 8, md: 12 },
+        my: { xs: 4, sm: 8, md: 12 },
         backgroundColor: "#f5f0ff",
         borderRadius: "8px",
-        padding: { xs: 4, md: 6 },
-        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)"
+        padding: { xs: 2, sm: 4, md: 6 },
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
       }}
     >
       {/* <Box textAlign="center" mb={6}>
@@ -30,6 +30,7 @@ const DonateSection = () => {
           justifyContent: "space-between",
           alignItems: "center",
           gap: 4,
+          pt: {xs: 1, md: 0},
         }}
       >
         {/* Text Section */}
@@ -39,13 +40,25 @@ const DonateSection = () => {
             textAlign: { xs: "center", md: "left" },
           }}
         >
-          <Typography variant="h4" component="h4" fontWeight={700}>
-             Support Our Life-Saving Mission
+          <Typography
+            variant="h4"
+            component="h4"
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "2rem" },
+            }}
+            fontWeight={700}
+          >
+            Support Our Life-Saving Mission
           </Typography>
           <Typography
             variant="body1"
             fontWeight={400}
-            sx={{ mt: 2, mb: 3, color: "text.secondary" }}
+            sx={{
+              mt: { xs: 1, sm: 2 },
+              mb: { xs: 1, sm: 1.5, md: 3 },
+              fontSize: { xs: 10, sm: 14, md: 18 },
+              color: "text.secondary",
+            }}
           >
             Since early 2022, UWARF has successfully completed four critical
             missions in Ukraine, providing vital care to over 5,500 animals. As
@@ -56,7 +69,7 @@ const DonateSection = () => {
             we can make a profound difference.
           </Typography>
 
-          <DonateButton />
+          <FillPetButton href="/donate">Donate Now</FillPetButton>
         </Box>
 
         {/* Image Section */}

@@ -3,16 +3,17 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import assets from "@/assets";
 import LearnAboutButton from "./components/LearnAboutButton";
+import FillPetButton from "../../PetButton/FillPetButton";
 
 const LearnAboutUs = () => {
   return (
     <Container
       sx={{
-        my: { xs: 8, md: 12 },
+        my: { xs: 4, sm: 8, md: 12 },
         backgroundColor: "#f5f0ff",
         borderRadius: "8px",
-        padding: { xs: 4, md: 6 },
-        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)"
+        padding: { xs: 2, sm: 4, md: 6 },
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
       }}
     >
       <Box
@@ -21,23 +22,42 @@ const LearnAboutUs = () => {
           flexDirection: { xs: "column-reverse", md: "row" },
           justifyContent: "space-between",
           alignItems: "center",
-          gap: { xs: 4, md: 6 }
+          gap: { xs: 4, md: 6 },
         }}
       >
         <Box
           sx={{
             width: { xs: "100%", md: "50%" },
-            textAlign: { xs: "center", md: "left" }
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-          <Typography variant="h4" component="h4" fontWeight={700}>
+          <Typography
+            variant="h4"
+            component="h4"
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "2rem" },
+            }}
+            fontWeight={700}
+          >
             Discover the Heart of PetPlace
           </Typography>
-          <Typography variant="body1" fontWeight={400} sx={{ mt: 2, mb: 3, color: "text.secondary" }}>
-            At PetPlace, we're more than just a pet adoption platform— we’re a community of passionate animal lovers. Our mission is to create lasting bonds between pets and their owners, ensuring each animal finds a loving and caring home.
+          <Typography
+            variant="body1"
+            fontWeight={400}
+            sx={{
+              mt: { xs: 1, sm: 2 },
+              mb: { xs: 1, sm: 1.5, md: 3 },
+              fontSize: { xs: 10, sm: 14, md: 18 },
+              color: "text.secondary",
+            }}
+          >
+            At PetPlace, we're more than just a pet adoption platform— we’re a
+            community of passionate animal lovers. Our mission is to create
+            lasting bonds between pets and their owners, ensuring each animal
+            finds a loving and caring home.
           </Typography>
-          
-          <LearnAboutButton />
+
+          <FillPetButton href="/about-us">Learn More About Us</FillPetButton>
         </Box>
 
         <Box
