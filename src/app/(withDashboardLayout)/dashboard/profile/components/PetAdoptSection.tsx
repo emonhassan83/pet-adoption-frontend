@@ -52,6 +52,7 @@ const PetAdoptSection = ({ adoptionRequests }: any) => {
     <Box
       sx={{
         mt: 8,
+        width: {xs: "375px", sm: "100%"},
       }}
     >
       <Typography

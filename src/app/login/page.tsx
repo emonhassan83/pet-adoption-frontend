@@ -123,7 +123,7 @@ const LoginPage = () => {
               sx={{
                 width: "100%",
                 borderRadius: 1,
-                p: 4,
+                p: {xs:2, sm: 4},
                 textAlign: { xs: "center", md: "start" },
               }}
             >
@@ -155,7 +155,7 @@ const LoginPage = () => {
                 defaultValues={defaultValues}
               >
                 <Grid container spacing={2} my={1}>
-                  <Grid item sm={12}>
+                  <Grid item xs={12}>
                     <PetInput
                       name="email"
                       label="Email"
@@ -163,7 +163,7 @@ const LoginPage = () => {
                       fullWidth={true}
                     />
                   </Grid>
-                  <Grid item sm={12}>
+                  <Grid item xs={12}>
                     <PetInput
                       name="password"
                       label="Password"

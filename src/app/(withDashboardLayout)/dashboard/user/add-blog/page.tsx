@@ -56,7 +56,7 @@ const AddBlogPage = () => {
         Add Blog
       </Typography>
       <Box>
-        <Typography sx={{ mb: 6 }} variant="body2" color="secondary">
+        <Typography sx={{ mb: {xs: 2, sm: 4, md: 6} }} variant="body2" color="secondary">
           Please note you will not be able to submit your application until all
           fields marked as REQUIRED have been entered.
         </Typography>

@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import assets from "@/assets";
-import LearnAboutButton from "./components/LearnAboutButton";
 import FillPetButton from "../../PetButton/FillPetButton";
 
 const LearnAboutUs = () => {

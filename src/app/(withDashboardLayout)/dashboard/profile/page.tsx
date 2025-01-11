@@ -26,10 +26,9 @@ const ProfilePage = () => {
   const { data, isLoading: isProfileLoading } = useGetMyProfileQuery({});
   const [updateMyProfile, { isLoading: updating }] =
     useUpdateMyProfileMutation();
-    const { data: adoptionRequests, isLoading: isAdoptLoading } = useGetMyAdoptionRequestsQuery(
-      []
-    );
-  // console.log(data);
+  const { data: adoptionRequests, isLoading: isAdoptLoading } = useGetMyAdoptionRequestsQuery(
+    []
+  );
 
   if (isProfileLoading || isAdoptLoading || updating) {
     return <LoadingPage />;
@@ -54,7 +53,7 @@ const ProfilePage = () => {
 
   return (
     <>
-    <Meta
+      <Meta
         title="View Profile | Petfinder - Pet Adoption Platform & Management System"
         description="This is the Profile page of Petfinder where all users can Profile their account and provide access to the service."
       />
@@ -69,8 +68,8 @@ const ProfilePage = () => {
           <Grid xs={12} md={5}>
             <Box
               sx={{
-                height: 420,
-                width: "100%",
+                height: { xs: 400, sm: 420 },
+                width: { xs: 400, sm: "100%" },
                 overflow: "hidden",
                 borderRadius: 1,
               }}
@@ -80,22 +79,21 @@ const ProfilePage = () => {
                 width={450}
                 src={data?.profilePhoto || assets.images.placeholder_img}
                 alt="User Photo"
+                style={{
+                  height: "100%",
+                  objectFit: "cover",
+                }}
               />
             </Box>
             <Box my={3}>
-              {updating ? (
-                <p>Uploading...</p>
-              ) : (
-                <AutoFileUploader
-                  name="file"
-                  label="Choose Your Profile Photo"
-                  icon={<CloudUploadIcon />}
-                  onFileUpload={handleFileUpload}
-                  variant="text"
-                />
-              )}
+              <AutoFileUploader
+                name="file"
+                label="Choose Your Profile Photo"
+                icon={<CloudUploadIcon />}
+                onFileUpload={handleFileUpload}
+                variant="text"
+              />
             </Box>
-
             <Box
               sx={{
                 display: "flex",
@@ -104,7 +102,7 @@ const ProfilePage = () => {
             >
               <Button
                 endIcon={<ModeEditIcon />}
-                sx={{ width: "450px" }}
+                sx={{ width: { xs: "100%", md: "450px" } }}
                 onClick={() => setIsModalOpen(true)}
               >
                 Edit Profile
@@ -117,7 +115,7 @@ const ProfilePage = () => {
           </Grid>
         </Grid>
 
-        {data.role === "USER" && <PetAdoptSection adoptionRequests={adoptionRequests}/>}
+        {data.role === "USER" && <PetAdoptSection adoptionRequests={adoptionRequests} />}
       </Container>
     </>
   );
