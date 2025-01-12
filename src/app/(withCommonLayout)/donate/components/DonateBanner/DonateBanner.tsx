@@ -1,4 +1,5 @@
 import assets from "@/assets";
+import BannerButton from "@/components/UI/HomePage/HeroSection/components/BannerButton";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -43,7 +44,7 @@ const DonateBanner = () => {
           left: 16,
           transform: "translateY(-50%)",
           zIndex: 3,
-          padding: "20px",
+          padding: {xs: 0, sm: 2, md: 4},
           borderRadius: "8px",
           color: "white",
         }}
@@ -53,16 +54,22 @@ const DonateBanner = () => {
           component="h2"
           fontWeight={900}
           color="white"
+          sx={{
+            fontSize: { xs: "2rem", md: "3.5rem" },
+            mt: { xs: 4, md: 0 },
+          }}
           mb={1}
         >
           Donate Now
         </Typography>
-        <Typography variant="body1" color="white" fontWeight={400} mb={1}>
+        <Typography variant="body1" color="white" fontWeight={400} sx={{
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+          }} mb={1}>
           Your donation to The Animal Foundation goes straight to work helping
           one of the highest volume single-site animal shelters and save more
           lives.
         </Typography>
-        <Typography variant="body1" color="white">
+        <Typography variant="body1" color="white" sx={{display: {xs: "none", sm: "block"}}}>
           Your donation to The Animal Foundation goes straight to work helping
           the highest volume single-site animal shelter in America save more
           lives. Your tax-deductible charitable donation helps provide shelter,
@@ -71,9 +78,7 @@ const DonateBanner = () => {
           family to love.
         </Typography>
 
-        <Button variant="contained" color="primary" sx={{ mt: 3 }}>
-            Donate Now
-          </Button>
+        <BannerButton text="Donate Now" />
       </Box>
     </Box>
   );

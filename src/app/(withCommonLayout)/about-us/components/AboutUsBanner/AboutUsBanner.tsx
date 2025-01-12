@@ -43,7 +43,7 @@ const AboutUsBanner = () => {
           left: 16,
           transform: "translateY(-50%)",
           zIndex: 3,
-          padding: "20px",
+          padding: {xs: "3px", sm: "10px", md: "20px"},
           borderRadius: "8px",
           color: "white",
         }}
@@ -53,6 +53,10 @@ const AboutUsBanner = () => {
           component="h2"
           fontWeight={900}
           color="white"
+          sx={{
+            fontSize: { xs: "2rem", md: "3.5rem" },
+            mt: { xs: 4, md: 0 },
+          }}
           mb={1}
         >
           About Us
@@ -61,12 +65,21 @@ const AboutUsBanner = () => {
           variant="body1"
           color="white"
           fontWeight={400}
+          sx={{
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+          }}
           mb={1}
         >
           We are dedicated to making a difference in the lives of pets and the
           people who love them.
         </Typography>
-        <Typography variant="body1" color="white">
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+          }}
+          color="white"
+        >
           Our mission is to create a world where every pet is safe, healthy, and
           loved. We believe in the power of adoption, healthcare, and community
           initiatives to bring about positive change. Join us as we continue our

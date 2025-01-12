@@ -98,7 +98,8 @@ const PetDetailsPage = async ({ params }: { params: any }) => {
         <Box
           sx={{
             width: { xs: "100%", md: "40%" },
-            padding: { xs: 2, md: 0 },
+            padding: { xs: 0, sm:1, md: 0 },
+            mt: {xs: 2, md: 0}
           }}
         >
           <Box

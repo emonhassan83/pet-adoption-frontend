@@ -85,7 +85,7 @@ const HeroSection = () => {
           and rescues to find your perfect pet companion.
         </Typography>
 
-        <BannerButton />
+        <BannerButton text="Learn More" />
       </Box>
     </Box>
   );

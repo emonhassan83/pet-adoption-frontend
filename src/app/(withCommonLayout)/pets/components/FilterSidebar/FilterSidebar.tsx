@@ -65,13 +65,13 @@ const FilterSidebar = ({
     <Box
       sx={{
         width: { xs: "100%", md: "25%" },
-        padding: 2,
+        padding: {xs: 0, sm: 2},
         backgroundColor: "#f0f4f8",
         borderRadius: 2,
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <Typography variant="h6" component="h3" mb={2} fontWeight={600}>
+      <Typography variant="h6" component="h3" sx={{xs: 0, sm: 2}} fontWeight={600}>
         Filter Pets
       </Typography>
       <TextField
@@ -221,7 +221,7 @@ const FilterSidebar = ({
         variant="outlined"
         color="primary"
         onClick={handleReset}
-        sx={{ mt: 2, textTransform: "none" }}
+        sx={{ mt: 2, mb: {xs: 4, sm: 0}, textTransform: "none" }}
         fullWidth
         size="small"
       >

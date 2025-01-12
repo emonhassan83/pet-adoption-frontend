@@ -25,17 +25,32 @@ type IAboutMembers = {
 
 const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
   return (
-    <Container sx={{ my: 16 }}>
-      <Box textAlign="center" mb={3}>
-        <Typography variant="h4" component="h2" fontWeight={700}>
+    <Container sx={{ my: { xs: 4, sm: 8, md: 12 } }}>
+      <Box sx={{ textAlign: "center", mb: { xs: 2, sm: 4, md: 6 } }}>
+        <Typography
+          variant="h4"
+          component="h2"
+          sx={{
+            fontSize: { xs: "1.2rem", sm: "2rem" },
+          }}
+          fontWeight={700}
+        >
           Meet the Leaders of Our Pack
         </Typography>
-        <Typography variant="subtitle1" component="p" color="textSecondary">
+        <Typography
+          variant="subtitle1"
+          component="p"
+          sx={{
+            mt: { xs: 0.5, sm: 1, md: 2 },
+            fontSize: { xs: 10, sm: 14, md: 18 },
+          }}
+          color="textSecondary"
+        >
           Our dedicated team is here to make a difference
         </Typography>
       </Box>
 
-      <Grid container spacing={4}>
+      <Grid container spacing={3}>
         {data?.map((member: IAboutMembers, index: number) => (
           <Grid item key={index} xs={12} sm={6} md={3}>
             <Box
@@ -69,18 +84,31 @@ const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
               variant="h5"
               component="div"
               align="center"
+              sx={{
+                fontSize: { xs: "1.2rem", sm: "2rem" },
+              }}
               gutterBottom
             >
               {member.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary" align="center">
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                fontSize: { xs: 10, sm: 14, md: 18 },
+              }}
+              align="center"
+            >
               {member.designation}
             </Typography>
             <Typography
               variant="body2"
               color="textSecondary"
               align="center"
-              sx={{ mt: 2 }}
+              sx={{
+                fontSize: { xs: 10, sm: 14, md: 18 },
+                mt: {xs:0, md: 1}
+              }}
             >
               {member.bio}
             </Typography>
@@ -88,7 +116,11 @@ const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
               variant="body2"
               color="textSecondary"
               align="center"
-              sx={{ mt: 1, fontWeight: 600 }}
+              sx={{
+                fontSize: { xs: 10, sm: 14, md: 18 },
+                mt:0.5,
+                fontWeight: 600
+              }}
             >
               Experience: {member.experience}
             </Typography>
@@ -96,17 +128,24 @@ const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
               <Typography
                 variant="body2"
                 component="div"
-                fontWeight={700}
+                sx={{
+                  fontSize: { xs: 10, sm: 14, md: 18 },
+                  mt:0.5,
+                  fontWeight: 600
+                }}
                 textAlign="center"
               >
                 Achievements:
               </Typography>
-              <Box component="ul" sx={{ pl: 4, mt: 1 }}>
+              <Box component="ul" sx={{ pl: 4, mt: {xs: 0, sm:1} }}>
                 {member.achievements.map((achievement, i) => (
                   <Typography
                     variant="body2"
                     component="li"
                     key={i}
+                    sx={{
+                      fontSize: { xs: 10, sm: 14, md: 18 },
+                    }}
                     color="textSecondary"
                   >
                     {achievement}
@@ -114,12 +153,12 @@ const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
                 ))}
               </Box>
             </Box>
-            <Box display="flex" justifyContent="center" mt={2}>
+            <Box display="flex" justifyContent="center" sx={{mt: {xs:0, md: 2}}}>
               <MuiLink
                 href={member.social_links.linkedin}
                 target="_blank"
                 rel="noopener"
-                sx={{ mx: 1 }}
+                sx={{ mx: {xs: 0, md:1} }}
               >
                 <IconButton>
                   <LinkedInIcon />
@@ -129,7 +168,7 @@ const AboutMembers = ({ data }: { data: IAboutMembers[] }) => {
                 href={member.social_links.twitter}
                 target="_blank"
                 rel="noopener"
-                sx={{ mx: 1 }}
+                sx={{ mx: {xs: 0, md:1} }}
               >
                 <IconButton>
                   <TwitterIcon />

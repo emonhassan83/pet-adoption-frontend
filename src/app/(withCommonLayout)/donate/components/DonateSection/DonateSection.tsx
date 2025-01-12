@@ -19,19 +19,30 @@ const DonateSection = () => {
   return (
     <Box sx={{ mt: 4 }}>
       {SectionInfo.map((info, index) => (
-        <Container sx={{ mb: 4 }} key={index}>
+        <Box sx={{ mb: { xs: 2, md: 4 }, p: { xs: 1, sm: 2 } }} key={index}>
           <Typography
             variant="h4"
             fontWeight={700}
             gutterBottom
-            sx={{ mb: 2, color: "#333" }}
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "2rem" },
+              mb: { xs: 1, md: 2 },
+              color: "#333",
+            }}
           >
             {info?.heading}
           </Typography>
-          <Typography variant="body1" color="textSecondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            sx={{
+              mb: { xs: 1, sm: 2, md: 3 },
+              fontSize: { xs: 10, sm: 14, md: 18 },
+            }}
+          >
             {info?.subheading}
           </Typography>
-        </Container>
+        </Box>
       ))}
 
       <Box
@@ -45,7 +56,7 @@ const DonateSection = () => {
           borderRadius: 2,
           boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
           backgroundColor: "#f8f9fa",
-          p: 2,
+          p: { xs: 1, sm: 2 },
         }}
       >
         <Box
@@ -70,11 +81,25 @@ const DonateSection = () => {
         </Box>
 
         <Box sx={{ flex: 1 }}>
-          <Typography variant="h5" fontWeight={700} gutterBottom>
+          <Typography
+            variant="h5"
+            fontWeight={700}
+            sx={{
+              fontSize: { xs: "1.2rem", sm: "2rem" },
+            }}
+            gutterBottom
+          >
             Enrichment Fund
           </Typography>
 
-          <Typography variant="body2" color="textSecondary" gutterBottom>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: { xs: 10, sm: 14, md: 18 },
+            }}
+            color="textSecondary"
+            gutterBottom
+          >
             CHA is proud to have an Enrichment Fund which dedicates funding to
             send dogs on outings and purchase interactive toys and fun items for
             our dogs and cats. Each animal adjusts differently to life at the
@@ -82,7 +107,14 @@ const DonateSection = () => {
             distraction to receive extra enrichment.
           </Typography>
 
-          <Typography variant="body2" color="textSecondary" gutterBottom>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: { xs: 10, sm: 14, md: 18 },
+            }}
+            color="textSecondary"
+            gutterBottom
+          >
             Donate to our Enrichment Fund
           </Typography>
 
@@ -90,10 +122,14 @@ const DonateSection = () => {
             variant="outlined"
             color="primary"
             sx={{
-              mt: 3,
               textTransform: "none",
               borderRadius: 20,
-              padding: "6px 20px"
+              fontSize: {
+                xs: "0.675rem",
+                sm: "0.875rem",
+                md: "1rem",
+              },
+              padding: "6px 12px",
             }}
           >
             Donate
@@ -101,16 +137,22 @@ const DonateSection = () => {
         </Box>
       </Box>
 
-      <Container sx={{ mt: 4 }}>
+      <Box sx={{ mt: 4, p: { xs: 1, sm: 2 } }}>
         <Typography
           variant="h4"
           fontWeight={700}
           gutterBottom
-          sx={{ mb: 2, color: "#333" }}
+          sx={{ mb: 2, fontSize: { xs: "1.2rem", sm: "2rem" }, color: "#333" }}
         >
           Support Needed
         </Typography>
-        <Typography variant="body1" color="textSecondary">
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: { xs: 10, sm: 14, md: 18 },
+          }}
+          color="textSecondary"
+        >
           Donate here to be an important part of the August 2023 mission to
           sterilize, vaccinate and microchip over 2,000 abandoned pets in
           Ukraine. Every donation is vital, we sincerely appreciate all
@@ -124,7 +166,7 @@ const DonateSection = () => {
           mission and share information about our urgent and live-saving mission
           in Ukraine.
         </Typography>
-      </Container>
+      </Box>
     </Box>
   );
 };

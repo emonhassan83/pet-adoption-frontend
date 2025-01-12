@@ -3,7 +3,7 @@
 import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-const BannerButton = () => {
+const BannerButton = ({text}: {text: string}) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   
@@ -21,7 +21,7 @@ const BannerButton = () => {
         },
       }}
     >
-      Learn More
+      {text}
     </Button>
   );
 };
