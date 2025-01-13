@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const DonateBanner = () => {
   return (
-    <Box sx={{ position: "relative", height: "350px"}}>
+    <Box sx={{ position: "relative", height: "350px" }}>
       <Box
         sx={{
           position: "absolute",
@@ -44,7 +44,7 @@ const DonateBanner = () => {
           left: 16,
           transform: "translateY(-50%)",
           zIndex: 3,
-          padding: {xs: 0, sm: 2, md: 4},
+          padding: { xs: 0, sm: 2, md: 4 },
           borderRadius: "8px",
           color: "white",
         }}
@@ -56,20 +56,34 @@ const DonateBanner = () => {
           color="white"
           sx={{
             fontSize: { xs: "2rem", md: "3.5rem" },
-            mt: { xs: 4, md: 0 },
+            mt: { xs: 4 },
           }}
           mb={1}
         >
           Donate Now
         </Typography>
-        <Typography variant="body1" color="white" fontWeight={400} sx={{
+        <Typography
+          variant="body1"
+          color="white"
+          fontWeight={400}
+          sx={{
             fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
-          }} mb={1}>
+          }}
+          mb={1}
+        >
           Your donation to The Animal Foundation goes straight to work helping
           one of the highest volume single-site animal shelters and save more
           lives.
         </Typography>
-        <Typography variant="body1" color="white" sx={{display: {xs: "none", sm: "block"}}}>
+        <Typography
+          variant="body1"
+          color="white"
+          sx={{
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+            display: { xs: "none", sm: "block" },
+            mb: {xs: 2, sm: 3}
+          }}
+        >
           Your donation to The Animal Foundation goes straight to work helping
           the highest volume single-site animal shelter in America save more
           lives. Your tax-deductible charitable donation helps provide shelter,

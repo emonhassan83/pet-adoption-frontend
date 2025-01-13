@@ -6,18 +6,20 @@ const BlogBannerCard = ({ blog }: any) => {
     <Box
       sx={{
         display: "flex",
-        alignItems: "center",
-        gap: 4,
-        maxHeight: "400px",
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "flex-start", sm: "center" },
+        gap: { xs: 2, sm: 4 },
+        maxHeight: { xs: "auto", sm: "400px" },
         overflow: "hidden",
         borderRadius: 2,
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "#f8f9fa"
       }}
     >
       <Box
         sx={{
           flexShrink: 0,
+          width: { xs: "100%", sm: "50%" },
           "&:hover img": {
             transform: "scale(1.05)",
           },
@@ -32,11 +34,13 @@ const BlogBannerCard = ({ blog }: any) => {
             objectFit: "cover",
             borderRadius: 10,
             transition: "transform 0.9s ease",
+            width: "100%",
+            height: "auto",
           }}
         />
       </Box>
 
-      <Box sx={{ flex: 1 }}>
+      <Box sx={{ flex: 1, textAlign: { xs: "center", sm: "left" } }}>
         <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: 2 }}>
           <Typography
             variant="body2"
@@ -60,19 +64,38 @@ const BlogBannerCard = ({ blog }: any) => {
           </Typography>
         </Box>
 
-        <Typography variant="h5" fontWeight={700} gutterBottom>
+        <Typography
+          variant="h5"
+          fontWeight={700}
+          gutterBottom
+          sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem" } }}
+        >
           {blog?.title}
         </Typography>
 
-        <Typography variant="body2" color="secondary" gutterBottom>
+        <Typography
+          variant="body2"
+          color="secondary"
+          gutterBottom
+          sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
+        >
           {blog?.description}
         </Typography>
 
-        <Typography variant="body2" color="textSecondary" gutterBottom>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          gutterBottom
+          sx={{ fontSize: { xs: "0.8rem", sm: "0.9rem" } }}
+        >
           Category: {blog?.category || "General"}
         </Typography>
 
-        <Button variant="contained" color="primary" sx={{ mt: 3 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ mt: {xs: 1, md: 3}, fontSize: { xs: "0.8rem", sm: "1rem" }, mb: {xs: 2, md: 0} }}
+        >
           Read Article
         </Button>
       </Box>
