@@ -1,3 +1,5 @@
+"use client";
+
 import assets from "@/assets";
 import AboutServices from "./components/AboutServices/AboutServices";
 import AboutMembers from "./components/AboutMembers/AboutMembers";

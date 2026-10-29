@@ -1,9 +1,10 @@
 import React from 'react';
-import Navbar from './Navbar'; // Import the client-side Navbar component
+import Navbar from './Navbar';
 import { cookies } from 'next/headers';
 
-export default function NavbarWrapper() {
-  const accessToken = cookies().get('accessToken')?.value;
+export default async function NavbarWrapper() {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get('accessToken')?.value;
 
   return <Navbar accessToken={accessToken} />;
 }

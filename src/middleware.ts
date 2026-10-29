@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { cookies } from "next/headers";
+
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
@@ -17,7 +17,7 @@ const roleBasedPrivateRoutes = {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const accessToken = cookies().get("accessToken")?.value;
+  const accessToken = request.cookies.get("accessToken")?.value;
   
   //* if access token is not found then redirect login page
   if (!accessToken) {
