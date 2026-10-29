@@ -10,12 +10,12 @@
 [![Express](https://img.shields.io/badge/Express-4.x-lightgrey?logo=express)](https://expressjs.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)](https://www.prisma.io/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-336791?logo=postgresql)](https://www.postgresql.org/)
-[![Security Audit](https://img.shields.io/badge/npm%20audit-0%20vulnerabilities-brightgreen?logo=shield)](https://github.com/emonhassan83/petfinder-frontend)
+[![Security Audit](https://img.shields.io/badge/npm%20audit-0%20vulnerabilities-brightgreen?logo=shield)](https://github.com/emonhassan83/petfinder)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 Petfinder connects loving families with rescue pets needing forever homes. Featuring robust role-based access control, real-time adoption workflows, community blogging, secure donations, and comprehensive administrative analytics.
 
-[Explore Architecture](docs/ARCHITECTURE.md) · [API Documentation](docs/API_GUIDELINES.md) · [Report Bug](https://github.com/emonhassan83/petfinder-frontend/issues)
+[Explore Architecture](docs/ARCHITECTURE.md) · [API Documentation](docs/API_GUIDELINES.md) · [Report Bug](https://github.com/emonhassan83/petfinder/issues)
 
 </div>
 
