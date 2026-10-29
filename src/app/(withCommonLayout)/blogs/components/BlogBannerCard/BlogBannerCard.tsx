@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 
 const BlogBannerCard = ({ blog }: any) => {
+  if (!blog) return null;
   return (
     <Box
       sx={{

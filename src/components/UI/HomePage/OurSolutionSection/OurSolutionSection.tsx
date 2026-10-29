@@ -4,10 +4,19 @@ import Link from "next/link";
 import FillPetButton from "../../PetButton/FillPetButton";
 
 const OurSolutionSection = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/blog?limit=3`
-  );
-  const { data: blogs } = await res.json();
+  let blogs: any[] = [];
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/blog?limit=3`,
+      { next: { revalidate: 30 } }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      blogs = data?.data || [];
+    }
+  } catch (error) {
+    console.error("Failed to fetch blogs for our solution section:", error);
+  }
 
   return (
     <Container sx={{ my: { xs: 4, sm: 8, md: 12 } }}>
@@ -35,7 +44,7 @@ const OurSolutionSection = async () => {
       </Box>
 
       <Grid container spacing={4}>
-        {blogs.map((blog: any) => (
+        {blogs?.map((blog: any) => (
           <Grid item key={blog._id} xs={12} sm={6} md={4}>
             <Box
               sx={{

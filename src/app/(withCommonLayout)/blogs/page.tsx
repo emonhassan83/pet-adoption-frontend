@@ -15,8 +15,18 @@ const categories = [
 ];
 
 const page = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/blog`);
-  const { data: blogs } = await res.json();
+  let blogs: any[] = [];
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/blog`, {
+      next: { revalidate: 30 },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      blogs = data?.data || [];
+    }
+  } catch (error) {
+    console.error("Failed to fetch blogs:", error);
+  }
 
   return (
     <>
@@ -91,14 +101,21 @@ const page = async () => {
         </Box>
 
         <Box>
-          <BlogBannerCard blog={blogs[0]} />
-          <Grid container spacing={4} sx={{ mt: 4 }}>
-            {blogs.slice(1).map((blog: any) => (
-              <Grid item xs={12} sm={12} md={4} key={blog.id}>
-                <BlogCard blog={blog} />
-              </Grid>
-            ))}
-          </Grid>
+          {blogs[0] && <BlogBannerCard blog={blogs[0]} />}
+          {blogs?.length > 1 && (
+            <Grid container spacing={4} sx={{ mt: 4 }}>
+              {blogs.slice(1).map((blog: any) => (
+                <Grid item xs={12} sm={12} md={4} key={blog.id}>
+                  <BlogCard blog={blog} />
+                </Grid>
+              ))}
+            </Grid>
+          )}
+          {blogs?.length === 0 && (
+            <Typography variant="body1" color="text.secondary" sx={{ mt: 4, textAlign: "center" }}>
+              No blog articles available at the moment.
+            </Typography>
+          )}
         </Box>
       </Container>
     </>

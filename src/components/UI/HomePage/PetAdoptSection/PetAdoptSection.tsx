@@ -14,11 +14,19 @@ import Link from "next/link";
 import FillPetButton from "../../PetButton/FillPetButton";
 
 const PetAdoptSection = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets?limit=4`
-  );
-  const { data: pets } = await res.json();
-  // console.log(pets);
+  let pets: any[] = [];
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pets?limit=4`,
+      { next: { revalidate: 30 } }
+    );
+    if (res.ok) {
+      const data = await res.json();
+      pets = data?.data || [];
+    }
+  } catch (error) {
+    console.error("Failed to fetch pets for adoption section:", error);
+  }
 
   return (
     <Container sx={{ my: { xs: 4, sm: 8, md: 12 } }}>

@@ -41,7 +41,11 @@ export function middleware(request: NextRequest) {
   let decodedData = null;
 
   if (accessToken) {
-    decodedData = jwtDecode(accessToken) as any;
+    try {
+      decodedData = jwtDecode(accessToken) as any;
+    } catch {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
   }
 
   const role = decodedData?.role;
